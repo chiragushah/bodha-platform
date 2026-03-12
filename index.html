@@ -263,7 +263,10 @@ h1 em { color:var(--green-mid); font-style:normal; }
 
 @media(max-width:900px){.mission-strip{grid-template-columns:1fr;gap:40px;padding:60px 24px;} #home{padding:110px 24px 60px;} #games{padding:72px 24px;}}
 
-  </style>
+  
+.g-sc .game-card-header { background: linear-gradient(135deg, #1A4D35, #2D7D5A, #4CAF7D); }
+.g-sc .game-icon-area { background: rgba(255,255,255,0.15); }
+</style>
 </head>
 <body>
 <nav>
@@ -373,7 +376,7 @@ h1 em { color:var(--green-mid); font-style:normal; }
 
     <div class="game-card g-safe fade-up" onclick="openModal('safe')">
       <div class="game-card-header">
-        <div class="game-num">04 / 04</div>
+        <div class="game-num">04 / 05</div>
         <div class="game-icon-area">🛡️</div>
         <div class="game-tag">Safety & Habits</div>
         <div class="game-title">SafeQuest™</div>
@@ -404,7 +407,28 @@ h1 em { color:var(--green-mid); font-style:normal; }
         <div class="game-age" style="color:#c4c9c6;">In Development</div>
         <a href="about.html#contact" class="game-btn" style="color:#c4c9c6;border-color:#e5e7eb;">Register Interest →</a>
       </div>
+    
+    <div class="game-card g-sc fade-up" onclick="openModal('smartcity')">
+      <div class="game-card-header">
+        <div class="game-num">05 / 05</div>
+        <div class="game-icon-area">🏙️</div>
+        <div class="game-tag">Urban Planning</div>
+        <div class="game-title">SmartCity™</div>
+        <div class="game-sub">Design the City of Tomorrow</div>
+      </div>
+      <p class="game-desc">Design a complete smart city from the ground up — zone districts, place 50+ smart buildings with drag-and-drop, activate IoT sensors, track CO₂ budgets, and design interiors. For students and professionals.</p>
+      <div class="game-feats">
+        <div class="game-feat">🗺️ 8 Zone Types</div>
+        <div class="game-feat">⚡ IoT Dashboard</div>
+        <div class="game-feat">🌡️ CO₂ Tracking</div>
+        <div class="game-feat">🏠 Interior Design</div>
+      </div>
+      <div class="game-footer">
+        <div class="game-meta">Ages 14+ · SDG 11</div>
+        <a href="./SmartCity/smartcity/dist/index.html" class="game-play-btn" onclick="event.stopPropagation()">Play →</a>
+      </div>
     </div>
+</div>
 
   </div>
 </section>
@@ -510,7 +534,8 @@ const modalData = {
   eco: { icon:'🌱', title:'EcoQuest™', subtitle:'Environmental Action · Ages 7–12 · SDG 13, 14, 15', desc:'A turn-based cooperative card game where 1–4 players take on real-world environmental missions. From cleaning polluted rivers to restoring coral reefs and planting forests — every card action is backed by real conservation science.', skills:['Climate Science','Marine Biology','Cooperation','Conservation','Ecosystems','Biodiversity'], link:'./EcoQuest/ecoquest/dist/index.html', color:'var(--green-mid)' },
   mind: { icon:'🧠', title:'MindQuest™', subtitle:'Emotional Intelligence · Ages 8–14 · SDG 3', desc:'Navigate five Emotion Kingdoms — Emberland, Tidepools, Sunspire, Shadowmere, and Stillwood — using science-backed coping tools. Luna, the AI narrator, explains the neuroscience behind every strategy.', skills:['Emotional Regulation','Resilience','Empathy','Neuroscience','Coping Strategies','Self-Awareness'], link:'./MindQuest/mindquest/dist/index.html', color:'#6366F1' },
   money: { icon:'💹', title:'GreenMoney™', subtitle:'Sustainable Finance · Ages 12–18 · SDG 8, 12', desc:'A turn-based market simulation where players manage green portfolios — trading carbon credits, making ESG investments, and responding to climate disasters, policy shifts, and tech breakthroughs.', skills:['ESG Investing','Carbon Markets','Portfolio Management','Economic Thinking','Risk Assessment','Sustainable Business'], link:'./GreenMoney/green_game/greenverse/dist/index.html', color:'#D97706' },
-  safe: { icon:'🛡️', title:'SafeQuest™', subtitle:'Safety & Habits · All Ages · SDG 3, 8', desc:'A habit-building platform that transforms safety practices into an engaging journey. Navigate Safety Zones, complete challenges, earn SafeCoins, and climb the leaderboard — at school, home, or work.', skills:['Safety Protocols','Habit Formation','Hazard Awareness','Hygiene','Emergency Response','Compliance'], link:'./SafeQuest/safety_game/safequest/dist/index.html', color:'#0284C7' }
+  safe: { icon:'🛡️', title:'SafeQuest™', subtitle:'Safety & Habits · All Ages · SDG 3, 8', desc:'A habit-building platform that transforms safety practices into an engaging journey. Navigate Safety Zones, complete challenges, earn SafeCoins, and climb the leaderboard — at school, home, or work.', skills:['Safety Protocols','Habit Formation','Hazard Awareness','Hygiene','Emergency Response','Compliance'], link:'./SafeQuest/safety_game/safequest/dist/index.html', color:'#0284C7' },
+  smartcity: { icon:'🏙️', title:'SmartCity™', subtitle:'Urban Planning · Ages 14+ · SDG 11', desc:'Design a complete smart city from scratch. Zone districts, drag-and-drop 50+ smart buildings, activate IoT sensors, track CO₂ budgets, design interiors, and learn urban planning principles used by real city designers.', skills:['Urban Planning','IoT & Smart Tech','CO₂ Management','Infrastructure Design','Sustainability'], link:'./SmartCity/smartcity/dist/index.html', color:'#1A4D35' }
 };
 function openModal(id) {
   const d = modalData[id];
