@@ -1166,7 +1166,7 @@ function renderTutStep(n){
   document.getElementById('sc-counter').textContent=`${n+1} / ${TUTORIAL_STEPS.length}`;
   document.getElementById('sc-dots').innerHTML=TUTORIAL_STEPS.map((_,i)=>
     `<span style="display:inline-block;width:${i===n?'22px':'8px'};height:8px;border-radius:999px;
-    background:${i===n?'#4CAF7D':i<n?'#2D7D5A':'rgba(255,255,255,.15)'};
+    background:${i===n?'#4CAF7D':i<n?'#2D7D5A':'#D0DDD7'};
     transition:all .3s;margin:0 2px"></span>`).join('');
   document.getElementById('sc-prev').style.opacity=n===0?'.3':'1';
   document.getElementById('sc-prev').disabled=n===0;
@@ -1174,13 +1174,20 @@ function renderTutStep(n){
   speak(`${s.title}. ${s.content} Tip: ${s.tip}`);
 }
 function showTut(){
-  tutStep=0;voiceOn=true;
-  document.getElementById('sc-vbtn').textContent='🔊';
-  document.getElementById('sc-tut').classList.add('open');
-  document.getElementById('sc-fab').classList.remove('vis');
-  setTimeout(()=>window.speechSynthesis&&window.speechSynthesis.getVoices(),200);
-  renderTutStep(0);
+  try{
+    tutStep=0;voiceOn=true;
+    const tut=document.getElementById('sc-tut');
+    const fab=document.getElementById('sc-fab');
+    if(!tut){console.error('sc-tut not found');return;}
+    tut.classList.add('open');
+    tut.style.display='flex'; // force show even if classList fails
+    if(fab){fab.classList.remove('vis');fab.style.display='none';}
+    document.getElementById('sc-vbtn').textContent='🔊';
+    setTimeout(()=>window.speechSynthesis&&window.speechSynthesis.getVoices(),200);
+    renderTutStep(0);
+  }catch(e){console.error('showTut error:',e);}
 }
+window.showTut=showTut;
 function hideTut(){
   stopSpeech();
   document.getElementById('sc-tut').classList.remove('open');
@@ -1244,8 +1251,8 @@ function startGame(city,players){
   buildGrid();buildPalette();
   updateTopBar();updateRightPanel();
   renderChallenge();buildScoreRows();buildIoTFeed();
-  // Show tutorial after short delay so the grid renders first
-  setTimeout(showTut, 600);
+  // Show tutorial after grid renders — two-stage delay for reliability
+  requestAnimationFrame(()=>setTimeout(showTut, 400));
 }
 
 // ── GRID ─────────────────────────────────────────────────────────
