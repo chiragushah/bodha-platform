@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>SmartCity — Urban Intelligence Simulator | Bodha</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
@@ -15,64 +14,39 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
 html,body{height:100%;width:100%;overflow:hidden;font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink)}
-
-/* ══ LANDING ══ */
-#landing{
-  position:fixed;inset:0;z-index:500;
-  background:linear-gradient(150deg,#040D08 0%,#0D2B1A 35%,#1A4D35 70%,#2D7D5A 90%,#4CAF7D 100%);
-  display:flex;align-items:center;justify-content:center;padding:20px;
-}
+#landing{position:fixed;inset:0;z-index:500;background:linear-gradient(150deg,#040D08 0%,#0D2B1A 35%,#1A4D35 70%,#2D7D5A 90%,#4CAF7D 100%);display:flex;align-items:center;justify-content:center;padding:20px}
 .land-wrap{display:flex;gap:48px;align-items:center;max-width:980px;width:100%}
 .land-hero{flex:1;color:#fff;min-width:0}
-.land-eyebrow{font-size:.7rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
-  color:rgba(255,255,255,.5);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.land-eyebrow{font-size:.7rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:16px;display:flex;align-items:center;gap:10px}
 .land-eyebrow::before{content:'';width:32px;height:2px;background:var(--gb);display:inline-block}
-.land-h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:4rem;font-weight:700;
-  line-height:1.02;color:#fff;margin-bottom:18px}
+.land-h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:4rem;font-weight:700;line-height:1.02;color:#fff;margin-bottom:18px}
 .land-h1 em{color:var(--gb);font-style:normal}
 .land-tagline{font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.8;max-width:400px;margin-bottom:32px}
 .land-pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
-.lp{padding:5px 13px;border-radius:999px;background:rgba(76,175,125,.18);
-  border:1px solid rgba(76,175,125,.35);font-size:.67rem;font-weight:700;color:rgba(255,255,255,.75);letter-spacing:.04em}
-.land-card{background:#fff;border-radius:28px;padding:36px 40px;
-  width:420px;flex-shrink:0;box-shadow:0 50px 120px rgba(0,0,0,.45)}
+.lp{padding:5px 13px;border-radius:999px;background:rgba(76,175,125,.18);border:1px solid rgba(76,175,125,.35);font-size:.67rem;font-weight:700;color:rgba(255,255,255,.75);letter-spacing:.04em}
+.land-card{background:#fff;border-radius:28px;padding:36px 40px;width:420px;flex-shrink:0;box-shadow:0 50px 120px rgba(0,0,0,.45)}
 .lc-head{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--gd);margin-bottom:24px}
 .lc-row{margin-bottom:16px}
 .lc-lbl{font-size:.68rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--ink2);display:block;margin-bottom:5px}
-.lc-inp{width:100%;padding:11px 14px;border:2px solid var(--gp);border-radius:11px;
-  font-family:'DM Sans',sans-serif;font-size:.9rem;color:var(--ink);background:var(--gpale);outline:none;transition:.2s}
+.lc-inp{width:100%;padding:11px 14px;border:2px solid var(--gp);border-radius:11px;font-family:'DM Sans',sans-serif;font-size:.9rem;color:var(--ink);background:var(--gpale);outline:none;transition:.2s}
 .lc-inp:focus{border-color:var(--gb);background:#fff;box-shadow:0 0 0 3px rgba(76,175,125,.12)}
 .pc-row{display:flex;gap:7px}
-.pc-btn{flex:1;padding:10px 0;border:2px solid var(--gp);border-radius:10px;
-  background:var(--gpale);color:var(--ink2);font-weight:700;font-size:.85rem;cursor:pointer;transition:.2s;font-family:'DM Sans',sans-serif}
+.pc-btn{flex:1;padding:10px 0;border:2px solid var(--gp);border-radius:10px;background:var(--gpale);color:var(--ink2);font-weight:700;font-size:.85rem;cursor:pointer;transition:.2s;font-family:'DM Sans',sans-serif}
 .pc-btn.sel{background:linear-gradient(135deg,var(--gd),var(--gb));color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(76,175,125,.3)}
 .pnames{margin-top:10px;display:flex;flex-direction:column;gap:7px}
 .pn-r{display:flex;align-items:center;gap:8px}
 .pn-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.pn-i{flex:1;padding:9px 13px;border:2px solid var(--gp);border-radius:9px;
-  font-family:'DM Sans',sans-serif;font-size:.83rem;color:var(--ink);background:var(--gpale);outline:none}
+.pn-i{flex:1;padding:9px 13px;border:2px solid var(--gp);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:.83rem;color:var(--ink);background:var(--gpale);outline:none}
 .pn-i:focus{border-color:var(--gb);background:#fff}
-.lc-start{width:100%;padding:14px;margin-top:6px;background:linear-gradient(135deg,var(--gd),var(--gb));
-  color:#fff;border:none;border-radius:13px;font-family:'DM Sans',sans-serif;font-size:.98rem;font-weight:800;cursor:pointer;
-  box-shadow:0 6px 24px rgba(76,175,125,.4);transition:.2s}
+.lc-start{width:100%;padding:14px;margin-top:6px;background:linear-gradient(135deg,var(--gd),var(--gb));color:#fff;border:none;border-radius:13px;font-family:'DM Sans',sans-serif;font-size:.98rem;font-weight:800;cursor:pointer;box-shadow:0 6px 24px rgba(76,175,125,.4);transition:.2s}
 .lc-start:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(76,175,125,.5)}
-
-/* ══ GAME SHELL ══ */
 #game{position:fixed;inset:0;display:none;flex-direction:column}
 #game.vis{display:flex}
-
-/* TOP BAR */
-#topbar{
-  height:50px;flex-shrink:0;
-  background:var(--panel);border-bottom:2px solid var(--border);
-  display:flex;align-items:center;padding:0 14px;gap:10px;z-index:20;
-}
+#topbar{height:50px;flex-shrink:0;background:var(--panel);border-bottom:2px solid var(--border);display:flex;align-items:center;padding:0 14px;gap:10px;z-index:20}
 .tb-brand{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--gd);white-space:nowrap}
 .tb-city{font-size:.72rem;color:var(--ink3);font-weight:500}
 .tb-sep{width:1px;height:20px;background:var(--border);flex-shrink:0}
-.tb-stat{display:flex;align-items:center;gap:5px;padding:4px 10px;
-  background:var(--gpale);border:1.5px solid var(--gp);border-radius:8px;
-  font-size:.7rem;font-weight:700;color:var(--ink);white-space:nowrap}
+.tb-stat{display:flex;align-items:center;gap:5px;padding:4px 10px;background:var(--gpale);border:1.5px solid var(--gp);border-radius:8px;font-size:.7rem;font-weight:700;color:var(--ink);white-space:nowrap}
 .tb-stat .s-icon{font-size:.8rem}
 .tb-stat.co2-good{border-color:#A5D6A7;background:#E8F5E9;color:#2E7D32}
 .tb-stat.co2-warn{border-color:#FFCC80;background:#FFF3E0;color:#E65100}
@@ -83,30 +57,21 @@ html,body{height:100%;width:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 .tb-pname{font-size:.78rem;font-weight:700;color:var(--ink)}
 .tb-pturn{font-size:.65rem;color:var(--ink3)}
 .tb-actions{display:flex;gap:6px}
-.tb-btn{padding:5px 12px;background:var(--gpale);border:1.5px solid var(--gp);
-  color:var(--ink2);border-radius:7px;font-size:.68rem;font-weight:700;cursor:pointer;
-  font-family:'DM Sans',sans-serif;transition:.2s}
+.tb-btn{padding:5px 12px;background:var(--gpale);border:1.5px solid var(--gp);color:var(--ink2);border-radius:7px;font-size:.68rem;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:.2s}
 .tb-btn:hover{background:var(--gp)}
-
-/* THREE COLUMNS */
 #main{flex:1;display:flex;overflow:hidden}
-
-/* ── LEFT PALETTE ── */
 #palette{width:210px;flex-shrink:0;background:var(--panel);border-right:2px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
 .pal-head{padding:10px 12px 6px;border-bottom:1.5px solid var(--border)}
 .pal-head h3{font-size:.63rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
 .pal-search{width:100%;margin-top:7px;padding:7px 11px;background:var(--gpale);border:1.5px solid var(--gp);border-radius:8px;color:var(--ink);font-size:.78rem;font-family:'DM Sans',sans-serif;outline:none}
 .pal-search::placeholder{color:var(--ink3)}
-.pal-search:focus{border-color:var(--gb);box-shadow:0 0 0 2px rgba(76,175,125,.12)}
+.pal-search:focus{border-color:var(--gb)}
 .cat-tabs{display:flex;flex-wrap:wrap;gap:3px;padding:7px 9px;border-bottom:1.5px solid var(--border)}
-.ctab{padding:3px 8px;border-radius:6px;font-size:.62rem;font-weight:700;cursor:pointer;
-  border:1.5px solid var(--border);background:#F8FAF9;color:var(--ink3);transition:.15s;user-select:none}
+.ctab{padding:3px 8px;border-radius:6px;font-size:.62rem;font-weight:700;cursor:pointer;border:1.5px solid var(--border);background:#F8FAF9;color:var(--ink3);transition:.15s;user-select:none}
 .ctab.on{color:#fff;border-color:transparent;box-shadow:0 2px 8px rgba(0,0,0,.15)}
 #blist{flex:1;overflow-y:auto;padding:6px;scrollbar-width:thin;scrollbar-color:var(--gp) transparent}
-.bc{display:flex;align-items:center;gap:8px;padding:8px 9px;background:#FAFAFA;
-  border:1.5px solid var(--border);border-radius:9px;margin-bottom:4px;cursor:grab;
-  transition:all .15s;user-select:none;position:relative}
-.bc:hover{background:var(--gpale);border-color:var(--gb);transform:translateX(2px);box-shadow:0 3px 10px rgba(26,77,53,.1)}
+.bc{display:flex;align-items:center;gap:8px;padding:8px 9px;background:#FAFAFA;border:1.5px solid var(--border);border-radius:9px;margin-bottom:4px;cursor:grab;transition:all .15s;user-select:none;position:relative}
+.bc:hover{background:var(--gpale);border-color:var(--gb);transform:translateX(2px)}
 .bc.dragging{opacity:.3;transform:scale(.92)}
 .bc-em{font-size:1.3rem;width:24px;text-align:center;flex-shrink:0}
 .bc-info{flex:1;min-width:0}
@@ -117,23 +82,15 @@ html,body{height:100%;width:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 .bc-co2.neg{background:#E8F5E9;color:#2E7D32}
 .bc-co2.pos{background:#FFEBEE;color:#C62828}
 .bc-zbar{position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:9px 0 0 9px}
-
-/* ── MAP CENTER ── */
 #map-area{flex:1;display:flex;flex-direction:column;align-items:center;overflow:auto;padding:12px;background:var(--bg)}
 .map-toolbar{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;justify-content:center;flex-shrink:0}
-.mt-btn{padding:5px 12px;background:var(--panel);border:1.5px solid var(--border);
-  border-radius:7px;font-size:.68rem;font-weight:700;color:var(--ink2);cursor:pointer;transition:.15s;font-family:'DM Sans',sans-serif}
+.mt-btn{padding:5px 12px;background:var(--panel);border:1.5px solid var(--border);border-radius:7px;font-size:.68rem;font-weight:700;color:var(--ink2);cursor:pointer;transition:.15s;font-family:'DM Sans',sans-serif}
 .mt-btn:hover{background:var(--gpale);border-color:var(--gb)}
 .mt-btn.active{background:var(--gd);color:#fff;border-color:var(--gd)}
-#city-grid{
-  display:grid;grid-template-columns:repeat(12,56px);grid-template-rows:repeat(12,56px);
-  gap:2px;background:#CBD5D0;border-radius:14px;padding:4px;
-  box-shadow:0 8px 32px rgba(26,77,53,.15),0 0 0 1px rgba(26,77,53,.08);flex-shrink:0}
-.cell{width:56px;height:56px;border-radius:5px;position:relative;cursor:pointer;
-  transition:transform .12s,box-shadow .12s,border-color .12s;
-  display:flex;align-items:center;justify-content:center;overflow:hidden;border:1.5px solid transparent}
-.cell.road{background:#90A4AE;cursor:default}
-.cell.road-h{background:#78909C;cursor:default}
+#city-grid{display:grid;grid-template-columns:repeat(12,56px);grid-template-rows:repeat(12,56px);gap:2px;background:#CBD5D0;border-radius:14px;padding:4px;box-shadow:0 8px 32px rgba(26,77,53,.15);flex-shrink:0}
+.cell{width:56px;height:56px;border-radius:5px;position:relative;cursor:pointer;transition:transform .12s,box-shadow .12s,border-color .12s;display:flex;align-items:center;justify-content:center;overflow:hidden;border:1.5px solid transparent}
+.cell.road{background:#B0BEC5;cursor:default}
+.cell.road-h{background:#90A4AE;cursor:default}
 .cell.water{background:linear-gradient(135deg,#4FC3F7,#29B6F6);cursor:default;animation:waterShimmer 3s ease-in-out infinite alternate}
 @keyframes waterShimmer{from{opacity:.85}to{opacity:1}}
 .cell[data-zone="G"]{background:#C8F5C8}
@@ -144,7 +101,7 @@ html,body{height:100%;width:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 .cell[data-zone="Cv"]{background:#ECEFF1}
 .cell[data-zone="H"]{background:#FFE0E0}
 .cell[data-zone="Ed"]{background:#FFE0B2}
-.cell.dv{border-color:#4CAF7D!important;box-shadow:0 0 0 2px rgba(76,175,125,.5),0 0 16px rgba(76,175,125,.3)!important;transform:scale(1.06)!important;z-index:5;background:rgba(76,175,125,.15)!important}
+.cell.dv{border-color:#4CAF7D!important;box-shadow:0 0 0 2px rgba(76,175,125,.5),0 0 16px rgba(76,175,125,.3)!important;transform:scale(1.06)!important;z-index:5}
 .cell.di{border-color:#EF5350!important;box-shadow:0 0 0 2px rgba(239,83,80,.4)!important}
 .cell-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;pointer-events:none;width:100%;padding:2px;position:relative;z-index:1}
 .ci-em{font-size:1.4rem;line-height:1;display:block}
@@ -152,25 +109,19 @@ html,body{height:100%;width:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 .zt{position:absolute;top:2px;left:3px;font-size:.4rem;font-weight:800;opacity:.45;text-transform:uppercase;letter-spacing:.04em;pointer-events:none;color:rgba(0,0,0,.5)}
 .cell.has-b{cursor:pointer}
 .cell.has-b:hover{transform:scale(1.1)!important;z-index:10;box-shadow:0 8px 24px rgba(26,77,53,.25),0 0 0 2px var(--gd)!important}
-.cell.has-b .enter-hint{position:absolute;bottom:2px;right:3px;font-size:.36rem;font-weight:800;
-  color:#fff;background:rgba(26,77,53,.7);padding:1px 3px;border-radius:3px;opacity:0;transition:opacity .15s;pointer-events:none}
+.cell.has-b .enter-hint{position:absolute;bottom:2px;right:3px;font-size:.36rem;font-weight:800;color:#fff;background:rgba(26,77,53,.7);padding:1px 3px;border-radius:3px;opacity:0;transition:opacity .15s;pointer-events:none}
 .cell.has-b:hover .enter-hint{opacity:1}
-.cell.iot-on::after{content:'';position:absolute;top:4px;right:4px;width:6px;height:6px;border-radius:50%;
-  background:#4CAF7D;box-shadow:0 0 6px rgba(76,175,125,.8);animation:ioPulse 1.5s ease-in-out infinite}
+.cell.iot-on::after{content:'';position:absolute;top:4px;right:4px;width:6px;height:6px;border-radius:50%;background:#4CAF7D;box-shadow:0 0 6px rgba(76,175,125,.8);animation:ioPulse 1.5s ease-in-out infinite}
 @keyframes ioPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.6)}}
 #zleg{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px;flex-shrink:0;max-width:690px;justify-content:center}
-.zl{display:flex;align-items:center;gap:4px;font-size:.6rem;font-weight:600;color:var(--ink2);
-  padding:3px 9px;border-radius:999px;background:var(--panel);border:1.5px solid var(--border)}
+.zl{display:flex;align-items:center;gap:4px;font-size:.6rem;font-weight:600;color:var(--ink2);padding:3px 9px;border-radius:999px;background:var(--panel);border:1.5px solid var(--border)}
 .zl-dot{width:7px;height:7px;border-radius:2px;flex-shrink:0}
-
-/* ── RIGHT STATS ── */
 #stats{width:260px;flex-shrink:0;background:var(--panel);border-left:2px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
 .sp-team{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1.5px solid var(--border)}
 .spt-dot{width:9px;height:9px;border-radius:50%}
 .spt-name{font-size:.78rem;font-weight:800;flex:1;color:var(--ink)}
 .spt-budget{font-size:.68rem;color:var(--ink3)}
-.spt-next{padding:5px 11px;background:linear-gradient(135deg,var(--gd),var(--gb));
-  color:#fff;border:none;border-radius:7px;font-size:.67rem;font-weight:800;cursor:pointer;font-family:'DM Sans',sans-serif;transition:.2s}
+.spt-next{padding:5px 11px;background:linear-gradient(135deg,var(--gd),var(--gb));color:#fff;border:none;border-radius:7px;font-size:.67rem;font-weight:800;cursor:pointer;font-family:'DM Sans',sans-serif;transition:.2s}
 .spt-next:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(76,175,125,.4)}
 .sp-scroll{flex:1;overflow-y:auto;padding:0;scrollbar-width:thin;scrollbar-color:var(--gp) transparent}
 .sp-sec{padding:11px 12px;border-bottom:1.5px solid var(--border)}
@@ -186,7 +137,7 @@ html,body{height:100%;width:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 .co2-bar{height:100%;border-radius:999px;transition:width .5s,background .5s}
 .m-row{margin-bottom:8px}
 .m-row-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:3px}
-.m-lbl{font-size:.65rem;font-weight:600;color:var(--ink2);cursor:pointer;display:flex;align-items:center;gap:4px}
+.m-lbl{font-size:.65rem;font-weight:600;color:var(--ink2);cursor:pointer}
 .m-lbl:hover{color:var(--gd)}
 .m-val{font-size:.65rem;font-weight:800;color:var(--ink);font-family:'Space Mono',monospace}
 .m-bar-bg{height:5px;background:var(--gp);border-radius:999px;overflow:hidden}
@@ -207,8 +158,6 @@ html,body{height:100%;width:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 .iol-nm{font-size:.65rem;font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .iol-bldg{font-size:.58rem;color:var(--ink3)}
 .iol-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;background:#4CAF7D;box-shadow:0 0 6px rgba(76,175,125,.7);animation:ioPulse 2s infinite}
-
-/* ══ INTERIOR ══ */
 #interior{position:fixed;inset:0;z-index:100;display:none;flex-direction:column;background:#FAFCFA}
 #interior.open{display:flex}
 #interior.entering{animation:interiorEnter .4s cubic-bezier(.4,0,.2,1) forwards}
@@ -216,66 +165,50 @@ html,body{height:100%;width:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 @keyframes interiorEnter{from{opacity:0;transform:scale(.94) translateY(16px)}to{opacity:1;transform:scale(1) translateY(0)}}
 @keyframes interiorLeave{from{opacity:1}to{opacity:0;transform:scale(1.03)}}
 #int-bg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
-#int-bg-grad{position:absolute;inset:0;transition:background .5s;opacity:0.45}
+#int-bg-grad{position:absolute;inset:0;transition:background .5s;opacity:.4}
 .int-particles{position:absolute;inset:0;pointer-events:none}
 .particle{position:absolute;border-radius:50%;animation:floatPart linear infinite;opacity:0}
-@keyframes floatPart{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:.12}90%{opacity:.06}100%{transform:translateY(-100px) scale(1.5);opacity:0}}
-#int-wrap{position:relative;z-index:1;display:flex;flex-direction:column;height:100%;background:rgba(255,255,255,0.88)}
-#int-header{flex-shrink:0;padding:12px 20px;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);
-  border-bottom:2px solid var(--border);display:flex;align-items:center;gap:14px}
-.int-back{display:flex;align-items:center;gap:6px;padding:7px 14px;background:var(--gpale);
-  border:1.5px solid var(--gp);border-radius:10px;cursor:pointer;transition:.2s;flex-shrink:0;
-  font-size:.75rem;font-weight:700;color:var(--gd);font-family:'DM Sans',sans-serif}
-.int-back:hover{background:var(--gp);color:var(--gd)}
+@keyframes floatPart{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:.1}90%{opacity:.05}100%{transform:translateY(-100px) scale(1.5);opacity:0}}
+#int-wrap{position:relative;z-index:1;display:flex;flex-direction:column;height:100%;background:rgba(255,255,255,.9)}
+#int-header{flex-shrink:0;padding:12px 20px;background:rgba(255,255,255,.95);backdrop-filter:blur(20px);border-bottom:2px solid var(--border);display:flex;align-items:center;gap:14px}
+.int-back{display:flex;align-items:center;gap:6px;padding:7px 14px;background:var(--gpale);border:1.5px solid var(--gp);border-radius:10px;cursor:pointer;transition:.2s;flex-shrink:0;font-size:.75rem;font-weight:700;color:var(--gd);font-family:'DM Sans',sans-serif}
+.int-back:hover{background:var(--gp)}
 .int-building-info{flex:1;min-width:0}
-.int-zone-pill{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:999px;
-  font-size:.62rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px;border:1.5px solid}
+.int-zone-pill{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:999px;font-size:.62rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px;border:1.5px solid}
 .int-bname{font-family:'Cormorant Garamond',serif;font-size:1.65rem;font-weight:700;color:var(--ink);line-height:1.1}
 .int-bsub{font-size:.72rem;color:var(--ink3);margin-top:2px;line-height:1.4}
-.int-bigem{font-size:2.8rem;flex-shrink:0;filter:drop-shadow(0 2px 12px rgba(0,0,0,.15))}
+.int-bigem{font-size:2.8rem;flex-shrink:0}
 .int-stats{display:flex;gap:8px;flex-shrink:0}
 .int-stat{padding:8px 12px;background:var(--gpale);border:1.5px solid var(--gp);border-radius:10px;text-align:center;min-width:64px}
 .is-val{font-size:.9rem;font-weight:800;color:var(--ink);font-family:'Space Mono',monospace}
 .is-lbl{font-size:.55rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);margin-top:2px;font-weight:700}
 #int-body{flex:1;display:flex;overflow:hidden}
-
-/* Floor plan */
 #int-floorplan{flex:1;overflow-y:auto;padding:20px;scrollbar-width:thin;scrollbar-color:var(--gp) transparent}
-.fp-section-title{font-size:.63rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--ink3);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.fp-section-title{font-size:.63rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px;display:flex;align-items:center;gap:8px}
 .fp-section-title::after{content:'';flex:1;height:1.5px;background:var(--border)}
 .rooms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
-.room-card{background:var(--panel);border:2px solid var(--border);border-radius:14px;padding:16px;
-  cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.room-card{background:var(--panel);border:2px solid var(--border);border-radius:14px;padding:16px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
 .room-card:hover{border-color:var(--gb);transform:translateY(-3px);box-shadow:0 10px 28px rgba(26,77,53,.12)}
-.room-card.sel{border-color:var(--room-accent,#4CAF7D)!important;background:rgba(var(--room-rgb,76,175,125),.06)!important;box-shadow:0 0 0 1px var(--room-accent,#4CAF7D),0 6px 20px rgba(26,77,53,.1)}
+.room-card.sel{border-color:var(--room-accent,#4CAF7D)!important;background:rgba(var(--room-rgb,76,175,125),.06)!important;box-shadow:0 0 0 1px var(--room-accent,#4CAF7D)}
 .room-card.sel .rc-sel-badge{display:flex}
 .rc-em{font-size:2rem;display:block;margin-bottom:8px;transition:transform .2s}
 .room-card:hover .rc-em{transform:scale(1.15) rotate(-5deg)}
 .rc-name{font-size:.8rem;font-weight:800;color:var(--ink);margin-bottom:4px;line-height:1.2}
 .rc-desc{font-size:.65rem;color:var(--ink3);line-height:1.55}
-.rc-sel-badge{display:none;position:absolute;top:8px;right:8px;align-items:center;gap:3px;
-  background:var(--room-accent,#4CAF7D);color:#fff;font-size:.58rem;font-weight:800;padding:2px 7px;border-radius:999px}
-.rc-iot-indicator{position:absolute;bottom:8px;right:8px;width:8px;height:8px;border-radius:50%;
-  background:#4CAF7D;box-shadow:0 0 8px rgba(76,175,125,.7);animation:ioPulse 1.5s infinite;display:none}
+.rc-sel-badge{display:none;position:absolute;top:8px;right:8px;align-items:center;gap:3px;background:var(--room-accent,#4CAF7D);color:#fff;font-size:.58rem;font-weight:800;padding:2px 7px;border-radius:999px}
+.rc-iot-indicator{position:absolute;bottom:8px;right:8px;width:8px;height:8px;border-radius:50%;background:#4CAF7D;box-shadow:0 0 8px rgba(76,175,125,.7);animation:ioPulse 1.5s infinite;display:none}
 .room-card.iot-active .rc-iot-indicator{display:block}
-.room-card:hover::after{content:'Learn more →';position:absolute;bottom:10px;right:10px;
-  font-size:.6rem;font-weight:800;color:var(--ink3);pointer-events:none}
-
-/* IoT Panel — light */
 #int-iot{width:300px;flex-shrink:0;background:var(--panel);border-left:2px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
 .iot-header{padding:14px 14px 8px;border-bottom:1.5px solid var(--border)}
 .iot-header h3{font-size:.63rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
 .iot-header-row{display:flex;align-items:center;justify-content:space-between;margin-top:4px}
 .iot-header p{font-size:.68rem;color:var(--ink3);line-height:1.5}
-.iot-speak-all{display:flex;align-items:center;gap:4px;padding:4px 10px;background:var(--gpale);
-  border:1.5px solid var(--gp);border-radius:999px;cursor:pointer;font-size:.63rem;font-weight:700;
-  color:var(--gd);font-family:'DM Sans',sans-serif;transition:.2s}
+.iot-speak-all{display:flex;align-items:center;gap:4px;padding:4px 10px;background:var(--gpale);border:1.5px solid var(--gp);border-radius:999px;cursor:pointer;font-size:.63rem;font-weight:700;color:var(--gd);font-family:'DM Sans',sans-serif;transition:.2s}
 .iot-speak-all:hover{background:var(--gp)}
 .iot-scroll{flex:1;overflow-y:auto;padding:10px;scrollbar-width:thin;scrollbar-color:var(--gp) transparent}
 .iot-sensor{background:#FAFAFA;border:1.5px solid var(--border);border-radius:12px;padding:12px;margin-bottom:8px;cursor:pointer;transition:all .2s;position:relative}
-.iot-sensor:hover{background:var(--gpale);border-color:var(--gb);box-shadow:0 4px 12px rgba(26,77,53,.08)}
-.iot-sensor.on{background:#E8F5E9;border-color:#81C784;box-shadow:0 2px 8px rgba(76,175,125,.15)}
+.iot-sensor:hover{background:var(--gpale);border-color:var(--gb)}
+.iot-sensor.on{background:#E8F5E9;border-color:#81C784}
 .iot-s-top{display:flex;align-items:center;gap:8px;margin-bottom:6px}
 .iot-s-icon{font-size:1.1rem;width:22px;text-align:center}
 .iot-s-name{font-size:.72rem;font-weight:800;color:var(--ink);flex:1}
@@ -287,11 +220,9 @@ html,body{height:100%;width:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 .iot-sensor.on .iot-toggle{background:#4CAF7D;border-color:#388E3C}
 .iot-sensor.on .iot-toggle::after{transform:translateX(16px)}
 .iot-s-desc{font-size:.63rem;color:var(--ink3);line-height:1.55;margin-bottom:4px}
-.iot-s-climate{background:#F1F8E9;border:1.5px solid #C5E1A5;border-radius:8px;padding:8px 10px;
-  margin-top:6px;font-size:.63rem;color:#33691E;line-height:1.55;display:none}
+.iot-s-climate{background:#F1F8E9;border:1.5px solid #C5E1A5;border-radius:8px;padding:8px 10px;margin-top:6px;font-size:.63rem;color:#33691E;line-height:1.55;display:none}
 .iot-sensor.expanded .iot-s-climate{display:block}
-.iot-s-co2{display:inline-flex;align-items:center;gap:3px;margin-top:6px;
-  background:#E8F5E9;border:1.5px solid #A5D6A7;padding:2px 8px;border-radius:999px;font-size:.6rem;font-weight:800;color:#2E7D32}
+.iot-s-co2{display:inline-flex;align-items:center;gap:3px;margin-top:6px;background:#E8F5E9;border:1.5px solid #A5D6A7;padding:2px 8px;border-radius:999px;font-size:.6rem;font-weight:800;color:#2E7D32}
 .iot-impact{padding:12px;border-top:1.5px solid var(--border);flex-shrink:0;background:var(--gpale)}
 .iot-impact-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
 .iot-impact h4{font-size:.6rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
@@ -301,31 +232,20 @@ html,body{height:100%;width:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 .imp-row:last-child{border-bottom:none}
 .imp-lbl{font-size:.65rem;color:var(--ink2)}
 .imp-val{font-size:.7rem;font-weight:800;color:var(--ink);font-family:'Space Mono',monospace}
-
-/* ── Room Detail ── */
-#room-detail{position:absolute;inset:0;z-index:10;background:rgba(250,252,250,.97);
-  backdrop-filter:blur(20px);display:none;flex-direction:column}
-#room-detail.open{display:flex}
+#room-detail{position:absolute;inset:0;z-index:10;background:rgba(250,252,250,.97);backdrop-filter:blur(20px);display:none;flex-direction:column}
+#room-detail.open{display:flex;animation:roomEnter .3s ease forwards}
 @keyframes roomEnter{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
-#room-detail.open{animation:roomEnter .3s ease forwards}
 #rd-wrap{flex:1;overflow-y:auto;padding:30px 40px;max-width:820px;margin:0 auto;width:100%}
-.rd-close{position:absolute;top:20px;right:20px;width:36px;height:36px;
-  background:var(--gpale);border:1.5px solid var(--gp);border-radius:10px;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--ink2);transition:.2s}
+.rd-close{position:absolute;top:20px;right:20px;width:36px;height:36px;background:var(--gpale);border:1.5px solid var(--gp);border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--ink2);transition:.2s}
 .rd-close:hover{background:var(--gp)}
-.rd-hero{display:flex;align-items:center;gap:20px;margin-bottom:24px;padding-bottom:24px;border-bottom:2px solid var(--border)}
+.rd-hero{display:flex;align-items:flex-start;gap:20px;margin-bottom:20px;padding-bottom:20px;border-bottom:2px solid var(--border)}
 .rd-em{font-size:4rem;line-height:1;flex-shrink:0;animation:rdEmFloat 3s ease-in-out infinite alternate}
 @keyframes rdEmFloat{from{transform:translateY(0)}to{transform:translateY(-6px)}}
-.rd-hero-text{}
 .rd-name{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--ink);margin-bottom:4px}
-.rd-bldg{font-size:.78rem;color:var(--ink3);margin-bottom:8px}
-.rd-voice-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;
-  background:var(--gpale);border:1.5px solid var(--gp);border-radius:999px;cursor:pointer;
-  font-size:.72rem;font-weight:700;color:var(--gd);font-family:'DM Sans',sans-serif;transition:.2s}
+.rd-bldg{font-size:.78rem;color:var(--ink3);margin-bottom:10px}
+.rd-voice-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:var(--gpale);border:1.5px solid var(--gp);border-radius:999px;cursor:pointer;font-size:.72rem;font-weight:700;color:var(--gd);font-family:'DM Sans',sans-serif;transition:.2s}
 .rd-voice-btn:hover{background:var(--gp)}
 .rd-body{font-size:.9rem;color:var(--ink2);line-height:1.85;margin-bottom:20px}
-
-/* Climate Impact section in room detail */
 .rd-climate{background:#F1F8E9;border:2px solid #C5E1A5;border-radius:14px;padding:18px 20px;margin-bottom:20px}
 .rd-climate-head{display:flex;align-items:center;gap:8px;margin-bottom:12px}
 .rd-climate-icon{font-size:1.2rem}
@@ -335,45 +255,33 @@ html,body{height:100%;width:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 .rd-cstat{background:#fff;border:1.5px solid #A5D6A7;border-radius:9px;padding:8px 12px;text-align:center;min-width:80px}
 .rd-cstat-val{font-size:.9rem;font-weight:800;color:#2E7D32;font-family:'Space Mono',monospace}
 .rd-cstat-lbl{font-size:.58rem;color:#558B2F;text-transform:uppercase;letter-spacing:.05em;font-weight:700;margin-top:2px}
-
-/* Custom room addition */
 .rd-custom{background:var(--gpale);border:2px dashed var(--gp);border-radius:14px;padding:18px 20px;margin-bottom:20px}
-.rd-custom-head{font-size:.72rem;font-weight:800;color:var(--ink2);margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.rd-custom-head{font-size:.72rem;font-weight:800;color:var(--ink2);margin-bottom:12px}
 .rd-custom-form{display:flex;flex-direction:column;gap:8px}
 .rd-custom-row{display:flex;gap:8px}
-.rd-custom-inp{flex:1;padding:9px 13px;border:1.5px solid var(--gp);border-radius:9px;
-  font-family:'DM Sans',sans-serif;font-size:.82rem;color:var(--ink);background:#fff;outline:none}
-.rd-custom-inp:focus{border-color:var(--gb);box-shadow:0 0 0 2px rgba(76,175,125,.12)}
-.rd-custom-ta{width:100%;padding:9px 13px;border:1.5px solid var(--gp);border-radius:9px;
-  font-family:'DM Sans',sans-serif;font-size:.82rem;color:var(--ink);background:#fff;outline:none;resize:vertical;min-height:60px}
-.rd-custom-ta:focus{border-color:var(--gb);box-shadow:0 0 0 2px rgba(76,175,125,.12)}
-.rd-custom-add{padding:9px 20px;background:linear-gradient(135deg,var(--gd),var(--gb));color:#fff;
-  border:none;border-radius:9px;font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:800;cursor:pointer;transition:.2s}
+.rd-custom-inp{flex:1;padding:9px 13px;border:1.5px solid var(--gp);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:.82rem;color:var(--ink);background:#fff;outline:none}
+.rd-custom-inp:focus{border-color:var(--gb)}
+.rd-custom-ta{width:100%;padding:9px 13px;border:1.5px solid var(--gp);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:.82rem;color:var(--ink);background:#fff;outline:none;resize:vertical;min-height:60px}
+.rd-custom-ta:focus{border-color:var(--gb)}
+.rd-custom-add{padding:9px 20px;background:linear-gradient(135deg,var(--gd),var(--gb));color:#fff;border:none;border-radius:9px;font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:800;cursor:pointer;transition:.2s}
 .rd-custom-add:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(76,175,125,.35)}
 .rd-custom-rooms{display:flex;flex-direction:column;gap:6px;margin-top:8px}
-.rd-custom-room{display:flex;align-items:center;gap:8px;padding:8px 10px;background:#fff;
-  border:1.5px solid var(--gp);border-radius:9px}
+.rd-custom-room{display:flex;align-items:center;gap:8px;padding:8px 10px;background:#fff;border:1.5px solid var(--gp);border-radius:9px}
 .rcr-em{font-size:1rem}
 .rcr-name{font-size:.75rem;font-weight:700;color:var(--ink);flex:1}
 .rcr-del{background:none;border:none;cursor:pointer;color:var(--ink3);font-size:.8rem;padding:0;transition:.15s}
 .rcr-del:hover{color:#C62828}
-.rd-select-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px 32px;
-  border-radius:12px;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:800;cursor:pointer;transition:.2s;
-  border:2px solid var(--gp);background:var(--gpale);color:var(--gd)}
+.rd-select-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px 32px;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:800;cursor:pointer;transition:.2s;border:2px solid var(--gp);background:var(--gpale);color:var(--gd)}
 .rd-select-btn.selected{background:linear-gradient(135deg,var(--gd),var(--gb));border-color:transparent;color:#fff;box-shadow:0 6px 20px rgba(76,175,125,.3)}
-.rd-select-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,77,53,.15)}
-
-/* ══ REPORT ══ */
-#report{position:fixed;inset:0;z-index:200;background:rgba(244,248,245,.97);backdrop-filter:blur(20px);
-  display:none;align-items:center;justify-content:center;overflow-y:auto;padding:20px}
+.rd-select-btn:hover{transform:translateY(-2px)}
+#report{position:fixed;inset:0;z-index:200;background:rgba(244,248,245,.97);display:none;align-items:center;justify-content:center;overflow-y:auto;padding:20px}
 #report.open{display:flex}
 .rep-wrap{max-width:660px;width:100%;padding:40px;background:var(--panel);border:2px solid var(--border);border-radius:24px;box-shadow:0 20px 60px rgba(26,77,53,.12)}
 .rep-trophy{font-size:3rem;display:block;text-align:center;margin-bottom:8px}
 .rep-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--ink);text-align:center;margin-bottom:6px}
 .rep-city{font-size:.78rem;color:var(--ink3);text-align:center;margin-bottom:28px}
 .rep-grade-wrap{text-align:center;margin-bottom:28px}
-.rep-grade{font-family:'Space Mono',monospace;font-size:5rem;font-weight:700;
-  background:linear-gradient(135deg,var(--gd),var(--gb));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:inline-block;line-height:1}
+.rep-grade{font-family:'Space Mono',monospace;font-size:5rem;font-weight:700;background:linear-gradient(135deg,var(--gd),var(--gb));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:inline-block;line-height:1}
 .rep-sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:28px}
 .rsg-item{background:var(--gpale);border:1.5px solid var(--gp);border-radius:12px;padding:14px;text-align:center}
 .rsg-val{font-size:1.1rem;font-weight:800;color:var(--ink);font-family:'Space Mono',monospace}
@@ -388,80 +296,43 @@ html,body{height:100%;width:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 .rep-btn-sec{background:var(--gpale);border:1.5px solid var(--gp);color:var(--gd)}
 .rep-btn-sec:hover{background:var(--gp)}
 .rep-btn-main{background:linear-gradient(135deg,var(--gd),var(--gb));border:none;color:#fff;box-shadow:0 4px 20px rgba(76,175,125,.35)}
-.rep-btn-main:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(76,175,125,.5)}
-
-/* ══ TUTORIAL ══ */
-#sc-tut{position:fixed;inset:0;z-index:600;background:rgba(26,77,53,.85);backdrop-filter:blur(16px);
-  display:none;align-items:center;justify-content:center;padding:20px}
+.rep-btn-main:hover{transform:translateY(-2px)}
+#sc-tut{position:fixed;inset:0;z-index:600;background:rgba(26,77,53,.85);backdrop-filter:blur(16px);display:none;align-items:center;justify-content:center;padding:20px}
 #sc-tut.open{display:flex}
-#sc-card{background:var(--panel);border:2px solid var(--border);border-radius:24px;max-width:600px;width:100%;
-  box-shadow:0 40px 80px rgba(26,77,53,.25),0 0 0 1px rgba(76,175,125,.15);overflow:hidden}
-.sc-head{padding:24px 28px 18px;background:linear-gradient(135deg,var(--gpale),var(--gp));
-  border-bottom:2px solid var(--border);position:relative}
-.sc-pill{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;background:rgba(76,175,125,.15);
-  border:1.5px solid rgba(76,175,125,.3);border-radius:999px;font-size:.62rem;font-weight:800;color:var(--gd);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+#sc-card{background:var(--panel);border:2px solid var(--border);border-radius:24px;max-width:600px;width:100%;box-shadow:0 40px 80px rgba(26,77,53,.25);overflow:hidden}
+.sc-head{padding:24px 28px 18px;background:linear-gradient(135deg,var(--gpale),var(--gp));border-bottom:2px solid var(--border);position:relative}
+.sc-pill{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;background:rgba(76,175,125,.15);border:1.5px solid rgba(76,175,125,.3);border-radius:999px;font-size:.62rem;font-weight:800;color:var(--gd);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
 .sc-em{font-size:2.5rem;display:block;margin-bottom:8px}
 .sc-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--ink)}
-.sc-xbtn{position:absolute;top:16px;right:16px;width:30px;height:30px;background:var(--gpale);
-  border:1.5px solid var(--gp);border-radius:8px;cursor:pointer;color:var(--ink2);font-size:.85rem;
-  display:flex;align-items:center;justify-content:center;transition:.2s}
+.sc-xbtn{position:absolute;top:16px;right:16px;width:30px;height:30px;background:var(--gpale);border:1.5px solid var(--gp);border-radius:8px;cursor:pointer;color:var(--ink2);font-size:.85rem;display:flex;align-items:center;justify-content:center;transition:.2s}
 .sc-xbtn:hover{background:var(--gp)}
 .sc-body{padding:20px 28px}
 .sc-guide{display:flex;align-items:center;gap:8px;margin-bottom:10px}
 .sc-av{font-size:1.3rem}
 .sc-gname{font-size:.65rem;font-weight:700;color:var(--ink3)}
 .sc-content{font-size:.88rem;color:var(--ink2);line-height:1.8;margin-bottom:12px}
-.sc-tip{background:var(--gpale);border-left:3px solid var(--gb);padding:10px 14px;
-  border-radius:0 8px 8px 0;font-size:.75rem;color:var(--ink3);line-height:1.6;font-style:italic}
+.sc-tip{background:var(--gpale);border-left:3px solid var(--gb);padding:10px 14px;border-radius:0 8px 8px 0;font-size:.75rem;color:var(--ink3);line-height:1.6;font-style:italic}
 .sc-meta{padding:0 28px;display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
 .sc-counter{font-size:.65rem;color:var(--ink3);font-family:'Space Mono',monospace}
 .sc-foot{padding:16px 28px;border-top:2px solid var(--border);display:flex;align-items:center;gap:8px}
-.sc-nb{padding:9px 18px;background:var(--gpale);border:1.5px solid var(--gp);
-  border-radius:9px;color:var(--gd);font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;transition:.2s}
+.sc-nb{padding:9px 18px;background:var(--gpale);border:1.5px solid var(--gp);border-radius:9px;color:var(--gd);font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;transition:.2s}
 .sc-nb:hover{background:var(--gp)}
 .sc-nb:disabled{opacity:.3;cursor:default}
-.sc-vbtn{width:36px;height:36px;background:var(--gpale);border:1.5px solid var(--gp);
-  border-radius:9px;cursor:pointer;font-size:.85rem;display:flex;align-items:center;justify-content:center;transition:.2s}
+.sc-vbtn{width:36px;height:36px;background:var(--gpale);border:1.5px solid var(--gp);border-radius:9px;cursor:pointer;font-size:.85rem;display:flex;align-items:center;justify-content:center;transition:.2s}
 .sc-vbtn:hover{background:var(--gp)}
-.sc-next-btn{flex:1;padding:10px;background:linear-gradient(135deg,var(--gd),var(--gb));color:#fff;border:none;
-  border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:800;cursor:pointer;transition:.2s}
+.sc-next-btn{flex:1;padding:10px;background:linear-gradient(135deg,var(--gd),var(--gb));color:#fff;border:none;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:800;cursor:pointer;transition:.2s}
 .sc-next-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(76,175,125,.4)}
-
-/* FAB */
-#sc-fab{position:fixed;bottom:20px;right:20px;z-index:50;display:none;align-items:center;gap:7px;padding:10px 16px;
-  background:linear-gradient(135deg,var(--gd),var(--gb));color:#fff;border:none;border-radius:999px;
-  cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:800;
-  box-shadow:0 6px 24px rgba(26,77,53,.35);transition:.2s}
+#sc-fab{position:fixed;bottom:20px;right:20px;z-index:50;display:none;align-items:center;gap:7px;padding:10px 16px;background:linear-gradient(135deg,var(--gd),var(--gb));color:#fff;border:none;border-radius:999px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:800;box-shadow:0 6px 24px rgba(26,77,53,.35);transition:.2s}
 #sc-fab.vis{display:flex}
 #sc-fab:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(76,175,125,.4)}
-
-/* Toasts */
-#toast-stack{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:300;
-  display:flex;flex-direction:column;gap:6px;align-items:center;pointer-events:none}
-.toast{padding:9px 20px;background:var(--ink);border:1.5px solid rgba(76,175,125,.4);
-  border-radius:10px;font-size:.78rem;font-weight:700;color:#fff;
-  box-shadow:0 6px 20px rgba(26,77,53,.25);animation:toastIn .25s ease forwards;white-space:nowrap}
+#toast-stack{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:300;display:flex;flex-direction:column;gap:6px;align-items:center;pointer-events:none}
+.toast{padding:9px 20px;background:var(--ink);border:1.5px solid rgba(76,175,125,.4);border-radius:10px;font-size:.78rem;font-weight:700;color:#fff;box-shadow:0 6px 20px rgba(26,77,53,.25);animation:toastIn .25s ease forwards;white-space:nowrap}
 @keyframes toastIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-
-/* Edu popup */
-#edu-pop{position:fixed;bottom:80px;right:20px;z-index:50;max-width:300px;padding:14px 16px;
-  background:var(--panel);border:2px solid var(--gp);border-radius:14px;
-  box-shadow:0 10px 40px rgba(26,77,53,.15);transform:translateX(120%);transition:transform .35s cubic-bezier(.4,0,.2,1)}
+#edu-pop{position:fixed;bottom:80px;right:20px;z-index:50;max-width:300px;padding:14px 16px;background:var(--panel);border:2px solid var(--gp);border-radius:14px;box-shadow:0 10px 40px rgba(26,77,53,.15);transform:translateX(120%);transition:transform .35s cubic-bezier(.4,0,.2,1)}
 #edu-pop.vis{transform:translateX(0)}
 .ep-close{position:absolute;top:8px;right:8px;background:none;border:none;color:var(--ink3);cursor:pointer;font-size:.8rem}
 #edu-title{font-size:.72rem;font-weight:800;color:var(--gd);margin-bottom:5px;padding-right:20px}
 #edu-body{font-size:.68rem;color:var(--ink2);line-height:1.6}
-
-/* Interior bg gradients — light tinted */
-.ibg-green{background:linear-gradient(135deg,#F1FAF3 0%,#E8F5E9 100%)}
-.ibg-energy{background:linear-gradient(135deg,#FFFDE7 0%,#FFF8E1 100%)}
-.ibg-commercial{background:linear-gradient(135deg,#E3F2FD 0%,#E8EAF6 100%)}
-.ibg-transport{background:linear-gradient(135deg,#E0F7FA 0%,#E0F2F1 100%)}
-.ibg-residential{background:linear-gradient(135deg,#F3E5F5 0%,#FCE4EC 100%)}
-.ibg-civic{background:linear-gradient(135deg,#ECEFF1 0%,#E8EAF6 100%)}
-.ibg-health{background:linear-gradient(135deg,#FFEBEE 0%,#FFF8E1 100%)}
-.ibg-education{background:linear-gradient(135deg,#FFF3E0 0%,#FBE9E7 100%)}
-
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--gp);border-radius:999px}
@@ -577,10 +448,7 @@ html,body{height:100%;width:100%;overflow:hidden;font-family:'DM Sans',sans-seri
       <div class="sp-scroll">
         <!-- CO2 -->
         <div class="sp-sec">
-          <div class="sp-sec-head">
-            <h4>🌡️ Carbon Balance</h4>
-            <button class="sp-voice" title="Hear explanation" onclick="speakStatSection('co2')">🔊</button>
-          </div>
+          <div class="sp-sec-head"><h4>🌡️ Carbon Balance</h4><button class="sp-voice" onclick="speakStatSection('co2')" title="Hear explanation">🔊</button></div>
           <div class="co2-display">
             <div class="co2-num" id="co2-num">0</div>
             <div class="co2-sub">tonnes CO₂ / year</div>
@@ -589,10 +457,7 @@ html,body{height:100%;width:100%;overflow:hidden;font-family:'DM Sans',sans-seri
         </div>
         <!-- Metrics -->
         <div class="sp-sec">
-          <div class="sp-sec-head">
-            <h4>📊 City Metrics</h4>
-            <button class="sp-voice" title="Hear explanation" onclick="speakStatSection('metrics')">🔊</button>
-          </div>
+          <div class="sp-sec-head"><h4>📊 City Metrics</h4><button class="sp-voice" onclick="speakStatSection('metrics')" title="Hear explanation">🔊</button></div>
           <div class="m-row"><div class="m-row-top"><span class="m-lbl" onclick="speakMetric('green')" title="Tap to learn">🌿 Greenness ℹ️</span><span class="m-val" id="m-green">0%</span></div><div class="m-bar-bg"><div class="m-bar" id="mf-green" style="width:0%;background:#4CAF7D"></div></div></div>
           <div class="m-row"><div class="m-row-top"><span class="m-lbl" onclick="speakMetric('smart')" title="Tap to learn">⚡ Smart Tech ℹ️</span><span class="m-val" id="m-smart">0%</span></div><div class="m-bar-bg"><div class="m-bar" id="mf-smart" style="width:0%;background:#7EC8E3"></div></div></div>
           <div class="m-row"><div class="m-row-top"><span class="m-lbl" onclick="speakMetric('live')" title="Tap to learn">🏡 Liveability ℹ️</span><span class="m-val" id="m-live">0%</span></div><div class="m-bar-bg"><div class="m-bar" id="mf-live" style="width:0%;background:#FF8A65"></div></div></div>
@@ -600,26 +465,17 @@ html,body{height:100%;width:100%;overflow:hidden;font-family:'DM Sans',sans-seri
         </div>
         <!-- Challenge -->
         <div class="sp-sec">
-          <div class="sp-sec-head">
-            <h4>🎯 Current Challenge</h4>
-            <button class="sp-voice" title="Hear challenge" onclick="speakStatSection('challenge')">🔊</button>
-          </div>
+          <div class="sp-sec-head"><h4>🎯 Current Challenge</h4><button class="sp-voice" onclick="speakStatSection('challenge')" title="Hear challenge">🔊</button></div>
           <div id="challenge-card" class="ch-card"></div>
         </div>
         <!-- Scores -->
         <div class="sp-sec">
-          <div class="sp-sec-head">
-            <h4>🏆 Scores</h4>
-            <button class="sp-voice" title="Hear scores" onclick="speakStatSection('scores')">🔊</button>
-          </div>
+          <div class="sp-sec-head"><h4>🏆 Scores</h4><button class="sp-voice" onclick="speakStatSection('scores')" title="Hear scores">🔊</button></div>
           <div id="score-rows"></div>
         </div>
         <!-- IoT Live -->
         <div class="sp-sec">
-          <div class="sp-sec-head">
-            <h4>⚡ Live IoT Feed</h4>
-            <button class="sp-voice" title="Hear IoT status" onclick="speakStatSection('iot')">🔊</button>
-          </div>
+          <div class="sp-sec-head"><h4>⚡ Live IoT Feed</h4><button class="sp-voice" onclick="speakStatSection('iot')" title="Hear IoT status">🔊</button></div>
           <div id="iot-feed"></div>
         </div>
       </div>
@@ -649,31 +505,26 @@ html,body{height:100%;width:100%;overflow:hidden;font-family:'DM Sans',sans-seri
     <div id="int-body">
       <!-- Floor Plan -->
       <div id="int-floorplan">
-        <div class="fp-section-title">🏠 Explore Rooms &amp; Spaces</div>
+        <div class="fp-section-title">🏠 Explore Rooms & Spaces</div>
         <div class="rooms-grid" id="rooms-grid"></div>
         <!-- Fact -->
-        <div class="fp-section-title" style="margin-top:4px">📖 Smart City Insight <button onclick="speakText(document.getElementById('int-fact').textContent)" style="background:none;border:none;cursor:pointer;font-size:.85rem;opacity:.5;margin-left:4px" title="Hear insight">🔊</button></div>
-        <div style="background:#F1F8E9;border:2px solid #C5E1A5;border-radius:14px;padding:18px 20px;margin-bottom:20px">
-          <div style="font-size:.78rem;color:#33691E;line-height:1.78;font-weight:500" id="int-fact"></div>
+        <div class="fp-section-title">📖 Smart City Insight</div>
+        <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
+          border-radius:14px;padding:18px 20px;margin-bottom:20px">
+          <div style="font-size:.75rem;color:rgba(255,255,255,.55);line-height:1.75" id="int-fact"></div>
         </div>
         <div class="fp-section-title">🌍 SDG Alignment</div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px" id="int-sdg-tags"></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap" id="int-sdg-tags"></div>
       </div>
       <!-- IoT Panel -->
       <div id="int-iot">
         <div class="iot-header">
           <h3>⚡ Smart IoT Systems</h3>
-          <div class="iot-header-row">
-            <p>Toggle sensors to cut CO₂ &amp; earn Smart Tech points.</p>
-            <button class="iot-speak-all" onclick="speakAllIoT()">🔊 Explain all</button>
-          </div>
+          <div class="iot-header-row"><p>Toggle sensors to cut CO₂ &amp; earn Smart Tech points.</p><button class="iot-speak-all" onclick="speakAllIoT()">🔊 Explain all</button></div>
         </div>
         <div class="iot-scroll" id="iot-scroll"></div>
         <div class="iot-impact">
-          <div class="iot-impact-head">
-            <h4>Building Impact</h4>
-            <button class="iot-impact-voice" onclick="speakBuildingImpact()" title="Hear impact summary">🔊</button>
-          </div>
+          <div class="iot-impact-head"><h4>Building Impact</h4><button class="iot-impact-voice" onclick="speakBuildingImpact()" title="Hear impact">🔊</button></div>
           <div class="imp-row"><span class="imp-lbl">🌡️ CO₂/year</span><span class="imp-val" id="imp-co2">—</span></div>
           <div class="imp-row"><span class="imp-lbl">🏡 Liveability</span><span class="imp-val" id="imp-live">—</span></div>
           <div class="imp-row"><span class="imp-lbl">⚡ Smart Score</span><span class="imp-val" id="imp-smart">—</span></div>
@@ -689,14 +540,13 @@ html,body{height:100%;width:100%;overflow:hidden;font-family:'DM Sans',sans-seri
     <div id="rd-wrap">
       <div class="rd-hero">
         <div class="rd-em" id="rd-em">🏠</div>
-        <div class="rd-hero-text">
+        <div>
           <div class="rd-name" id="rd-name">Room Name</div>
           <div class="rd-bldg" id="rd-bldg">Building</div>
-          <button class="rd-voice-btn" id="rd-voice-btn" onclick="speakRoomDetail()">🔊 Hear explanation</button>
+          <button class="rd-voice-btn" onclick="speakRoomDetail()">🔊 Hear explanation</button>
         </div>
       </div>
       <div class="rd-body" id="rd-body"></div>
-      <!-- Climate impact box — filled by JS -->
       <div class="rd-climate" id="rd-climate">
         <div class="rd-climate-head">
           <span class="rd-climate-icon">🌍</span>
@@ -705,7 +555,6 @@ html,body{height:100%;width:100%;overflow:hidden;font-family:'DM Sans',sans-seri
         <div class="rd-climate-body" id="rd-climate-body"></div>
         <div class="rd-climate-stats" id="rd-climate-stats"></div>
       </div>
-      <!-- Custom room addition -->
       <div class="rd-custom">
         <div class="rd-custom-head">✏️ Add your own idea to this space</div>
         <div class="rd-custom-form">
@@ -796,173 +645,9 @@ const CAT_BGGRADIENT = {
   Education:   'linear-gradient(135deg,#FFF3E0 0%,#FBE9E7 100%)',
 };
 const CAT_PARTICLECOLOR = {
-  Green:'76,175,80', Energy:'255,152,0', Commercial:'33,150,243',
+  Green:'76,175,80', Energy:'255,193,7', Commercial:'33,150,243',
   Transport:'0,188,212', Residential:'156,39,176', Civic:'96,125,139',
-  Health:'229,57,53', Education:'255,112,67',
-};
-
-// Per-room climate impact data (indexed same as interior array in each building)
-const ROOM_CLIMATE = {
-  park:[
-    {impact:'Trees absorb CO₂ through photosynthesis and release oxygen. A single mature tree sequesters 22kg of CO₂ per year. Dense planting in urban areas creates "carbon sinks" that offset building emissions nearby.',stats:[{val:'22kg',lbl:'CO₂/tree/yr'},{val:'-8°C',lbl:'Cooling effect'},{val:'70%',lbl:'Less runoff'}]},
-    {impact:'Active travel infrastructure reduces car dependency. Every 1km walked instead of driven saves 200g CO₂. Running tracks in parks encourage residents to exercise locally, cutting commute-related emissions.',stats:[{val:'200g',lbl:'CO₂ saved/km'},{val:'30%',lbl:'Fewer car trips'},{val:'+15%',lbl:'Active residents'}]},
-    {impact:'Natural play equipment made from timber stores carbon throughout its life. Sensor monitoring reduces maintenance journeys by 40%, cutting vehicle emissions from park management.',stats:[{val:'Zero',lbl:'Plastic waste'},{val:'40%',lbl:'Fewer maintenance trips'},{val:'Carbon+',lbl:'Timber storage'}]},
-    {impact:'Smart irrigation reduces water extraction, which requires significant energy to treat and pump. Cutting water use by 35% saves around 0.3 kWh per cubic metre — directly reducing power station emissions.',stats:[{val:'35%',lbl:'Less water used'},{val:'0.3kWh',lbl:'Energy saved/m³'},{val:'60%',lbl:'Pipe loss reduction'}]},
-    {impact:'Native flower gardens support pollinators which are essential for food production. Without bees, food systems collapse — globally pollinator decline threatens 35% of food crops and would massively increase agricultural emissions.',stats:[{val:'35%',lbl:'Crops need pollinators'},{val:'3x',lbl:'Bee population boost'},{val:'Zero',lbl:'Pesticide use'}]},
-    {impact:'Inclusive design means all community members can access green space equally. Studies show equal access to parks reduces health inequalities, cutting NHS/hospital costs by an estimated £2.1bn/year in the UK alone.',stats:[{val:'100%',lbl:'Accessibility'},{val:'£2.1bn',lbl:'Health savings'},{val:'40%',lbl:'Mental health improvement'}]},
-  ],
-  forest:[
-    {impact:'A 500-tree urban forest sequesters 24 tonnes of CO₂ per year — equivalent to removing 5 cars from the road permanently. Mixed species forests are more resilient to pests and climate stress than monocultures.',stats:[{val:'24t',lbl:'CO₂/yr'},{val:'500+',lbl:'Trees'},{val:'5 cars',lbl:'Equivalent removal'}]},
-    {impact:'Wildlife corridors are essential for species to migrate as climate zones shift northward. Without connected green infrastructure, 50% of species face local extinction by 2050. Urban forests act as stepping stones.',stats:[{val:'50%',lbl:'Species at risk'},{val:'3x',lbl:'Biodiversity boost'},{val:'Connectivity',lbl:'Species migration'}]},
-    {impact:'Elevated boardwalks prevent soil compaction that destroys the mycorrhizal networks trees use to share nutrients. Healthy forest soil stores 3x more carbon than degraded soil.',stats:[{val:'3x',lbl:'More carbon in healthy soil'},{val:'95%',lbl:'Soil network preserved'},{val:'Zero',lbl:'Ground disturbance'}]},
-    {impact:'Forest understory creates a full vertical ecosystem. Each additional layer of vegetation roughly doubles the carbon stored per hectare and provides habitat for 10x more species.',stats:[{val:'2x',lbl:'Carbon per hectare'},{val:'10x',lbl:'More species'},{val:'Full',lbl:'Ecosystem stacking'}]},
-    {impact:'Mycorrhizal fungi transport carbon from tree roots into deep soil layers where it can remain stable for centuries. This "deep carbon" storage is not counted in standard carbon accounting but may sequester as much as the trees themselves.',stats:[{val:'Centuries',lbl:'Carbon stability'},{val:'Equal',lbl:'To above-ground storage'},{val:'Invisible',lbl:'But critical'}]},
-    {impact:'University research plots measure actual carbon sequestration — vital for accurate climate accounting. Cities with verified green carbon data access international climate finance averaging £40/tonne CO₂ removed.',stats:[{val:'£40/t',lbl:'Carbon finance'},{val:'Verified',lbl:'Carbon data'},{val:'Science',lbl:'Based planning'}]},
-  ],
-  wetland:[
-    {impact:'Reed beds filter 95% of pathogens and 80% of phosphates from stormwater — without any chemicals or energy. This avoids the carbon footprint of water treatment plants which use approximately 0.5 kWh per cubic metre.',stats:[{val:'95%',lbl:'Pathogens removed'},{val:'0.5kWh',lbl:'Energy saved/m³'},{val:'Zero',lbl:'Chemicals used'}]},
-    {impact:'Amphibian populations are bioindicators — their health tells us if water and soil ecosystems are functioning. Healthy wetland ecosystems provide "services" worth £9,000/hectare/year in natural flood management and water purification.',stats:[{val:'£9,000',lbl:'Value/hectare/yr'},{val:'Bioindicator',lbl:'Ecosystem health'},{val:'Natural',lbl:'Flood management'}]},
-    {impact:'Bioswales capture stormwater that would otherwise cause urban flooding and overwhelm sewers. One hectare of bioswale absorbs 5,000 litres of water per hour, preventing flood damage costing an average £30,000 per household.',stats:[{val:'5,000L',lbl:'Absorbed/hr/ha'},{val:'£30,000',lbl:'Flood damage avoided'},{val:'90%',lbl:'Runoff reduction'}]},
-    {impact:'Waterfowl spread native seeds and control aquatic vegetation naturally. Healthy bird populations in urban wetlands reduce the need for mechanical vegetation management, saving fuel and disturbance.',stats:[{val:'Natural',lbl:'Seed dispersal'},{val:'Zero',lbl:'Mechanical management'},{val:'15+',lbl:'Nesting species'}]},
-    {impact:'Riparian plants stabilise riverbanks with root networks, preventing erosion that releases soil carbon into water. Bank erosion accounts for 60% of sediment in urban waterways — destroying aquatic ecosystems downstream.',stats:[{val:'60%',lbl:'Erosion reduction'},{val:'Root network',lbl:'Natural defence'},{val:'Clear',lbl:'Water downstream'}]},
-    {impact:'Wetland education builds the next generation of environmental stewards. Schools using nature-based learning sites show 40% better environmental science outcomes and significantly higher rates of green career choices.',stats:[{val:'40%',lbl:'Better outcomes'},{val:'3x',lbl:'Green career interest'},{val:'Free',lbl:'Outdoor classroom'}]},
-  ],
-  garden:[
-    {impact:'Local food production cuts food miles dramatically. The average UK meal travels 1,500km. Growing food within the city eliminates transportation emissions for those crops — around 0.9kg CO₂ per kg of imported food replaced.',stats:[{val:'1,500km',lbl:'Average food miles'},{val:'0.9kg',lbl:'CO₂/kg replaced'},{val:'Zero',lbl:'Food miles locally'}]},
-    {impact:'Drip irrigation delivers water directly to roots with 90% efficiency vs 60% for sprinklers. Less water pumped means less energy used — saving approximately 0.5 kWh per 1,000 litres. It also prevents fungal disease, reducing pesticide need.',stats:[{val:'90%',lbl:'Water efficiency'},{val:'50%',lbl:'Less water used'},{val:'0.5kWh',lbl:'Energy per 1,000L saved'}]},
-    {impact:'Heritage seeds preserve genetic diversity that industrial agriculture has destroyed — 93% of seed varieties have been lost in the last century. Diverse seeds are our insurance policy against crop failures from climate change.',stats:[{val:'93%',lbl:'Varieties lost globally'},{val:'Insurance',lbl:'Against climate failure'},{val:'Free',lbl:'Community exchange'}]},
-    {impact:'Hot composting converts food waste into soil carbon, diverting waste from landfill where it would release methane — a greenhouse gas 80x more potent than CO₂ over 20 years. One tonne of composted food waste prevents 0.5t CO₂ equivalent.',stats:[{val:'0.5t',lbl:'CO₂e avoided/tonne'},{val:'80x',lbl:'Methane vs CO₂'},{val:'Rich',lbl:'Soil amendment'}]},
-    {impact:'Rainwater harvesting reduces demand on mains water supply which requires energy to treat and pump. Every 1,000 litres collected saves 0.5 kWh of energy and reduces pressure on reservoirs already stressed by climate-driven droughts.',stats:[{val:'0.5kWh',lbl:'Energy/1,000L saved'},{val:'Drought',lbl:'Resilience'},{val:'Free',lbl:'Water from sky'}]},
-    {impact:'Shared tool libraries are the circular economy in action — 40 households sharing tools instead of each buying them cuts manufacturing demand by 97.5%. Manufacturing steel garden tools emits around 8kg CO₂ per tool.',stats:[{val:'97.5%',lbl:'Manufacturing saved'},{val:'8kg',lbl:'CO₂ per tool made'},{val:'App',lbl:'Smart booking'}]},
-  ],
-  solar:[
-    {impact:'Each bifacial solar panel generates approximately 540W and lasts 30+ years. Over its lifetime, one panel produces 40,000 kWh of clean electricity — avoiding 16 tonnes of CO₂ compared to grid power from fossil fuels.',stats:[{val:'40,000kWh',lbl:'Per panel lifetime'},{val:'16t',lbl:'CO₂ avoided/panel'},{val:'30+',lbl:'Years lifespan'}]},
-    {impact:'Battery storage captures surplus solar energy for evening use. Without storage, excess solar is wasted or curtailed. 4MWh of storage means the farm can power 2,000 homes through the night — making solar truly 24-hour renewable.',stats:[{val:'4MWh',lbl:'Storage capacity'},{val:'2,000',lbl:'Homes overnight'},{val:'Zero',lbl:'Waste from surplus'}]},
-    {impact:'Single-axis tracking increases solar yield by 25% by following the sun across the sky. This extra 25% output requires no additional panels or land — making existing installations dramatically more productive.',stats:[{val:'+25%',lbl:'More energy output'},{val:'Same',lbl:'Land footprint'},{val:'AI',lbl:'Optimised tracking'}]},
-    {impact:'Smart grid inverters enable real-time balancing of supply and demand. When solar produces more than the city needs, the surplus is exported and sold — generating revenue that funds further green investment.',stats:[{val:'Revenue',lbl:'From surplus export'},{val:'Grid',lbl:'Stability'},{val:'Real-time',lbl:'Balancing'}]},
-    {impact:'Agrivoltaics — combining solar panels with farming — increases land productivity by 60-70%. Shade from panels reduces water evaporation in crops below, cutting irrigation needs by 30% while generating clean electricity above.',stats:[{val:'+60%',lbl:'Land productivity'},{val:'30%',lbl:'Less irrigation'},{val:'Dual',lbl:'Land use'}]},
-    {impact:'Remote monitoring catches faults within seconds that would otherwise go unnoticed for weeks, costing thousands in lost generation. Predictive maintenance reduces downtime by 70% and extends panel life by years.',stats:[{val:'Seconds',lbl:'Fault detection'},{val:'70%',lbl:'Less downtime'},{val:'Years',lbl:'Extended panel life'}]},
-  ],
-  wind:[
-    {impact:'Vertical axis wind turbines work in turbulent urban airflows that horizontal axis turbines cannot use. Cities create "canyon effects" that accelerate wind — making urban wind a resource conventional wind farms ignore.',stats:[{val:'VAWT',lbl:'Urban optimised'},{val:'35dB',lbl:'Noise limit'},{val:'360°',lbl:'Wind capture'}]},
-    {impact:'Variable speed drives extract maximum power from any wind speed — from 3m/s to 25m/s. Without power electronics, turbines only work efficiently at one speed, wasting 30-40% of available wind energy.',stats:[{val:'+30%',lbl:'More energy captured'},{val:'3-25m/s',lbl:'Operating range'},{val:'Optimised',lbl:'At all speeds'}]},
-    {impact:'Safe maintenance access enables annual inspections that prevent catastrophic failures. A single avoided failure saves 6 months of downtime — equivalent to 300 MWh of missed clean energy.',stats:[{val:'300MWh',lbl:'Saved by prevention'},{val:'Annual',lbl:'Inspection cycle'},{val:'Zero',lbl:'Safety incidents'}]},
-    {impact:'Acoustic engineering reduces noise to the level of a quiet library. This is critical for urban wind — community acceptance depends on turbines being unobtrusive neighbours. Silent wind = more green energy locations.',stats:[{val:'35dB',lbl:'Boundary noise'},{val:'Library',lbl:'Quiet equivalent'},{val:'More',lbl:'Urban sites viable'}]},
-    {impact:'Meteorological masts collect wind data that improves forecasting accuracy to 95% for 24 hours ahead. Accurate forecasting lets grid operators reduce backup fossil fuel reserves, directly cutting carbon emissions from standby power plants.',stats:[{val:'95%',lbl:'Forecast accuracy'},{val:'24hr',lbl:'Ahead prediction'},{val:'Less',lbl:'Fossil fuel backup'}]},
-    {impact:'Wildflower meadows under turbines increase pollinator populations which boost local food yields. The contrast between industrial energy infrastructure and living ecosystems is a powerful visual lesson in sustainable coexistence.',stats:[{val:'3x',lbl:'Pollinator boost'},{val:'Living',lbl:'Ecosystem below'},{val:'Education',lbl:'Visible sustainability'}]},
-  ],
-  'ev-hub':[
-    {impact:'DC fast chargers at 150kW each can charge most EVs in 20-30 minutes. The key climate benefit: EVs charged on renewable energy emit 70% less CO₂ over their lifetime than petrol vehicles — even accounting for battery manufacturing.',stats:[{val:'70%',lbl:'Less lifetime CO₂'},{val:'150kW',lbl:'Charging speed'},{val:'30min',lbl:'Full charge'}]},
-    {impact:'E-bikes are the most energy-efficient transport mode ever invented — 50 times more efficient than cars. A 100km e-bike commute uses just 1kWh of electricity. Swapping one car commute per day per worker avoids 2.5 tonnes CO₂/year.',stats:[{val:'50x',lbl:'More efficient than car'},{val:'1kWh',lbl:'Per 100km'},{val:'2.5t',lbl:'CO₂ avoided/commuter/yr'}]},
-    {impact:'Co-located amenities mean people do not need to make separate journeys for coffee, work, and charging. Every consolidated trip eliminates one vehicle movement — a charging hub that replaces 3 journeys saves 0.6kg CO₂ per visit.',stats:[{val:'3',lbl:'Journeys consolidated'},{val:'0.6kg',lbl:'CO₂ saved per visit'},{val:'Zero',lbl:'Extra journeys'}]},
-    {impact:'Vehicle-to-Grid technology turns every connected EV into a grid battery. 1,000 EVs provide 60MWh of storage — equivalent to a £30 million grid battery — for free. This enables 40% more renewable generation by absorbing surplus wind and solar.',stats:[{val:'60MWh',lbl:'Storage from 1,000 EVs'},{val:'40%',lbl:'More renewables viable'},{val:'Free',lbl:'vs £30M battery'}]},
-    {impact:'The solar canopy generates 300kW — enough to power all the chargers during daylight hours. A self-powered charging hub means EVs charged here run entirely on sunshine, achieving genuine zero-emission transport.',stats:[{val:'300kW',lbl:'Solar generation'},{val:'Zero',lbl:'Grid carbon when sunny'},{val:'Self',lbl:'Powered hub'}]},
-    {impact:'Dynamic pricing signals from smart meters shift charging to off-peak times when wind and solar surplus is highest and cheapest. This "demand flexibility" is worth £2bn/year to the UK grid and reduces the need for peaking power plants.',stats:[{val:'£2bn/yr',lbl:'Grid value'},{val:'Off-peak',lbl:'Clean surplus used'},{val:'Less',lbl:'Peaking gas plants'}]},
-  ],
-  techpark:[
-    {impact:'Activity-based working means desks are occupied 70% of the time vs 40% in traditional offices. Higher occupancy means less energy wasted heating and lighting empty space — cutting office energy use by 25-30%.',stats:[{val:'70%',lbl:'Desk occupancy'},{val:'30%',lbl:'Energy saving'},{val:'30',lbl:'Collaboration pods'}]},
-    {impact:'Food waste from canteens is a major hidden emission source. The average UK office canteen wastes 30% of food — going to landfill where it emits methane. AI waste tracking and plant-forward menus cut this to under 5%.',stats:[{val:'30%→5%',lbl:'Food waste reduction'},{val:'Plant',lbl:'Forward menu'},{val:'AI',lbl:'Per-dish tracking'}]},
-    {impact:'Employee wellness programmes reduce sick days by an average of 35%. Fewer unplanned absences means fewer last-minute car journeys and more predictable building occupancy — making energy management dramatically more efficient.',stats:[{val:'35%',lbl:'Fewer sick days'},{val:'Predictable',lbl:'Energy management'},{val:'Healthy',lbl:'Workforce'}]},
-    {impact:'In-house fabrication labs enable rapid prototyping of sustainability solutions on-site. Technologies developed here — from building sensors to new materials — can be deployed across the entire city, multiplying climate impact.',stats:[{val:'City-wide',lbl:'Technology transfer'},{val:'Rapid',lbl:'Prototype to deploy'},{val:'Local',lbl:'Innovation ecosystem'}]},
-    {impact:'Biophilic workspaces with plants and natural light reduce artificial lighting energy needs by 35% and improve cognitive performance by 15%. Workers who feel connected to nature take fewer flights for "mental recovery" breaks.',stats:[{val:'35%',lbl:'Less artificial light'},{val:'+15%',lbl:'Cognitive performance'},{val:'Living',lbl:'Workspace'}]},
-    {impact:'Automated parking with EV charging turns every parking space into a clean energy delivery point. Smart routing means cars spend 60% less time circling — eliminating "hunting" emissions that account for 30% of city centre traffic.',stats:[{val:'60%',lbl:'Less time circling'},{val:'30%',lbl:'Traffic eliminated'},{val:'EV',lbl:'Every space charging'}]},
-  ],
-  market:[
-    {impact:'Food sourced within 100km travels 15x less distance than typical supermarket supply chains. Local food has 80-90% less transport emissions and supports farmers who are more likely to use sustainable growing practices.',stats:[{val:'100km',lbl:'Maximum source radius'},{val:'90%',lbl:'Transport emissions cut'},{val:'Local',lbl:'Farmer support'}]},
-    {impact:'Refill stations eliminate single-use packaging. Producing one plastic bottle emits 82g CO₂. A market refill station serving 200 customers/day prevents 6 tonnes of CO₂ per year from packaging manufacture and waste disposal.',stats:[{val:'82g',lbl:'CO₂ per bottle made'},{val:'6t',lbl:'CO₂ saved/yr'},{val:'Zero',lbl:'Single-use packaging'}]},
-    {impact:'CO₂ heat pump refrigeration is 3x more efficient than conventional cooling systems and uses no harmful refrigerants. Food cold chains currently use HFC refrigerants with global warming potential 1,000x worse than CO₂.',stats:[{val:'3x',lbl:'More efficient cooling'},{val:'1,000x',lbl:'HFCs worse than CO₂'},{val:'Zero',lbl:'Harmful refrigerants'}]},
-    {impact:'Zero-waste cafés prove the circular economy works at scale. On-site composting converts all food waste into garden fertiliser, eliminating landfill methane emissions and replacing synthetic fertilisers that emit 6kg CO₂ per kg of nitrogen.',stats:[{val:'Zero',lbl:'Landfill waste'},{val:'6kg',lbl:'CO₂ per kg fertiliser replaced'},{val:'Circular',lbl:'Food loop'}]},
-    {impact:'Urban beehives support pollination within a 3km radius, increasing yields in every community garden and green space nearby. They also create educational opportunities that build long-term environmental stewardship.',stats:[{val:'3km',lbl:'Pollination radius'},{val:'6',lbl:'Active hives'},{val:'Education',lbl:'Living classroom'}]},
-    {impact:'Cargo bike last-mile delivery emits 90% less CO₂ than van delivery and reduces congestion. One cargo bike can replace 1.5 vans in dense urban areas. Parcel lockers consolidate deliveries, cutting individual home delivery journeys by 70%.',stats:[{val:'90%',lbl:'Less CO₂ than van'},{val:'70%',lbl:'Fewer journeys'},{val:'1.5',lbl:'Vans per cargo bike replaced'}]},
-  ],
-  metro:[
-    {impact:'One metro train carries 600 passengers — replacing 600 car journeys. Over a year, a busy metro station removes the equivalent of 3,200 tonnes of CO₂ from city traffic — equal to planting 145,000 trees every year.',stats:[{val:'600',lbl:'Passengers per train'},{val:'3,200t',lbl:'CO₂ removed/yr'},{val:'145k',lbl:'Tree equivalent'}]},
-    {impact:'Smart ticketing with facial recognition option eliminates paper tickets entirely. Digital gates move 40 passengers per minute vs 25 for physical tickets — reducing dwell time, improving flow and enabling more trains per hour.',stats:[{val:'40',lbl:'Passengers/minute/gate'},{val:'Zero',lbl:'Paper tickets'},{val:'More',lbl:'Train frequency viable'}]},
-    {impact:'Secure covered cycling storage at metro stations enables multimodal journeys. Cyclists who can safely park their bikes use metro 3x more than those who cannot. Every new cycle-metro commuter permanently removes one car from rush hour.',stats:[{val:'3x',lbl:'More metro use with bike parking'},{val:'200',lbl:'Cycle spaces'},{val:'1 car',lbl:'Removed per commuter'}]},
-    {impact:'Regenerative braking captures kinetic energy as trains decelerate, converting it back to electricity. A busy metro line captures enough energy to power all its station lighting and escalators — typically 30-40% of total station energy use.',stats:[{val:'30-40%',lbl:'Station energy from braking'},{val:'Kinetic',lbl:'Energy recovered'},{val:'Zero',lbl:'Wasted braking energy'}]},
-    {impact:'Universal accessibility means transit can serve everyone — including those who cannot drive. Every wheelchair user and elderly resident who uses metro instead of a taxi removes a vehicle from the road network.',stats:[{val:'100%',lbl:'Accessible design'},{val:'All',lbl:'Ages served'},{val:'Fewer',lbl:'Mobility taxis needed'}]},
-    {impact:'Passive ventilation using natural pressure differences between surface and underground requires 70% less energy than mechanical ventilation. Reducing HVAC energy in underground spaces — which run 24/7 — saves significant carbon.',stats:[{val:'70%',lbl:'Less energy than mechanical'},{val:'24/7',lbl:'Natural ventilation'},{val:'Zero',lbl:'Mechanical HVAC cost'}]},
-  ],
-  brt:[
-    {impact:'Level boarding at enclosed platforms means no steps — passengers board in seconds. This reduces stop dwell time from 45 to 12 seconds, enabling BRT to carry 4,000 passengers per hour — matching many light rail systems at 10% of the cost.',stats:[{val:'4,000',lbl:'Passengers/hr'},{val:'10%',lbl:'Of metro cost'},{val:'12sec',lbl:'Dwell time'}]},
-    {impact:'Real-time LED passenger information boards reduce perceived waiting time by 30% — even when actual wait is the same. When people feel transit is reliable they are more willing to give up their cars permanently.',stats:[{val:'30%',lbl:'Lower perceived wait'},{val:'Digital',lbl:'Real-time info'},{val:'Trust',lbl:'Builds ridership'}]},
-    {impact:'Pantograph charging tops up battery buses in just 10 minutes at terminus. This eliminates the need for large on-board batteries, making buses lighter — reducing energy use per km by 15% vs longer-range EVs.',stats:[{val:'10min',lbl:'Terminus charging'},{val:'15%',lbl:'Less energy per km'},{val:'Lighter',lbl:'Buses = less energy'}]},
-    {impact:'Revenue from kiosk retail directly subsidises fares. A 20% fare reduction increases ridership by 30-40%, removing significantly more cars from the network than the subsidy costs. Self-funding green transit is the virtuous cycle.',stats:[{val:'20%',lbl:'Fare reduction'},{val:'30-40%',lbl:'More riders'},{val:'Self',lbl:'Funding transit'}]},
-    {impact:'Green planted medians reduce urban heat island effect by 2-3°C along the entire corridor. Cooler streets reduce building air conditioning energy demand, creating a virtuous cycle between green infrastructure and energy savings.',stats:[{val:'2-3°C',lbl:'Cooling effect'},{val:'AC energy',lbl:'Demand reduced'},{val:'Green',lbl:'Corridor effect'}]},
-    {impact:'Full camera coverage eliminates "safety anxiety" — one of the top reasons women and elderly people avoid public transit. Safer feeling transit increases female ridership by 25%, broadening the impact of green transport investment.',stats:[{val:'+25%',lbl:'Female ridership'},{val:'180°',lbl:'Camera coverage'},{val:'Safe',lbl:'For everyone'}]},
-  ],
-  cycling:[
-    {impact:'One cycling lane can move 12,000 people per hour in the same width as a car lane moving 2,000. Cycling is the most space-efficient urban transport ever designed — 6x more efficient than cars at moving people through cities.',stats:[{val:'12,000',lbl:'People/hr/lane'},{val:'6x',lbl:'More efficient than cars'},{val:'Same',lbl:'Road width'}]},
-    {impact:'Covered cycle parking eliminates the biggest barrier to cycling — fear of bike theft. Secure parking increases cycling rates by 30-40% and encourages investment in higher-quality e-bikes that replace car trips more effectively.',stats:[{val:'+35%',lbl:'More cycling'},{val:'CCTV',lbl:'Security coverage'},{val:'300',lbl:'Covered spaces'}]},
-    {impact:'E-bike hire eliminates "range anxiety" and sweat concerns — the two biggest barriers for cycling commuters. Studies show e-bike hirers ride 3x further than conventional cyclists, replacing car trips that pedal bikes cannot cover.',stats:[{val:'3x',lbl:'Further than pedal bikes'},{val:'Sweat',lbl:'Free commuting'},{val:'50',lbl:'Hire bikes available'}]},
-    {impact:'Cyclist changing facilities are proven to double workplace cycling rates. Every two additional cyclists permanently removes one car from the road network — a measurable, sustained emission reduction with no ongoing cost.',stats:[{val:'2x',lbl:'Workplace cycling rate'},{val:'1 car',lbl:'Removed per 2 cyclists'},{val:'Zero',lbl:'Ongoing cost'}]},
-    {impact:'Weather-protected cycle route approaches extend cycling weather viability from 200 to 300+ days per year in temperate climates. More cycling days per year means more car trips permanently replaced.',stats:[{val:'300+',lbl:'Cycling days/year'},{val:'More',lbl:'Car trips replaced'},{val:'All',lbl:'Weather use'}]},
-    {impact:'Digital navigation kiosks with QR codes provide turn-by-turn directions to new cyclists who lack route knowledge. Navigation confidence increases new-cyclist uptake by 40% in the first 6 months after installation.',stats:[{val:'+40%',lbl:'New cyclist uptake'},{val:'QR',lbl:'Route to phone'},{val:'Confidence',lbl:'For new cyclists'}]},
-  ],
-  'eco-apts':[
-    {impact:'Passive house design uses 75-90% less heating energy than standard buildings by combining super-insulation, airtight construction, and heat recovery ventilation. Residents pay an average of just £150/year on heating vs £1,200 in conventional homes.',stats:[{val:'90%',lbl:'Less heating energy'},{val:'£150',lbl:'Annual heating bill'},{val:'Warm',lbl:'Year-round comfort'}]},
-    {impact:'Mechanical ventilation with heat recovery (MVHR) provides fresh air 24/7 while capturing 95% of the heat that would be lost in a conventional ventilated home. Residents report 40% fewer respiratory conditions vs conventional housing.',stats:[{val:'95%',lbl:'Heat recovery rate'},{val:'40%',lbl:'Fewer respiratory issues'},{val:'24/7',lbl:'Fresh clean air'}]},
-    {impact:'Induction hobs are 90% energy efficient vs 40% for gas. Eliminating gas connections in new homes is one of the most cost-effective climate actions — each gas-free apartment avoids 2.5t CO₂/year and eliminates indoor air pollution.',stats:[{val:'90%',lbl:'Induction efficiency'},{val:'2.5t',lbl:'CO₂ avoided/yr'},{val:'Zero',lbl:'Indoor air pollution'}]},
-    {impact:'Glazed winter gardens create thermal buffer zones that reduce heat loss through the building envelope by 30%. They also extend the growing season for food plants and create transitional indoor-outdoor space that improves resident wellbeing.',stats:[{val:'30%',lbl:'Heat loss reduction'},{val:'Extended',lbl:'Growing season'},{val:'Wellbeing',lbl:'Biophilic connection'}]},
-    {impact:'Shared amenities reduce individual ownership — 100 households sharing a gym means 99% fewer gym memberships requiring separate journeys. Shared pools use 60% less energy per swim than private pools.',stats:[{val:'99%',lbl:'Fewer gym trips'},{val:'60%',lbl:'Less energy/swim'},{val:'Community',lbl:'Building'}]},
-    {impact:'Home batteries charged by rooftop solar give residents energy independence. 7kWh batteries cover most households for an evening and night. Combined with solar, apartments can be energy-positive — exporting more than they use.',stats:[{val:'7kWh',lbl:'Home battery'},{val:'Energy+',lbl:'Positive apartments'},{val:'Solar',lbl:'Charged daily'}]},
-  ],
-  'mixed-use':[
-    {impact:'Ground floor commercial uses eliminate car trips. A resident who shops, works, and sends children to school in the same building takes zero car trips for those activities — saving an average 3.5t CO₂/year per household.',stats:[{val:'3.5t',lbl:'CO₂ saved/household/yr'},{val:'Zero',lbl:'Car trips for daily needs'},{val:'15-min',lbl:'City in one building'}]},
-    {impact:'Shared amenity floors mean 480 households share one gym, pool, and cinema. This 99% reduction in duplicated private ownership reduces embodied carbon from manufacturing and eliminates separate journeys to facilities.',stats:[{val:'99%',lbl:'Less private duplication'},{val:'480',lbl:'Households sharing'},{val:'Zero',lbl:'Separate journeys'}]},
-    {impact:'Mixed tenure — social housing alongside market rate homes — creates economically diverse communities. Economic diversity reduces car dependency because lower-income residents benefit from proximity to services alongside wealthier neighbours.',stats:[{val:'Mixed',lbl:'Economic community'},{val:'Less',lbl:'Car dependency'},{val:'Social',lbl:'Integration'}]},
-    {impact:'Sky park floors open to all residents provide 3 floors of green space equivalent to a park. Rooftop vegetation reduces building cooling loads by 25% and absorbs 12 tonnes of CO₂ per floor per year.',stats:[{val:'25%',lbl:'Cooling load reduction'},{val:'12t',lbl:'CO₂/floor/yr'},{val:'Public',lbl:'Sky park for all'}]},
-    {impact:'A rooftop primary school eliminates the most carbon-intensive school-run journeys — 25% of morning rush hour traffic in UK cities is school-run cars. Children walking downstairs to school is the ultimate active travel solution.',stats:[{val:'25%',lbl:'Of rush hour is school run'},{val:'Zero',lbl:'School run journeys'},{val:'Active',lbl:'Travel by design'}]},
-    {impact:'The building energy hub generates, stores, and manages all energy for 480 homes from one system. Centralised management is 35% more efficient than individual home systems and enables full renewable integration.',stats:[{val:'35%',lbl:'More efficient centrally'},{val:'100%',lbl:'Renewable integration'},{val:'One',lbl:'System for 480 homes'}]},
-  ],
-  cityhall:[
-    {impact:'A city digital twin — a real-time 3D model of the entire city — lets planners test interventions before spending money. Cities with digital twins reduce infrastructure investment waste by 25% and cut project overruns by 30%.',stats:[{val:'25%',lbl:'Less wasted investment'},{val:'30%',lbl:'Fewer overruns'},{val:'Real-time',lbl:'City model'}]},
-    {impact:'LoRaWAN city-wide IoT networks use 1/1000th the power of mobile networks while achieving 10km range. This backbone enables every sensor in the city to report data for 10 years on a single battery — the infrastructure of smart city governance.',stats:[{val:'1/1000',lbl:'Power vs mobile'},{val:'10km',lbl:'Range'},{val:'10yr',lbl:'Battery life'}]},
-    {impact:'AI decision support analyses millions of data points to recommend optimal urban interventions. Cities using AI planning tools allocate green infrastructure investment 40% more effectively — achieving more impact per £ spent on sustainability.',stats:[{val:'40%',lbl:'Better green investment'},{val:'Millions',lbl:'Data points analysed'},{val:'Optimal',lbl:'Policy recommendations'}]},
-    {impact:'Open citizen apps that report potholes, flooding, broken lights and pollution anonymously are repaired 65% faster than cities relying on staff patrols. Faster repairs prevent the carbon cost of secondary incidents and inefficient maintenance routes.',stats:[{val:'65%',lbl:'Faster repairs'},{val:'Anonymous',lbl:'Safe reporting'},{val:'Proactive',lbl:'Maintenance'}]},
-    {impact:'Transparent governance with open data platforms increases public trust in climate policies. Cities with high trust scores implement green policies 2x faster because they face less opposition and legal challenge, achieving emissions targets sooner.',stats:[{val:'2x',lbl:'Faster green policy'},{val:'Open',lbl:'Data platform'},{val:'Trust',lbl:'Enables action'}]},
-    {impact:'24/7 cybersecurity protects smart city infrastructure from attacks that could disable traffic systems, power grids, or water networks. A single successful cyberattack on city infrastructure causes an average £4.2m in response costs and significant carbon from emergency operations.',stats:[{val:'£4.2m',lbl:'Attack cost avoided'},{val:'24/7',lbl:'Monitoring'},{val:'Critical',lbl:'Infrastructure protected'}]},
-  ],
-  firestation:[
-    {impact:'Hydrogen fuel cell fire engines produce only water vapour as exhaust. Emergency vehicle fleets are typically exempt from emission standards — making their decarbonisation a quick win often overlooked. Each hydrogen engine avoids 15 tonnes CO₂/year.',stats:[{val:'15t',lbl:'CO₂/engine/yr avoided'},{val:'Water',lbl:'Only emission'},{val:'Full',lbl:'Emergency performance'}]},
-    {impact:'Realistic 7-storey training towers reduce the number of live fire training exercises, which deliberately burn structures and release significant pollutants. Simulation training cuts training emissions by 80% while improving firefighter preparedness.',stats:[{val:'80%',lbl:'Training emissions cut'},{val:'Better',lbl:'Prepared crews'},{val:'Zero',lbl:'Deliberate structure burns'}]},
-    {impact:'Co-located paramedics achieve response times 40% faster than separate services. Faster medical response directly saves lives — and reduces the carbon footprint of health interventions by avoiding the longer, repeat journeys of separate services.',stats:[{val:'40%',lbl:'Faster response'},{val:'Fewer',lbl:'Repeat journeys'},{val:'Co-located',lbl:'Emergency services'}]},
-    {impact:'Firefighter wellness — adequate sleep, fitness, and mental health support — reduces sick days by 35% and turnover by 50%. Stable, well-rested crews respond more efficiently, driving fewer emergency response kilometres per incident.',stats:[{val:'35%',lbl:'Fewer sick days'},{val:'50%',lbl:'Less turnover'},{val:'Efficient',lbl:'Response routing'}]},
-    {impact:'Free community fire safety education prevents 35% of domestic fires before they start. Each prevented house fire avoids an average 8 tonnes CO₂ from burning contents, emergency response, and rebuilding — plus the devastating human cost.',stats:[{val:'35%',lbl:'Fires prevented'},{val:'8t',lbl:'CO₂ per fire avoided'},{val:'Free',lbl:'Community education'}]},
-    {impact:'On-site solar and battery backup ensures the fire station operates during grid outages — precisely when it is needed most. A self-powered station reduces grid dependency and can support the local community during extreme weather events.',stats:[{val:'100%',lbl:'Self-powered'},{val:'Grid',lbl:'Independent'},{val:'Community',lbl:'Resilience hub'}]},
-  ],
-  hospital:[
-    {impact:'AI diagnostics reduce the need for repeat testing — each avoided CT scan saves 7.4g CO₂ equivalent of electricity. But the bigger impact is faster diagnosis leading to earlier treatment, shorter hospital stays and lower overall healthcare carbon footprint.',stats:[{val:'7.4g',lbl:'CO₂ per scan avoided'},{val:'Faster',lbl:'Diagnosis'},{val:'Shorter',lbl:'Hospital stays'}]},
-    {impact:'Robotic pharmacy eliminates 98% of medication errors. Wrong medication causes longer hospitalisation — the NHS estimates medication errors cost £98m/year in extra treatment. Fewer errors means shorter stays and dramatically lower healthcare energy use.',stats:[{val:'98%',lbl:'Error reduction'},{val:'£98m',lbl:'NHS cost saved'},{val:'Shorter',lbl:'Hospitalisation'}]},
-    {impact:'Personalised genomic medicine means the right treatment first time. Avoiding ineffective treatments eliminates unnecessary hospital journeys, reduces pharmaceutical manufacturing demand, and cuts the enormous carbon footprint of repeat prescribing.',stats:[{val:'First',lbl:'Time right treatment'},{val:'Less',lbl:'Pharmaceutical waste'},{val:'Fewer',lbl:'Return visits'}]},
-    {impact:'Healing gardens reduce patient recovery time by an average of 28%. Shorter recovery means less energy consumed in patient care per episode — and patients discharged sooner consume far fewer NHS resources, each with significant embedded carbon.',stats:[{val:'28%',lbl:'Faster recovery'},{val:'Less',lbl:'Energy per episode'},{val:'Evidence',lbl:'Based design'}]},
-    {impact:'Smart wards with sensor monitoring detect deterioration 6 hours earlier, reducing ICU admissions by 30%. Each avoided ICU day saves £8,400 and approximately 50kg CO₂ equivalent in intensive medical resources.',stats:[{val:'6hr',lbl:'Earlier detection'},{val:'30%',lbl:'Fewer ICU admissions'},{val:'50kg',lbl:'CO₂/ICU day avoided'}]},
-    {impact:'Robotic surgery achieves 40% shorter recovery times with smaller incisions, less blood loss, and lower infection risk. Shorter procedures use 30% less anaesthetic gases — some of which (desflurane) have a global warming potential 2,500x that of CO₂.',stats:[{val:'40%',lbl:'Shorter recovery'},{val:'30%',lbl:'Less anaesthetic'},{val:'2,500x',lbl:'GWP of desflurane vs CO₂'}]},
-  ],
-  clinic:[
-    {impact:'GP suites with AI triage mean patients see the right clinician first time. Every avoided unnecessary specialist referral eliminates a journey and a waiting-list appointment — reducing NHS carbon by an estimated 5kg CO₂ per avoided referral.',stats:[{val:'5kg',lbl:'CO₂ per avoided referral'},{val:'Right',lbl:'Clinician first time'},{val:'AI',lbl:'Triage assistance'}]},
-    {impact:'Telemedicine eliminates patient travel entirely for consultations. The NHS estimates 30% of outpatient appointments could be remote — saving 850,000 tonnes CO₂/year from patient journeys nationally, plus reducing hospital parking and building demand.',stats:[{val:'30%',lbl:'Appointments can be remote'},{val:'850,000t',lbl:'NHS CO₂ saved potential'},{val:'Zero',lbl:'Travel for remote consult'}]},
-    {impact:'Talking therapy and peer support groups prevent escalation to crisis requiring emergency care. Every crisis admission averted saves £3,000 in NHS costs, approximately 150kg CO₂ from intensive care resources, and immeasurable human suffering.',stats:[{val:'£3,000',lbl:'Crisis admission cost'},{val:'150kg',lbl:'CO₂ per avoided crisis'},{val:'Prevention',lbl:'Over cure'}]},
-    {impact:'"Exercise prescription" is clinically proven to be as effective as antidepressants for mild-moderate depression. Active patients have 30% lower healthcare utilisation over 5 years — reducing the enormous carbon footprint of pharmaceutical manufacturing and disposal.',stats:[{val:'As effective',lbl:'As antidepressants'},{val:'30%',lbl:'Lower healthcare use'},{val:'Less',lbl:'Pharmaceutical carbon'}]},
-    {impact:'Nutrition support prevents diet-related conditions — diabetes, heart disease, obesity — that account for 60% of NHS expenditure. Every prevented chronic condition avoids decades of medication, monitoring, and hospital treatment, with enormous carbon savings.',stats:[{val:'60%',lbl:'NHS spend is diet-related'},{val:'Prevention',lbl:'Saves decades of treatment'},{val:'£',lbl:'And carbon savings'}]},
-    {impact:'High-throughput vaccination centres prevent infectious disease outbreaks that overwhelm hospitals. The 2020 pandemic demonstrated how 6 months of intensive hospital care for preventable disease causes catastrophic NHS carbon emissions from emergency operations.',stats:[{val:'Outbreaks',lbl:'Prevented'},{val:'NHS',lbl:'Capacity protected'},{val:'Community',lbl:'Immunity built'}]},
-  ],
-  school:[
-    {impact:'Flexible learning studios with moveable furniture adapt to different lesson modes without temperature changes. Smart sensors shut off heating and cooling when rooms are empty — cutting school energy by 35% vs fixed-layout schools.',stats:[{val:'35%',lbl:'Energy saving'},{val:'Sensors',lbl:'Auto-adjust spaces'},{val:'No',lbl:'Wasted conditioning'}]},
-    {impact:'Coding and AI education develops the human capital to solve climate change. A single engineer working on solar efficiency or battery technology could prevent millions of tonnes CO₂ over their career. Education is the highest-leverage climate investment.',stats:[{val:'Highest',lbl:'Leverage climate investment'},{val:'Future',lbl:'Climate engineers'},{val:'Skills',lbl:'For green economy'}]},
-    {impact:'Practical science labs reduce the need to ship materials and specimens — 40% of school science supply carbon comes from logistics. In-school 3D bioprinting eliminates the need to order biological specimens by post, cutting school supply chains dramatically.',stats:[{val:'40%',lbl:'Supply chain carbon cut'},{val:'In-school',lbl:'Bio-fabrication'},{val:'Less',lbl:'Shipped materials'}]},
-    {impact:'Arts and making with sustainable materials teaches circular economy principles experientially. Children who build with reclaimed materials are proven to make more sustainable consumer choices as adults — creating long-term demand for circular products.',stats:[{val:'Circular',lbl:'Economy skills'},{val:'Sustainable',lbl:'Consumer behaviour'},{val:'Creative',lbl:'Problem solving'}]},
-    {impact:'School gardens teach food literacy — where food comes from, how it grows, and why local food matters. Schools with growing programmes have students who choose plant-based foods 40% more often, reducing dietary carbon footprints from an early age.',stats:[{val:'40%',lbl:'More plant-based choices'},{val:'Food',lbl:'Literacy for life'},{val:'Lower',lbl:'Dietary carbon'}]},
-    {impact:'Kinetic floor panels in sports halls harvest energy from physical activity. While the output is modest (200W from a busy lesson), the educational impact is enormous — every student who bounces on the floor directly sees their movement create electricity.',stats:[{val:'200W',lbl:'Per active lesson'},{val:'Direct',lbl:'Energy visualisation'},{val:'Lifelong',lbl:'Energy awareness'}]},
-  ],
-  university:[
-    {impact:'Climate research institutes directly produce the knowledge needed to solve the climate crisis. University research has enabled solar prices to fall 89% in 10 years — the single biggest contributor to the global energy transition.',stats:[{val:'89%',lbl:'Solar price fall from research'},{val:'Direct',lbl:'Climate solutions'},{val:'Global',lbl:'Knowledge transfer'}]},
-    {impact:'University startup accelerators spin out clean technology companies at an average 3.8 per year. Each successful cleantech startup can scale to prevent millions of tonnes CO₂. Cambridge universities have spun out companies worth £15bn in cleantech alone.',stats:[{val:'3.8',lbl:'Spinouts/year'},{val:'£15bn',lbl:'Cambridge cleantech value'},{val:'Millions',lbl:'Tonnes CO₂ scaled'}]},
-    {impact:'A paperless digital library eliminates 500,000 pages of paper annually — saving 30 trees and 50,000L of water per year. But the bigger impact is on student access: open digital resources democratise education globally without printing or shipping anything.',stats:[{val:'500k',lbl:'Pages saved/year'},{val:'30',lbl:'Trees saved'},{val:'Global',lbl:'Access to knowledge'}]},
-    {impact:'University arts and culture creates the narratives and visions of sustainable futures that motivate public action. Climate psychologists show that compelling artistic visions of positive futures increase public support for ambitious climate policy by 35%.',stats:[{val:'35%',lbl:'More policy support'},{val:'Visions',lbl:'Of positive future'},{val:'Public',lbl:'Motivation'}]},
-    {impact:'Passive house student halls use 85% less heating energy. With 1,200 students staying 3 years each, this is 3,600 person-years of ultra-low-energy living — creating a generation who have experienced that deep comfort and near-zero energy use are compatible.',stats:[{val:'85%',lbl:'Less heating energy'},{val:'3,600',lbl:'Person-years of experience'},{val:'Comfortable',lbl:'Net-zero living'}]},
-    {impact:'The living lab campus tests smart city technologies at scale before they are deployed city-wide. This de-risks innovation — each successful campus trial saves millions in failed city deployments and accelerates technology adoption by 5-7 years.',stats:[{val:'5-7yr',lbl:'Faster adoption'},{val:'De-risked',lbl:'Innovation'},{val:'Real',lbl:'World testing'}]},
-  ],
+  Health:'244,67,54', Education:'255,112,67',
 };
 
 const BUILDINGS = [
@@ -1778,8 +1463,8 @@ function openInterior(b, key){
   document.getElementById('int-bigem').textContent=b.emoji;
   const pill=document.getElementById('int-zone-pill');
   pill.textContent=`${z.icon} ${z.name}`;
-  pill.style.background=`rgba(${z.rgb},.15)`;
-  pill.style.borderColor=`${z.accent}`;
+  pill.style.background=`rgba(${z.rgb},.18)`;
+  pill.style.borderColor=`rgba(${z.rgb},.35)`;
   pill.style.color=z.accent;
   document.getElementById('int-bname').textContent=b.name;
   document.getElementById('int-bsub').textContent=b.desc;
@@ -1788,7 +1473,7 @@ function openInterior(b, key){
   const iotSaved=b.iot.reduce((s,i)=>i.co2?s+Math.abs(parseFloat(i.co2)):s,0);
   document.getElementById('int-stats-row').innerHTML=`
     <div class="int-stat">
-      <div class="is-val" style="color:${b.co2<=0?'#2E7D32':'#C62828'}">${b.co2>0?'+':''}${b.co2}t</div>
+      <div class="is-val" style="color:${b.co2<=0?'#4CAF7D':'#EF5350'}">${b.co2>0?'+':''}${b.co2}t</div>
       <div class="is-lbl">CO₂/yr</div>
     </div>
     <div class="int-stat">
@@ -1848,51 +1533,24 @@ function renderIoTPanel(b,key,data,z){
   const scroll=document.getElementById('iot-scroll');
   scroll.innerHTML=b.iot.map((sensor,i)=>{
     const isOn=data?.iotActive?.includes(i)||false;
-    const climate=getIoTClimate(b.id,i);
+    // safe text for onclick attr — strip quotes
+    const safeText=(sensor.name+'. '+sensor.desc).replace(/['"]/g,'');
     return`<div class="iot-sensor${isOn?' on':''}" data-sidx="${i}">
       <div class="iot-s-top">
         <span class="iot-s-icon">${sensor.icon}</span>
         <span class="iot-s-name">${sensor.name}</span>
         <div class="iot-s-actions">
-          <button class="iot-s-voice" title="Hear explanation" onclick="event.stopPropagation();speakText('${(sensor.name+'. '+sensor.desc+'. '+(climate||'')).replace(/'/g,'').replace(/
-/g,' ')}')">🔊</button>
+          <button class="iot-s-voice" title="Hear explanation" onclick="event.stopPropagation();speak('${safeText}')">🔊</button>
           <div class="iot-toggle"></div>
         </div>
       </div>
       <div class="iot-s-desc">${sensor.desc}</div>
       ${sensor.co2?`<div class="iot-s-co2">🌱 Saves ${sensor.co2} CO₂</div>`:''}
-      ${climate?`<div class="iot-s-climate">${climate}</div>`:''}
     </div>`;
   }).join('');
   scroll.querySelectorAll('.iot-sensor').forEach(item=>{
     item.addEventListener('click',()=>toggleIoT(item,b,key));
   });
-}
-
-function getIoTClimate(bldgId,idx){
-  const climates={
-    park:['Microclimate sensors feed real-time data to the city cooling model, helping planners identify urban heat islands. Cooler parks reduce AC demand in nearby buildings by 8-12%, directly cutting city-wide carbon.','Smart irrigation driven by soil moisture data cuts water use by 35%. Water treatment and pumping consumes significant energy — every litre saved also saves carbon from the power grid.','Motion-activated LED paths use 70% less energy than always-on lighting. One park running smart lighting for 10 years saves 14 tonnes CO₂ versus conventional lighting.','Acoustic biodiversity monitoring builds the evidence base that protects urban nature. Cities with documented biodiversity are 3x more likely to secure green infrastructure funding.'],
-    forest:['LiDAR scanning provides verified carbon sequestration data that can be submitted for carbon credits, generating revenue that funds further tree planting.','Soil carbon sensors reveal the hidden carbon store — often equal to above-ground tree carbon. This data unlocks forest carbon finance worth £25-40 per tonne.','Acoustic recording enables early detection of invasive species that could destroy the forest. One invasive species event can release decades of stored carbon in months.','Early fire detection saves the entire forest carbon store. A forest fire releases 10-50 years of accumulated carbon sequestration in hours.'],
-    wetland:['Continuous water quality monitoring catches pollution events within minutes, preventing ecological damage that could take decades to recover — losing all carbon storage during that time.','Flood prediction using wetland sensors is 3x more accurate than traditional methods, enabling early warnings that prevent £millions in flood damage and the carbon cost of emergency response.','Wildlife population monitoring provides evidence for conservation policies. Wetlands with documented wildlife receive 60% more conservation funding on average.','Blue carbon monitoring measures CO₂ and methane flux — critical for wetland carbon accounting. Poorly managed wetlands can emit methane, so monitoring ensures net carbon benefit.'],
-    garden:['Soil health monitoring reduces fertiliser use by 40% by applying only what soil actually needs. Synthetic fertiliser production emits 6kg CO₂ per kg of nitrogen — cutting use has immediate climate benefit.','Solar grow lights active only when natural light is insufficient cut energy use by 60% vs always-on systems. Automated sensor control makes this saving effortless.','App-based plot booking data reveals usage patterns, enabling community garden managers to reduce car journeys for plot access by planning coordinated visiting windows.','AI pest detection reduces pesticide use by 80%. Pesticide manufacture is highly energy intensive — reducing demand directly cuts chemical industry emissions.'],
-    solar:['Per-panel irradiance monitoring identifies underperforming panels immediately, preventing 10-15% annual generation losses that would require additional panels to compensate.','Smart export metering enables the farm to earn revenue from surplus solar. This cross-subsidises energy storage investment that makes the entire grid greener.','AI battery management increases round-trip storage efficiency from 85% to 95%, meaning more solar energy is used rather than lost to heat during charge/discharge cycles.','Weather-integrated forecasting enables grid operators to reduce spinning reserve gas plants. One accurately forecast cloudy day avoided = 50 fewer tonnes of standby gas emissions.'],
-    wind:['City-wide anemometer networks improve wind forecast accuracy to 95%, enabling 40% more wind energy to be scheduled onto the grid. Better wind forecasting alone is worth £millions in avoided fossil fuel backup.','Vibration-based predictive maintenance catches bearing failures 3 months early. An unplanned turbine failure in winter — peak demand — can increase gas generation by 20MW for weeks.','Grid frequency-responsive turbines act as virtual power plants, stabilising the grid when large generators fail. This resilience function reduces the need for dedicated synchronous compensators — avoiding 500t CO₂ per unit.','Bird detection radar is essential for urban acceptance of wind energy. Community acceptance of urban wind is the single biggest barrier to deployment — solving it unlocks gigawatts of urban clean energy.'],
-    'ev-hub':['Occupancy sensing eliminates circling time. Cars searching for charging waste 150,000km per year at a busy hub — equivalent to 24 tonnes CO₂. Smart routing eliminates this entirely.','Smart load balancing prevents grid overload that would require fossil fuel peaker plants to switch on. Each avoided peaker activation saves 200 tonnes CO₂ per hour of operation.','V2G at scale transforms the EV fleet into the city's largest battery. 1,000 connected EVs absorb surplus renewable energy that would otherwise be curtailed — directly enabling more wind and solar to be built.','Dynamic pricing shifts 40% of charging to off-peak green hours. This time-of-use optimisation is worth £280/year per vehicle in reduced carbon intensity of electricity consumed.'],
-    techpark:['Occupancy-based lighting cuts energy waste in offices by 35%. Commercial buildings account for 18% of UK carbon emissions — smart lighting is the single most cost-effective retrofit available.','CO₂-controlled ventilation reduces HVAC energy by 30% while improving air quality. Better air quality in offices improves productivity by 11%, reducing economic pressure to commute further for better workplaces.','People flow data enables the building to reduce cleaning, catering, and security staffing during low-occupancy periods — cutting vehicle trips for service contractors by 25%.','Greywater recycling cuts mains water demand by 40%. Water treatment uses 0.5 kWh per cubic metre — this saving is equivalent to 50 solar panels in its energy impact.'],
-    market:['Carbon footprint shelf labels change purchasing behaviour — shoppers who see CO₂ data choose lower-carbon options 28% more often. Scaled across all shoppers, this is the highest-leverage behaviour change tool available.','Cold chain monitoring cuts food waste by 40%. A third of all food produced globally is wasted — eliminating this waste would remove 8% of global greenhouse gas emissions.','Bin weight sensors optimise waste collection routes, reducing garbage truck distances by 25%. Waste collection vehicles are typically diesel and among the hardest to electrify — route optimisation is the fastest decarbonisation path.','Greywater recycling reduces mains water demand by 60%. Market facilities use significant quantities of water for food preparation and cleaning — recycling transforms this from a linear drain to a circular system.'],
-    metro:['Crowd density AI enables train frequency to respond in real time to demand. Every unnecessary empty train run wastes 50kWh — smart scheduling eliminates 15% of total metro energy use.','Continuous track monitoring prevents derailments and track failures. A major track incident closes lines for weeks, forcing passengers onto cars — a single major incident can cause 5,000 tonnes of additional transport CO₂.','Regenerative braking provides 30-40% of station electricity needs. In a busy metro system, this equates to avoiding 1,200 tonnes of CO₂ per year per station compared to taking power from the grid.','Real-time app data increases journey confidence, directly translating to mode shift. Every 1% increase in metro ridership removes approximately 2,000 car journeys daily from the network.'],
-    brt:['GPS real-time tracking enables buses to maintain schedules with 95% punctuality. Reliable buses have 3x higher ridership than unpunctual ones — making each bus journey carry more passengers and reduce more car trips.','Transit Signal Priority reduces bus journey times by 15%, making BRT competitive with cars. When journey time parity is achieved, car-to-bus mode shift increases sharply.','Passenger load sensors enable operators to dispatch larger vehicles only when needed, reducing empty bus kilometres by 20%. Empty buses are the most carbon-inefficient form of public transit.','Off-peak depot charging at lowest grid carbon intensity reduces EV bus carbon by 25% versus random charging. This smart charging optimisation requires zero passenger impact.'],
-    cycling:['Green wave AI coordination means experienced cyclists never stop for red lights. Zero stop-start cycling reduces average journey energy from 15Wh/km to 10Wh/km on e-bikes — a 33% efficiency gain.','GPS hire bike location data enables rebalancing logistics to be optimised, reducing rebalancing van journeys by 40%. Rebalancing is the dirty secret of bike share — smart logistics keeps it genuinely green.','Rain sensor routing keeps cyclists dry, dramatically reducing the weather barrier to cycling. Studies show a single unpleasant rain experience reduces subsequent cycling frequency by 60% for casual cyclists.','Inductive count loops provide the justification for cycling investment. Every £1 of cycling infrastructure investment generates £5.50 in economic returns — but only if usage data proves it to finance committees.'],
-    'eco-apts':['Learning thermostats reduce heating by 23% in the first year by learning occupant patterns. After 3 years, savings reach 32% — with zero behaviour change required from residents.','Circadian lighting that adjusts through the day improves sleep quality by 15%, reducing sick days and pharmaceutical sleep aids. Healthy sleep reduces the social cost of chronic disease — a climate impact beyond energy.','Leak detection sensors prevent structural damage that would require carbon-intensive repair and reconstruction. One undetected leak in a building can cause £250,000 of damage and 15 tonnes embodied carbon in repairs.','Smart access eliminating key cards reduces plastic waste and eliminates locksmith visits. Operational savings fund the building management system that coordinates all other smart building functions.'],
-    'mixed-use':['Structural health monitoring extends building life by identifying maintenance needs early. Each year of extended building life avoids the 50 tonnes embodied carbon equivalent of demolition and new construction.','Pneumatic waste systems eliminate rubbish truck journeys within the building footprint entirely. One building with pneumatic waste removes 4 truck visits per day — 1,500 diesel journeys per year.','Traffic-free zones with ANPR bollards reduce car access while allowing emergency vehicles. A car-free mixed-use zone reduces local CO₂ by 35% from traffic elimination alone.','District water heat loops recover waste heat from building servers and data systems, providing domestic hot water at near-zero carbon. Data centre waste heat in London alone could heat 40,000 homes.'],
-    cityhall:['Digital twins model the carbon impact of policy decisions before implementation. A city that modelled its low-emission zone before launching it achieved 40% more emission reduction than cities that implemented without modelling.','LoRaWAN network hubs power the entire city's IoT infrastructure from one low-power installation. This backbone enables every sensor upgrade to deliver immediate city-wide benefits.','AI decision support identifies the 20% of interventions that deliver 80% of climate impact. Without AI prioritisation, cities waste 60% of green infrastructure budgets on low-impact projects.','Citizen 311 apps crowdsource city maintenance intelligence that no staff team could gather. Reported air quality data, flooding incidents, and illegal dumping feeds the digital twin — making it more accurate and actionable.'],
-    firestation:['City-wide fire sensor networks detect fires at the smouldering stage — before flashover. Early detection reduces fire size by 80%, proportionally reducing the carbon released from burning structures and contents.','GPS vehicle tracking with traffic light override reduces emergency response distances driven at high speed — the least fuel-efficient driving mode. Route optimisation reduces emergency fuel use by 15%.','Pre-loaded building data means firefighters can identify hazardous materials before entering. Faster, safer incidents reduce fuel consumption and enable smaller, more frequent crew deployments.','AI fire risk prediction enables pre-emptive deployment to high-risk areas before incidents. Positioned crews respond 3 minutes faster on average — each minute saves approximately 10% of structural damage and associated carbon.'],
-    hospital:['RTLS patient tracking eliminates "lost patient" incidents that require whole-ward searches. Efficient patient flow reduces average hospital stay by 0.4 days — saving 200kg CO₂ per episode in reduced heating and medical resources.','Air quality monitoring that identifies infection clusters early prevents ward outbreaks that force expensive deep cleans and temporary closures. Preventing one ward outbreak saves 50 tonnes CO₂ in isolation procedures and extra treatments.','Smart drug refrigerators prevent vaccine wastage, which is extraordinarily carbon-intensive to manufacture. The carbon cost of wasted vaccines globally is estimated at 2.2 million tonnes CO₂ equivalent per year.','Medical-grade solar provides 60% of hospital power needs. Hospitals operate 24/7 — renewable power that matches demand profiles through battery storage is particularly valuable in reducing carbon from always-on facilities.'],
-    clinic:['Wearable integration gives GPs real-world health data rather than snapshot consultations. Better data leads to more targeted treatment — reducing unnecessary prescribing by 20% and its associated pharmaceutical carbon.','AI symptom checker triage frees GP time, enabling clinics to see 30% more patients without additional staff or building space. More patients treated in existing spaces directly reduces per-patient building carbon intensity.','Energy-positive design means the clinic generates more electricity than it consumes. Surplus electricity exported to the grid displaces fossil fuel generation — a clinic becoming a net energy producer is a powerful community symbol.','Appointment reminder apps reduce no-shows by 40%. Empty appointment slots represent wasted heating, lighting, and staffing of clinical rooms — reducing them is one of the highest-impact operational efficiency measures.'],
-    school:['Classroom CO₂ sensors automatically maintain air quality at levels proven to improve learning. Students in well-ventilated classrooms score 14% higher on cognitive tests — smart ventilation is simultaneously a climate and educational intervention.','School solar arrays teach students about renewable energy while powering their school. When students see real-time generation data on classroom screens, renewable energy becomes concrete and personal rather than abstract.','Rainwater harvesting demonstrates the water cycle in real-time. Schools using harvested water for toilets and gardens reduce mains water use by 30% while providing a living lesson in sustainable water management.','AI learning platforms reduce the need for printed materials by 90%, eliminating textbook supply chains. One school switching to digital learning prevents 2 tonnes of paper, printing, and distribution carbon per year.'],
-    university:['Carbon neutral campus monitoring proves that research institutions can operate within a net-zero carbon budget. Each year of verified net-zero campus operation builds the evidence base that inspires other institutions to follow.','IoT testbed operations give researchers access to real-world data at scale, accelerating the development of smart city technologies by 5-7 years versus laboratory research alone.','Campus mobility AI reduces car journeys to university by 25% through optimised shared transport. Universities generate significant traffic — smart mobility reduces campus carbon by more than any building efficiency measure.','Zero water use ambition demonstrates that urban water neutrality is achievable. Every technique proven at university scale can be replicated across the city — the campus as a prototype for sustainable urban water systems.'],
-  };
-  return climates[bldgId]?.[idx]||null;
 }
 
 function toggleIoT(item,b,key){
@@ -1920,8 +1578,73 @@ function toggleIoT(item,b,key){
   if(!wasOn)toast(`⚡ ${b.iot[idx].name} activated!${b.iot[idx].co2?' Saves '+b.iot[idx].co2:''}`);
 }
 
-// Store current room context for voice/custom functions
+// Per-room climate impact data
+const ROOM_CLIMATE={
+  park:[
+    {i:'Trees absorb CO₂ through photosynthesis. A single mature tree sequesters 22kg of CO₂/year. Dense urban planting creates carbon sinks that offset nearby building emissions.',s:[{v:'22kg',l:'CO₂/tree/yr'},{v:'-8°C',l:'Cooling effect'},{v:'70%',l:'Less runoff'}]},
+    {i:'Active travel infrastructure reduces car dependency. Every 1km walked instead of driven saves 200g CO₂. Running tracks encourage local exercise, cutting transport emissions.',s:[{v:'200g',l:'CO₂ saved/km'},{v:'30%',l:'Fewer car trips'},{v:'+15%',l:'Active residents'}]},
+    {i:'Natural timber play equipment stores carbon throughout its life. Smart sensor monitoring reduces maintenance journeys by 40%, cutting vehicle emissions from park management.',s:[{v:'Zero',l:'Plastic waste'},{v:'40%',l:'Fewer maintenance trips'},{v:'Carbon+',l:'Timber stores CO₂'}]},
+    {i:'Smart irrigation reduces water extraction which requires significant energy. Cutting water use 35% saves 0.3 kWh per cubic metre — directly reducing power station emissions.',s:[{v:'35%',l:'Less water'},{v:'0.3kWh',l:'Energy/m³ saved'},{v:'60%',l:'Pipe loss cut'}]},
+    {i:'Native flower gardens support pollinators essential for food production. Without bees, 35% of food crops fail — requiring vastly more land and emissions to compensate.',s:[{v:'35%',l:'Crops need pollinators'},{v:'3x',l:'Bee population boost'},{v:'Zero',l:'Pesticides used'}]},
+    {i:'Inclusive accessible design means all community members use green spaces equally. Equal park access reduces health inequalities, cutting NHS/hospital costs by an estimated £2.1bn/year.',s:[{v:'100%',l:'Accessible'},{v:'£2.1bn',l:'Health savings'},{v:'40%',l:'Mental health improvement'}]},
+  ],
+  forest:[
+    {i:'A 500-tree urban forest sequesters 24 tonnes CO₂/year — equivalent to removing 5 cars from the road permanently. Mixed species forests resist pests and climate stress.',s:[{v:'24t',l:'CO₂/yr'},{v:'500+',l:'Trees'},{v:'5 cars',l:'Equivalent removal'}]},
+    {i:'Wildlife corridors are essential for species to migrate as climate zones shift. Without connected green infrastructure, 50% of species face local extinction by 2050.',s:[{v:'50%',l:'Species at risk'},{v:'3x',l:'Biodiversity boost'},{v:'Connected',l:'Habitats'}]},
+    {i:'Elevated boardwalks prevent soil compaction that destroys mycorrhizal networks. Healthy forest soil stores 3x more carbon than degraded soil.',s:[{v:'3x',l:'More soil carbon'},{v:'95%',l:'Soil network preserved'},{v:'Zero',l:'Ground disturbance'}]},
+    {i:'Forest understory creates a full vertical ecosystem. Each additional vegetation layer doubles the carbon stored per hectare and provides habitat for 10x more species.',s:[{v:'2x',l:'Carbon/hectare'},{v:'10x',l:'More species'},{v:'Full',l:'Ecosystem stacking'}]},
+    {i:'Mycorrhizal fungi transport carbon from tree roots into deep soil layers where it remains stable for centuries — often sequestering as much carbon as the trees themselves.',s:[{v:'Centuries',l:'Carbon stability'},{v:'Equal',l:'To above-ground'},{v:'Invisible',l:'But critical'}]},
+    {i:'University research plots measure actual carbon sequestration for verified reporting. Cities with green carbon data access international climate finance averaging £40/tonne CO₂.',s:[{v:'£40/t',l:'Carbon finance'},{v:'Verified',l:'Carbon data'},{v:'Science',l:'Based planning'}]},
+  ],
+  wetland:[
+    {i:'Reed beds filter 95% of pathogens and 80% of phosphates from stormwater — with no chemicals. This avoids 0.5 kWh per cubic metre from water treatment plant energy use.',s:[{v:'95%',l:'Pathogens removed'},{v:'0.5kWh',l:'Energy saved/m³'},{v:'Zero',l:'Chemicals used'}]},
+    {i:'Amphibian populations are bioindicators of ecosystem health. Healthy wetlands provide services worth £9,000/hectare/year in flood management and water purification.',s:[{v:'£9,000',l:'Value/ha/yr'},{v:'Bioindicator',l:'Ecosystem health'},{v:'Natural',l:'Flood management'}]},
+    {i:'Bioswales capture stormwater preventing urban flooding. One hectare absorbs 5,000 litres/hour, preventing flood damage averaging £30,000 per household.',s:[{v:'5,000L',l:'Absorbed/hr/ha'},{v:'£30k',l:'Flood damage avoided'},{v:'90%',l:'Runoff reduction'}]},
+    {i:'Waterfowl spread native seeds and control aquatic vegetation naturally, eliminating mechanical management that requires fuel and causes disturbance.',s:[{v:'Natural',l:'Seed dispersal'},{v:'Zero',l:'Mechanical management'},{v:'15+',l:'Nesting species'}]},
+    {i:'Riparian plants stabilise riverbanks preventing erosion that releases soil carbon into water. Bank erosion accounts for 60% of sediment in urban waterways.',s:[{v:'60%',l:'Erosion reduction'},{v:'Root network',l:'Natural defence'},{v:'Clear',l:'Water downstream'}]},
+    {i:'Wetland education builds environmental stewards. Schools using nature sites show 40% better science outcomes and higher rates of green career choices.',s:[{v:'40%',l:'Better outcomes'},{v:'3x',l:'Green career interest'},{v:'Free',l:'Outdoor classroom'}]},
+  ],
+  garden:[
+    {i:'Local food cuts food miles dramatically. The average meal travels 1,500km. Growing food in the city eliminates transport emissions — around 0.9kg CO₂ per kg of imported food replaced.',s:[{v:'1,500km',l:'Average food miles'},{v:'0.9kg',l:'CO₂/kg replaced'},{v:'Zero',l:'Local food miles'}]},
+    {i:'Drip irrigation delivers water directly to roots at 90% efficiency vs 60% for sprinklers. Less water pumped means less energy — saving 0.5 kWh per 1,000 litres.',s:[{v:'90%',l:'Water efficiency'},{v:'50%',l:'Less water used'},{v:'0.5kWh',l:'Energy/1,000L saved'}]},
+    {i:'Heritage seeds preserve genetic diversity — 93% of varieties have been lost in the last century. Diverse seeds are insurance against crop failures from climate change.',s:[{v:'93%',l:'Varieties lost globally'},{v:'Insurance',l:'Against climate failure'},{v:'Free',l:'Community exchange'}]},
+    {i:'Hot composting diverts food waste from landfill where it releases methane — a greenhouse gas 80x more potent than CO₂. One tonne composted prevents 0.5t CO₂ equivalent.',s:[{v:'0.5t',l:'CO₂e avoided/tonne'},{v:'80x',l:'Methane vs CO₂'},{v:'Rich',l:'Soil amendment'}]},
+    {i:'Rainwater harvesting reduces mains water demand. Every 1,000 litres collected saves 0.5 kWh and reduces pressure on reservoirs stressed by climate-driven droughts.',s:[{v:'0.5kWh',l:'Energy/1,000L saved'},{v:'Drought',l:'Resilience'},{v:'Free',l:'Water from sky'}]},
+    {i:'Shared tool libraries are the circular economy in action — 40 households sharing tools cuts manufacturing demand by 97.5%. Steel garden tool manufacture emits ~8kg CO₂ per tool.',s:[{v:'97.5%',l:'Manufacturing saved'},{v:'8kg',l:'CO₂ per tool made'},{v:'App',l:'Smart booking'}]},
+  ],
+  solar:[
+    {i:'Each bifacial solar panel generates ~540W and lasts 30+ years. Over its lifetime one panel produces 40,000 kWh of clean electricity — avoiding 16 tonnes CO₂ vs fossil grid power.',s:[{v:'40,000kWh',l:'Per panel lifetime'},{v:'16t',l:'CO₂ avoided/panel'},{v:'30+',l:'Years lifespan'}]},
+    {i:'4MWh battery storage captures surplus solar for evening use. Without storage, excess solar is wasted. Storage means the farm can power 2,000 homes through the night.',s:[{v:'4MWh',l:'Storage capacity'},{v:'2,000',l:'Homes overnight'},{v:'Zero',l:'Wasted surplus'}]},
+    {i:'Single-axis tracking increases solar yield by 25% by following the sun. This extra output requires no additional panels or land — making existing installations more productive.',s:[{v:'+25%',l:'More energy'},{v:'Same',l:'Land footprint'},{v:'AI',l:'Optimised tracking'}]},
+    {i:'Smart grid inverters enable real-time balancing. When solar produces surplus, it is exported and sold — generating revenue that funds further green investment.',s:[{v:'Revenue',l:'From export'},{v:'Grid',l:'Stability'},{v:'Real-time',l:'Balancing'}]},
+    {i:'Agrivoltaics combines solar with farming — increasing land productivity 60-70%. Shade from panels reduces crop water evaporation by 30% while generating electricity above.',s:[{v:'+60%',l:'Land productivity'},{v:'30%',l:'Less irrigation'},{v:'Dual',l:'Land use'}]},
+    {i:'Remote monitoring catches faults in seconds rather than weeks. Predictive maintenance reduces downtime by 70% and extends panel life by years.',s:[{v:'Seconds',l:'Fault detection'},{v:'70%',l:'Less downtime'},{v:'Years',l:'Extended life'}]},
+  ],
+  wind:[
+    {i:'Vertical axis turbines work in turbulent urban airflows that horizontal axis turbines cannot use. Cities create canyon effects that accelerate wind — making urban areas a unique energy resource.',s:[{v:'VAWT',l:'Urban optimised'},{v:'35dB',l:'Noise limit'},{v:'360°',l:'Wind capture'}]},
+    {i:'Variable speed drives extract maximum power from any wind speed. Without power electronics, turbines only work efficiently at one speed, wasting 30-40% of available wind energy.',s:[{v:'+30%',l:'More energy'},{v:'3-25m/s',l:'Operating range'},{v:'Optimised',l:'All speeds'}]},
+    {i:'Safe maintenance access enables annual inspections preventing failures. A single avoided failure saves 6 months downtime — equivalent to 300 MWh of missed clean energy.',s:[{v:'300MWh',l:'Saved by prevention'},{v:'Annual',l:'Inspections'},{v:'Zero',l:'Safety incidents'}]},
+    {i:'Acoustic engineering reduces noise to library levels. Community acceptance is the top barrier to urban wind — silent turbines unlock gigawatts of potential urban clean energy.',s:[{v:'35dB',l:'Boundary noise'},{v:'Library',l:'Quiet level'},{v:'More',l:'Urban sites viable'}]},
+    {i:'Met masts improve wind forecasting to 95% accuracy for 24 hours ahead. Accurate forecasting lets grid operators reduce fossil fuel reserves, cutting standby carbon emissions.',s:[{v:'95%',l:'Forecast accuracy'},{v:'24hr',l:'Ahead'},{v:'Less',l:'Fossil backup'}]},
+    {i:'Wildflower meadows under turbines increase pollinators which boost local food yields — proving industrial energy infrastructure and living ecosystems can coexist sustainably.',s:[{v:'3x',l:'Pollinator boost'},{v:'Living',l:'Ecosystem below'},{v:'Education',l:'Sustainability visible'}]},
+  ],
+  'ev-hub':[
+    {i:'EVs charged on renewable energy emit 70% less CO₂ over their lifetime than petrol vehicles — even accounting for battery manufacturing. Fast charging makes switching practical.',s:[{v:'70%',l:'Less lifetime CO₂'},{v:'150kW',l:'Charging speed'},{v:'30min',l:'Full charge'}]},
+    {i:'E-bikes are 50x more energy-efficient than cars. A 100km e-bike commute uses just 1kWh. Swapping one car commute per worker avoids 2.5 tonnes CO₂/year.',s:[{v:'50x',l:'More efficient than car'},{v:'1kWh',l:'Per 100km'},{v:'2.5t',l:'CO₂/commuter/yr'}]},
+    {i:'Co-located amenities eliminate separate journeys. Every trip consolidated removes a vehicle movement — a hub that replaces 3 journeys saves 0.6kg CO₂ per visit.',s:[{v:'3',l:'Journeys consolidated'},{v:'0.6kg',l:'CO₂ saved/visit'},{v:'Zero',l:'Extra journeys'}]},
+    {i:'Vehicle-to-Grid turns every connected EV into a grid battery. 1,000 EVs provide 60MWh of storage — worth £30 million in avoided grid-scale battery cost — enabling 40% more renewables.',s:[{v:'60MWh',l:'From 1,000 EVs'},{v:'40%',l:'More renewables'},{v:'Free',l:'vs £30M battery'}]},
+    {i:'The 300kW solar canopy powers all chargers during daylight. A self-powered hub means EVs charged here run entirely on sunshine — genuine zero-emission transport.',s:[{v:'300kW',l:'Solar generation'},{v:'Zero',l:'Grid carbon when sunny'},{v:'Self',l:'Powered'}]},
+    {i:'Dynamic pricing shifts charging to off-peak times when wind and solar surplus is highest. This demand flexibility is worth £2bn/year to the UK grid and reduces peaking gas plants.',s:[{v:'£2bn/yr',l:'Grid value'},{v:'Off-peak',l:'Clean surplus'},{v:'Less',l:'Peaking gas'}]},
+  ],
+};
+// Add remaining buildings with generic climate data
+['techpark','market','metro','brt','cycling','eco-apts','mixed-use','cityhall','firestation','hospital','clinic','school','university'].forEach(id=>{
+  if(!ROOM_CLIMATE[id])ROOM_CLIMATE[id]=[];
+});
+
 let _rdCtx={idx:0,b:null,key:null,z:null};
+const _customRooms={};
+function _ckey(bId,rIdx){return bId+'::'+rIdx;}
 
 function openRoomDetail(idx,b,key,z){
   const room=b.interior[idx];
@@ -1931,22 +1654,20 @@ function openRoomDetail(idx,b,key,z){
 
   document.getElementById('rd-em').textContent=room.icon;
   document.getElementById('rd-name').textContent=room.name;
-  document.getElementById('rd-bldg').textContent=`📍 Inside ${b.name} · ${z?.name||''}`;
-  document.getElementById('rd-body').innerHTML=`<p style="margin-bottom:12px">${room.desc}</p>`;
+  document.getElementById('rd-bldg').textContent='📍 Inside '+b.name+' · '+(z?.name||'');
+  document.getElementById('rd-body').innerHTML='<p>'+room.desc+'</p>';
 
-  // Climate impact section
-  const climateData=ROOM_CLIMATE[b.id]?.[idx];
-  const climateBox=document.getElementById('rd-climate');
-  const climateBody=document.getElementById('rd-climate-body');
-  const climateStats=document.getElementById('rd-climate-stats');
-  if(climateData){
-    climateBody.textContent=climateData.impact;
-    climateStats.innerHTML=(climateData.stats||[]).map(s=>
-      `<div class="rd-cstat"><div class="rd-cstat-val">${s.val}</div><div class="rd-cstat-lbl">${s.lbl}</div></div>`
+  // Climate impact
+  const cd=ROOM_CLIMATE[b.id]?.[idx];
+  const climBox=document.getElementById('rd-climate');
+  if(cd){
+    document.getElementById('rd-climate-body').textContent=cd.i;
+    document.getElementById('rd-climate-stats').innerHTML=(cd.s||[]).map(s=>
+      '<div class="rd-cstat"><div class="rd-cstat-val">'+s.v+'</div><div class="rd-cstat-lbl">'+s.l+'</div></div>'
     ).join('');
-    climateBox.style.display='';
+    climBox.style.display='';
   } else {
-    climateBox.style.display='none';
+    climBox.style.display='none';
   }
 
   // Custom rooms
@@ -1957,36 +1678,25 @@ function openRoomDetail(idx,b,key,z){
 
   const btn=document.getElementById('rd-sel-btn');
   btn.textContent=isSel?'✓ Added to My City Design':'+ Add to My City Design';
-  btn.className=`rd-select-btn${isSel?' selected':''}`;
+  btn.className='rd-select-btn'+(isSel?' selected':'');
   btn.onclick=()=>{
     if(!key)return;
     const s=G.grid[key].roomsSel;
     const p=s.indexOf(idx);
     if(p>-1){s.splice(p,1);btn.textContent='+ Add to My City Design';btn.classList.remove('selected');}
-    else{s.push(idx);btn.textContent='✓ Added to My City Design';btn.classList.add('selected');toast('✅ '+room.name+' added to your design!');}
-    const card=document.querySelector(`.room-card[data-ridx="${idx}"]`);
-    if(card) card.classList.toggle('sel',G.grid[key].roomsSel.includes(idx));
+    else{s.push(idx);btn.textContent='✓ Added';btn.classList.add('selected');toast('✅ '+room.name+' added!');}
+    const card=document.querySelector('.room-card[data-ridx="'+idx+'"]');
+    if(card)card.classList.toggle('sel',G.grid[key].roomsSel.includes(idx));
   };
 
   document.getElementById('room-detail').classList.add('open');
-  document.getElementById('room-detail').scrollTop=0;
   document.getElementById('rd-wrap').scrollTop=0;
 }
 
-// ── Custom rooms (per building + per room index) ──
-const _customRooms={};
-function _customKey(bldgId,roomIdx){return `${bldgId}::${roomIdx}`;}
-
-function renderCustomRooms(bldgId,roomIdx){
-  const key=_customKey(bldgId,roomIdx);
-  const rooms=_customRooms[key]||[];
-  const container=document.getElementById('rd-custom-rooms');
-  container.innerHTML=rooms.map((r,i)=>
-    `<div class="rd-custom-room">
-      <span class="rcr-em">${r.em||'💡'}</span>
-      <span class="rcr-name"><strong>${r.name}</strong>${r.desc?' — '+r.desc:''}</span>
-      <button class="rcr-del" onclick="deleteCustomRoom('${bldgId}',${roomIdx},${i})" title="Remove">✕</button>
-    </div>`
+function renderCustomRooms(bId,rIdx){
+  const rooms=_customRooms[_ckey(bId,rIdx)]||[];
+  document.getElementById('rd-custom-rooms').innerHTML=rooms.map((r,i)=>
+    '<div class="rd-custom-room"><span class="rcr-em">'+(r.em||'💡')+'</span><span class="rcr-name"><strong>'+r.name+'</strong>'+(r.desc?' — '+r.desc:'')+'</span><button class="rcr-del" onclick="delCustomRoom(event,this,'+i+')">✕</button></div>'
   ).join('');
 }
 
@@ -1996,102 +1706,78 @@ function addCustomRoom(){
   const desc=document.getElementById('rd-custom-desc').value.trim();
   if(!name){document.getElementById('rd-custom-name').focus();return;}
   const {b,idx}=_rdCtx;
-  const key=_customKey(b.id,idx);
-  if(!_customRooms[key])_customRooms[key]=[];
-  _customRooms[key].push({em,name,desc});
+  const k=_ckey(b.id,idx);
+  if(!_customRooms[k])_customRooms[k]=[];
+  _customRooms[k].push({em,name,desc});
   renderCustomRooms(b.id,idx);
   document.getElementById('rd-custom-emoji').value='';
   document.getElementById('rd-custom-name').value='';
   document.getElementById('rd-custom-desc').value='';
-  toast('💡 "'+name+'" added to your design!');
+  toast('💡 "'+name+'" added!');
 }
 
-function deleteCustomRoom(bldgId,roomIdx,i){
-  const key=_customKey(bldgId,roomIdx);
-  if(_customRooms[key])_customRooms[key].splice(i,1);
-  renderCustomRooms(bldgId,roomIdx);
+function delCustomRoom(e,btn,i){
+  e.stopPropagation();
+  const {b,idx}=_rdCtx;
+  const k=_ckey(b.id,idx);
+  if(_customRooms[k])_customRooms[k].splice(i,1);
+  renderCustomRooms(b.id,idx);
 }
 
-// ── Voice: speakText ──
-function speakText(text){speak(text);}
-
-// ── Voice: Room detail ──
 function speakRoomDetail(){
   const {idx,b}=_rdCtx;
   const room=b.interior[idx];
-  const climate=ROOM_CLIMATE[b.id]?.[idx];
-  let text=`${room.name}. ${room.desc}`;
-  if(climate)text+=` Climate impact: ${climate.impact}`;
-  speak(text);
+  const cd=ROOM_CLIMATE[b.id]?.[idx];
+  let txt=room.name+'. '+room.desc;
+  if(cd)txt+=' Climate impact: '+cd.i;
+  speak(txt);
 }
 
-// ── Voice: IoT "explain all" ──
 function speakAllIoT(){
   const {b}=_rdCtx;
   if(!b)return;
-  const parts=b.iot.map((s,i)=>{
-    const cli=getIoTClimate(b.id,i);
-    return `${s.name}: ${s.desc}${s.co2?' Saves '+s.co2+' CO2.':''} ${cli||''}`;
-  });
-  speak(`Smart IoT systems for ${b.name}. ${parts.join(' Next: ')}`);
+  speak('Smart IoT systems for '+b.name+'. '+b.iot.map(s=>s.name+': '+s.desc+(s.co2?' Saves '+s.co2+' CO2.':'')).join(' Next: '));
 }
 
-// ── Voice: Building impact ──
 function speakBuildingImpact(){
   const {b}=_rdCtx;
   if(!b)return;
   const co2=document.getElementById('imp-co2').textContent;
   const live=document.getElementById('imp-live').textContent;
   const smart=document.getElementById('imp-smart').textContent;
-  const mob=document.getElementById('imp-mob').textContent;
-  speak(`Building impact for ${b.name}. Carbon: ${co2} per year. Liveability score: ${live}. Smart tech score: ${smart}. Mobility: ${mob}. ${b.fact}`);
+  speak('Building impact for '+b.name+'. Carbon: '+co2+' per year. Liveability: '+live+'. Smart tech: '+smart+'. '+b.fact);
 }
 
-// ── Voice: Right stats panel sections ──
 function speakStatSection(section){
   const city=G.cityName||'your city';
   if(section==='co2'){
     const v=document.getElementById('co2-num').textContent;
-    const status=parseFloat(v)<0?'Your city is carbon negative — great work! You are absorbing more CO2 than you emit.':parseFloat(v)===0?'Your city is carbon neutral.':'Your city currently emits '+v+' tonnes of CO2 per year. Add more green spaces and renewable energy to reduce this.';
-    speak(`Carbon balance for ${city}. Current total: ${v} tonnes CO2 per year. ${status}`);
+    const status=parseFloat(v)<0?'Carbon negative — great work! Absorbing more CO2 than you emit.':parseFloat(v)===0?'Carbon neutral.':'Emitting '+v+' tonnes CO2 per year. Add green spaces and renewables to reduce this.';
+    speak('Carbon balance for '+city+'. Current total: '+v+' tonnes CO2 per year. '+status);
   } else if(section==='metrics'){
     const g=document.getElementById('m-green').textContent;
     const s=document.getElementById('m-smart').textContent;
     const l=document.getElementById('m-live').textContent;
     const m=document.getElementById('m-mob').textContent;
-    speak(`City metrics for ${city}. Greenness: ${g} — this measures parks, forests and natural areas. Smart tech: ${s} — based on IoT sensors and connected buildings. Liveability: ${l} — how comfortable and healthy the city is for residents. Mobility: ${m} — quality of transport connections.`);
+    speak('City metrics for '+city+'. Greenness '+g+': parks, forests and natural areas. Smart tech '+s+': IoT sensors and connected buildings. Liveability '+l+': comfort and health for residents. Mobility '+m+': quality of transport connections.');
   } else if(section==='challenge'){
     const ch=document.querySelector('#challenge-card .ch-title');
     const cb=document.querySelector('#challenge-card .ch-body');
-    const cr=document.querySelector('#challenge-card .ch-rew');
-    if(ch)speak(`Current challenge: ${ch.textContent}. ${cb?.textContent||''} ${cr?.textContent||''}`);
+    if(ch)speak('Current challenge: '+ch.textContent+'. '+(cb?cb.textContent:''));
   } else if(section==='scores'){
     const rows=[...document.querySelectorAll('#score-rows .sc-row')];
-    if(rows.length){
-      const text=rows.map(r=>r.querySelector('.sc-nm')?.textContent+': '+r.querySelector('.sc-pts')?.textContent+' points').join('. ');
-      speak(`Scores: ${text}`);
-    }
+    if(rows.length)speak('Scores: '+rows.map(r=>(r.querySelector('.sc-nm')?.textContent||'')+': '+(r.querySelector('.sc-pts')?.textContent||'')+' points').join('. '));
   } else if(section==='iot'){
     const items=[...document.querySelectorAll('#iot-feed .iol-item')];
-    if(items.length){
-      const text=items.map(r=>r.querySelector('.iol-nm')?.textContent+' active in '+r.querySelector('.iol-bldg')?.textContent).join('. ');
-      speak(`Active IoT systems: ${text}`);
-    } else {
-      speak('No IoT systems are active yet. Open a building and toggle on Smart IoT sensors to start reducing CO2 and earning Smart Tech points.');
-    }
+    if(items.length)speak('Active IoT: '+items.map(r=>(r.querySelector('.iol-nm')?.textContent||'')+' in '+(r.querySelector('.iol-bldg')?.textContent||'')).join('. '));
+    else speak('No IoT systems active yet. Open a building and toggle on Smart IoT sensors to start reducing CO2.');
   }
 }
 
-// ── Voice: individual metrics ──
 function speakMetric(metric){
-  const explanations={
-    green:'Greenness measures the proportion of your city covered by parks, forests, wetlands and gardens. Higher greenness cools the city, improves air quality, and supports biodiversity.',
-    smart:'Smart Tech score reflects how many IoT sensors and intelligent systems your buildings have active. Higher smart tech enables predictive maintenance, energy optimisation, and real-time city management.',
-    live:'Liveability measures how comfortable, healthy and pleasant the city is for residents — based on green space access, healthcare, education, and community facilities.',
-    mob:'Mobility measures transport quality — how easily people can move around without private cars. Metro, bus, cycling infrastructure and EV charging all improve this score.'
-  };
+  const exp={green:'Greenness measures city coverage by parks, forests, wetlands and gardens. Higher greenness cools the city, improves air quality, and supports biodiversity.',smart:'Smart Tech score reflects how many IoT sensors and intelligent systems your buildings have active. Higher score enables predictive maintenance and real-time city management.',live:'Liveability measures how comfortable and healthy the city is for residents — based on green space, healthcare, education, and community facilities.',mob:'Mobility measures transport quality — how easily people move without private cars. Metro, buses, cycling and EV charging all improve this score.'};
   const val=document.getElementById('m-'+metric)?.textContent||'0%';
-  speak(`${explanations[metric]} Your current score is ${val}.`);
+  speak((exp[metric]||'')+' Your current score is '+val+'.');
 }
 document.getElementById('rd-close').onclick=()=>document.getElementById('room-detail').classList.remove('open');
 document.getElementById('int-back-btn').onclick=()=>{
