@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "buildCommand": null,
+  "outputDirectory": ".",
+  "routes": [
+    { "src": "/", "dest": "/index.html" },
+    { "src": "/faq", "dest": "/faq.html" },
+    { "src": "/help", "dest": "/help.html" },
+    { "src": "/facts", "dest": "/facts.html" },
+    { "src": "/about", "dest": "/about.html" },
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
+}
