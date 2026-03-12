@@ -1,29 +1,13 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script>
-    // SafeQuest uses BrowserRouter with basename="/SafeQuest/safety_game/safequest/dist"
-    // If URL ends with /index.html, do a hard redirect to the clean directory URL.
-    // Vercel will serve this same index.html for that directory URL via rewrites,
-    // and React Router will correctly resolve path "/" → LandingPage.
-    (function() {
-      var p = window.location.pathname;
-      if (p.endsWith('/index.html')) {
-        var clean = p.slice(0, -11); // remove '/index.html'
-        window.location.replace(clean + window.location.search + window.location.hash);
-      }
-    })();
-  </script>
   <script type="module" crossorigin src="./assets/index-DKAhZsEj.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index-DFG3H4Pc.css">
 </head>
-
 <body>
   <div id="root"></div>
 </body>
-
 </html>
