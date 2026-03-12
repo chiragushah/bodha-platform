@@ -1244,7 +1244,8 @@ function startGame(city,players){
   buildGrid();buildPalette();
   updateTopBar();updateRightPanel();
   renderChallenge();buildScoreRows();buildIoTFeed();
-  setTimeout(()=>document.getElementById('sc-fab').classList.add('vis'),3000);
+  // Show tutorial after short delay so the grid renders first
+  setTimeout(showTut, 600);
 }
 
 // ── GRID ─────────────────────────────────────────────────────────
@@ -2093,11 +2094,7 @@ if(window.speechSynthesis){
   window.speechSynthesis.getVoices();
   window.speechSynthesis.addEventListener('voiceschanged',()=>{_bestVoice=null;});
 }
-if(document.readyState==='loading'){
-  document.addEventListener('DOMContentLoaded',()=>setTimeout(showTut,900));
-}else{
-  setTimeout(showTut,900);
-}
+// Tutorial is launched by startGame() after the grid renders
 </script>
 </body>
 </html>
