@@ -11,6 +11,326 @@
 
 <body>
   <div id="root"></div>
+<script>(function() {
+  // ── EcoQuest™ Interactive Voice Tutorial ───────────────────────
+  const STEPS = [
+    {
+      emoji: "🌍",
+      title: "Welcome to EcoQuest™!",
+      speaker: "Terra",
+      speakerEmoji: "🌿",
+      content: "Hello, Earth Guardian! I'm Terra, your guide through EcoQuest. Our planet needs heroes like you! Together we'll take on real environmental missions — from cleaning rivers to rescuing coral reefs.",
+      tip: "Every action you take in this game is inspired by real conservation science!"
+    },
+    {
+      emoji: "🦸",
+      title: "Choose Your Guardian",
+      speaker: "Terra",
+      speakerEmoji: "🌿",
+      content: "Pick your Eco Guardian! Play as Marina the Ocean Guardian 🌊, Oakley the Forest Protector 🌳, Sunny the Solar Champion ☀️, Glacier the Arctic Defender ❄️, and 6 more! Each has a unique power tied to their element.",
+      tip: "Your Guardian's element matches certain mission cards — choose wisely for your team!"
+    },
+    {
+      emoji: "🎯",
+      title: "Your Mission",
+      speaker: "Terra",
+      speakerEmoji: "🌿",
+      content: "Work as a team to complete missions like 'Clean the River', 'Save the Ocean', 'Plant a Forest', and 'Stop Deforestation'. Complete missions before Earth's health runs out — you win together or lose together!",
+      tip: "Harder missions give more points — but they need more action cards to complete!"
+    },
+    {
+      emoji: "🃏",
+      title: "The 5 Action Types",
+      speaker: "Terra",
+      speakerEmoji: "🌿",
+      content: "Play Action cards to complete missions. There are 5 types: ♻️ Recycle — reduce waste. 🌱 Restore — heal nature. 📚 Educate — spread awareness. 💡 Innovate — invent green solutions. 🤝 Collaborate — team up for big impact!",
+      tip: "All 5 action types are real strategies used by environmentalists today!"
+    },
+    {
+      emoji: "🔄",
+      title: "Taking Your Turn",
+      speaker: "Terra",
+      speakerEmoji: "🌿",
+      content: "On your turn: First, draw cards from the deck. Then, play cards from your hand onto active missions. Match the card type to the mission's requirements. Complete a mission to earn points and restore Earth's health!",
+      tip: "You can pass cards to teammates — collaboration is the key mechanic!"
+    },
+    {
+      emoji: "🌱",
+      title: "Real Science Popups",
+      speaker: "Terra",
+      speakerEmoji: "🌿",
+      content: "After each card you play, a Science Popup appears explaining the REAL environmental impact. You'll learn WHY recycling reduces carbon emissions, HOW coral reefs sustain 25% of ocean life, and fascinating Earth facts!",
+      tip: "These facts are 100% real. You'll be able to impress your friends and family!"
+    },
+    {
+      emoji: "🏆",
+      title: "Ready, Guardian?",
+      speaker: "Terra",
+      speakerEmoji: "🌿",
+      content: "The Earth is counting on your team! Complete missions, earn points, and restore nature's balance. Remember — every environmental action, no matter how small, creates a ripple effect that changes the world. Let's go!",
+      tip: "Play cooperatively — the best score comes from great teamwork, not solo play!"
+    }
+  ];
+
+  let currentStep = 0;
+  let voiceEnabled = true;
+  let speaking = false;
+
+  function speak(text) {
+    if (!voiceEnabled || !window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const utt = new SpeechSynthesisUtterance(text);
+    utt.rate = 0.88; utt.pitch = 1.1; utt.volume = 1;
+    const voices = window.speechSynthesis.getVoices();
+    const voice = voices.find(v => v.lang.includes('en') && v.name.toLowerCase().includes('female'))
+                || voices.find(v => v.name.toLowerCase().includes('samantha'))
+                || voices.find(v => v.lang.startsWith('en'));
+    if (voice) utt.voice = voice;
+    speaking = true;
+    utt.onend = () => { speaking = false; };
+    window.speechSynthesis.speak(utt);
+  }
+
+  function stopSpeech() {
+    window.speechSynthesis && window.speechSynthesis.cancel();
+    speaking = false;
+  }
+
+  function buildOverlay() {
+    const el = document.createElement('div');
+    el.id = 'eq-tutorial-overlay';
+    el.innerHTML = `
+      <style>
+        #eq-tutorial-overlay {
+          position: fixed; inset: 0; z-index: 99999;
+          background: rgba(10, 30, 15, 0.82);
+          backdrop-filter: blur(6px);
+          display: flex; align-items: center; justify-content: center;
+          font-family: 'DM Sans', sans-serif;
+          animation: eqFadeIn 0.4s ease;
+        }
+        @keyframes eqFadeIn { from { opacity:0 } to { opacity:1 } }
+        #eq-tutorial-card {
+          background: #fff;
+          border-radius: 24px;
+          max-width: 560px; width: 92%;
+          box-shadow: 0 24px 64px rgba(26,77,53,0.35);
+          overflow: hidden;
+          animation: eqSlideUp 0.4s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        @keyframes eqSlideUp { from { transform: translateY(40px); opacity:0 } to { transform: none; opacity:1 } }
+        #eq-tut-header {
+          background: linear-gradient(135deg, #1A4D35 0%, #2D7D5A 60%, #4CAF7D 100%);
+          padding: 28px 28px 20px;
+          position: relative;
+        }
+        #eq-tut-badge {
+          display: inline-flex; align-items: center; gap: 6px;
+          background: rgba(255,255,255,0.15);
+          color: white; font-size: 0.72rem; font-weight: 700;
+          letter-spacing: 0.1em; text-transform: uppercase;
+          padding: 4px 12px; border-radius: 999px; margin-bottom: 12px;
+        }
+        #eq-tut-step-emoji { font-size: 3rem; display: block; margin-bottom: 8px; }
+        #eq-tut-title {
+          font-family: 'Cormorant Garamond', Georgia, serif;
+          font-size: 1.7rem; font-weight: 700; color: white; margin: 0;
+          line-height: 1.2;
+        }
+        #eq-tut-close {
+          position: absolute; top: 16px; right: 16px;
+          background: rgba(255,255,255,0.2); border: none;
+          border-radius: 50%; width: 32px; height: 32px;
+          color: white; cursor: pointer; font-size: 1rem;
+          display: flex; align-items: center; justify-content: center;
+          transition: background 0.2s;
+        }
+        #eq-tut-close:hover { background: rgba(255,255,255,0.35); }
+        #eq-tut-body { padding: 24px 28px; }
+        #eq-tut-speaker {
+          display: flex; align-items: center; gap: 10px;
+          margin-bottom: 14px;
+        }
+        #eq-tut-speaker-avatar {
+          width: 40px; height: 40px; border-radius: 50%;
+          background: linear-gradient(135deg, #E8F5EE, #A8D8EA);
+          display: flex; align-items: center; justify-content: center;
+          font-size: 1.3rem; border: 2px solid #4CAF7D;
+          flex-shrink: 0;
+        }
+        #eq-tut-speaker-name {
+          font-size: 0.78rem; font-weight: 700; color: #1A4D35;
+          text-transform: uppercase; letter-spacing: 0.07em;
+        }
+        #eq-tut-content {
+          font-size: 0.97rem; color: #2C3E30; line-height: 1.7;
+          margin-bottom: 16px;
+        }
+        #eq-tut-tip {
+          background: linear-gradient(135deg, #E8F5EE, #EBF8FD);
+          border-left: 3px solid #4CAF7D;
+          border-radius: 0 10px 10px 0;
+          padding: 10px 14px;
+          font-size: 0.84rem; color: #1A4D35;
+          font-style: italic;
+        }
+        #eq-tut-tip::before { content: "💡 Tip: "; font-style: normal; font-weight: 700; }
+        #eq-tut-progress {
+          display: flex; align-items: center; gap: 5px;
+          padding: 0 28px; margin-bottom: 4px;
+        }
+        .eq-dot {
+          width: 7px; height: 7px; border-radius: 50%;
+          background: #E0EDE5; transition: all 0.3s;
+        }
+        .eq-dot.active { background: #4CAF7D; transform: scale(1.4); }
+        .eq-dot.done { background: #2D7D5A; }
+        #eq-tut-footer {
+          padding: 16px 28px 24px;
+          display: flex; gap: 10px; align-items: center;
+        }
+        .eq-btn-nav {
+          flex: 1; padding: 12px;
+          border-radius: 12px; border: none;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 0.92rem; font-weight: 700;
+          cursor: pointer; transition: all 0.2s;
+        }
+        #eq-btn-prev {
+          background: #F0F7F4; color: #2D7D5A;
+          border: 2px solid #D4EEE2;
+        }
+        #eq-btn-prev:hover { background: #D4EEE2; }
+        #eq-btn-next {
+          background: linear-gradient(135deg, #2D7D5A, #4CAF7D);
+          color: white;
+          box-shadow: 0 4px 16px rgba(76,175,125,0.35);
+        }
+        #eq-btn-next:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(76,175,125,0.45); }
+        #eq-btn-voice {
+          width: 44px; height: 44px; border-radius: 50%;
+          border: 2px solid #D4EEE2;
+          background: white; cursor: pointer;
+          font-size: 1.2rem; flex-shrink: 0;
+          transition: all 0.2s; display: flex;
+          align-items: center; justify-content: center;
+        }
+        #eq-btn-voice:hover { background: #E8F5EE; border-color: #4CAF7D; }
+        #eq-tut-counter {
+          font-size: 0.75rem; color: #7DA898; font-weight: 600;
+          text-align: center; margin-bottom: 8px;
+        }
+      </style>
+      <div id="eq-tutorial-card">
+        <div id="eq-tut-header">
+          <button id="eq-tut-close">✕</button>
+          <div id="eq-tut-badge">🌿 EcoQuest™ Tutorial</div>
+          <span id="eq-tut-step-emoji"></span>
+          <h2 id="eq-tut-title"></h2>
+        </div>
+        <div id="eq-tut-body">
+          <div id="eq-tut-speaker">
+            <div id="eq-tut-speaker-avatar"></div>
+            <div id="eq-tut-speaker-name"></div>
+          </div>
+          <p id="eq-tut-content"></p>
+          <div id="eq-tut-tip"></div>
+        </div>
+        <div id="eq-tut-counter"></div>
+        <div id="eq-tut-progress"></div>
+        <div id="eq-tut-footer">
+          <button class="eq-btn-nav" id="eq-btn-prev">← Back</button>
+          <button id="eq-btn-voice">🔊</button>
+          <button class="eq-btn-nav" id="eq-btn-next">Next →</button>
+        </div>
+      </div>
+    `;
+    return el;
+  }
+
+  function renderStep(n) {
+    const step = STEPS[n];
+    document.getElementById('eq-tut-step-emoji').textContent = step.emoji;
+    document.getElementById('eq-tut-title').textContent = step.title;
+    document.getElementById('eq-tut-speaker-avatar').textContent = step.speakerEmoji;
+    document.getElementById('eq-tut-speaker-name').textContent = step.speaker + ' — Your Guide';
+    document.getElementById('eq-tut-content').textContent = step.content;
+    document.getElementById('eq-tut-tip').textContent = step.tip;
+    document.getElementById('eq-tut-counter').textContent = `Step ${n + 1} of ${STEPS.length}`;
+
+    // Dots
+    const prog = document.getElementById('eq-tut-progress');
+    prog.innerHTML = STEPS.map((_, i) =>
+      `<div class="eq-dot ${i === n ? 'active' : i < n ? 'done' : ''}"></div>`
+    ).join('');
+
+    // Buttons
+    const prev = document.getElementById('eq-btn-prev');
+    const next = document.getElementById('eq-btn-next');
+    prev.style.opacity = n === 0 ? '0.3' : '1';
+    prev.disabled = n === 0;
+    next.textContent = n === STEPS.length - 1 ? '🌍 Start Playing!' : 'Next →';
+
+    // Voice
+    speak(`${step.title}. ${step.content}. Tip: ${step.tip}`);
+  }
+
+  function init() {
+    // Wait for voices to load
+    setTimeout(() => {
+      if (window.speechSynthesis) window.speechSynthesis.getVoices();
+    }, 100);
+
+    const overlay = buildOverlay();
+    document.body.appendChild(overlay);
+    renderStep(0);
+
+    document.getElementById('eq-tut-close').onclick = () => {
+      stopSpeech();
+      overlay.remove();
+    };
+
+    document.getElementById('eq-btn-prev').onclick = () => {
+      if (currentStep > 0) { currentStep--; renderStep(currentStep); }
+    };
+
+    document.getElementById('eq-btn-next').onclick = () => {
+      if (currentStep < STEPS.length - 1) {
+        currentStep++;
+        renderStep(currentStep);
+      } else {
+        stopSpeech();
+        overlay.remove();
+      }
+    };
+
+    document.getElementById('eq-btn-voice').onclick = () => {
+      voiceEnabled = !voiceEnabled;
+      document.getElementById('eq-btn-voice').textContent = voiceEnabled ? '🔊' : '🔇';
+      if (!voiceEnabled) stopSpeech();
+      else speak(`${STEPS[currentStep].title}. ${STEPS[currentStep].content}`);
+    };
+
+    // Keyboard nav
+    document.addEventListener('keydown', function handler(e) {
+      if (!document.getElementById('eq-tutorial-overlay')) {
+        document.removeEventListener('keydown', handler);
+        return;
+      }
+      if (e.key === 'ArrowRight' || e.key === 'Enter') document.getElementById('eq-btn-next').click();
+      if (e.key === 'ArrowLeft') document.getElementById('eq-btn-prev').click();
+      if (e.key === 'Escape') document.getElementById('eq-tut-close').click();
+    });
+  }
+
+  // Launch when DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    setTimeout(init, 800);
+  }
+})();
+</script>
 </body>
 
 </html>
