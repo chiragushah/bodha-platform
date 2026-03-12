@@ -9,317 +9,7 @@
 </head>
 <body>
   <div id="root"></div>
-<script>(function() {
-  // ── SafeQuest™ Interactive Voice Tutorial ───────────────────────
-  const STEPS = [
-    {
-      emoji: "🛡️",
-      title: "Welcome to SafeQuest™!",
-      speaker: "Aria",
-      speakerEmoji: "🛡️",
-      content: "Hi there! I'm Aria, your Safety Guide. SafeQuest turns everyday safety habits into an exciting adventure! Earn SafeCoins, unlock badges, and climb the leaderboard — all while building life-saving skills.",
-      tip: "SafeQuest is used in real schools and workplaces to build genuine safety culture!"
-    },
-    {
-      emoji: "🗺️",
-      title: "Explore Safety Zones",
-      speaker: "Aria",
-      speakerEmoji: "🛡️",
-      content: "SafeQuest has multiple Safety Zones to explore: 🏠 Home Safety, 🏢 Office Hygiene, 🏫 School Safety, 💊 Health Habits, and more! Each zone has unique challenges and scenarios tailored to that environment.",
-      tip: "Start with the zone most relevant to you — school, home, or workplace!"
-    },
-    {
-      emoji: "✅",
-      title: "Daily Challenges",
-      speaker: "Aria",
-      speakerEmoji: "🛡️",
-      content: "Every day, new challenges appear! Complete tasks like Hand Hygiene, Desk Cleaning, Electrical Safety, Slip Prevention, and Emergency Drills. Each completed challenge earns you SafeCoins you can spend in the marketplace.",
-      tip: "Completing challenges daily builds real muscle memory for safety habits!"
-    },
-    {
-      emoji: "🪙",
-      title: "Earn SafeCoins",
-      speaker: "Aria",
-      speakerEmoji: "🛡️",
-      content: "SafeCoins are your reward currency! Earn coins by completing challenges, scenarios, and learning modules. Simple habits like Hand Hygiene earn 10 coins, while complex emergency scenarios earn up to 20 coins. Coins add up fast!",
-      tip: "Check the marketplace — you can redeem coins for real safety equipment and certificates!"
-    },
-    {
-      emoji: "🏅",
-      title: "Unlock Achievements",
-      speaker: "Aria",
-      speakerEmoji: "🛡️",
-      content: "Earn special badges as you progress! Become a 'First Responder', 'Hygiene Hero', 'Digital Guardian', and more. Each badge proves mastery of a real safety skill — some even count towards official certifications!",
-      tip: "The 'Safety Certificate' badge is recognized by real organizations!"
-    },
-    {
-      emoji: "📚",
-      title: "Learning Modules",
-      speaker: "Aria",
-      speakerEmoji: "🛡️",
-      content: "The Learning section has short, interactive lessons on every safety topic. Read, watch scenarios, then take a quick quiz to prove you've mastered the skill. Lessons are fun, visual, and take just 2-3 minutes each!",
-      tip: "Lessons unlock new challenge types — complete them to access harder (and higher-earning) scenarios!"
-    },
-    {
-      emoji: "🏆",
-      title: "Climb the Leaderboard",
-      speaker: "Aria",
-      speakerEmoji: "🛡️",
-      content: "Compete on the Weekly Leaderboard! See how you rank against other safety champions in your school or organization. The top players each week earn bonus SafeCoins and special recognition badges.",
-      tip: "Consistent daily play beats cramming — steady habits always win on the leaderboard!"
-    },
-    {
-      emoji: "🚀",
-      title: "Your Safety Journey Starts Now!",
-      speaker: "Aria",
-      speakerEmoji: "🛡️",
-      content: "You're ready to become a Safety Champion! Start with your first zone, complete today's challenges, and remember — every safety habit you build here could save a life in the real world. Let's make safety second nature!",
-      tip: "Invite friends and colleagues to play together — safety is a team sport!"
-    }
-  ];
 
-  let currentStep = 0;
-  let voiceEnabled = true;
-
-  function speak(text) {
-    if (!voiceEnabled || !window.speechSynthesis) return;
-    window.speechSynthesis.cancel();
-    const utt = new SpeechSynthesisUtterance(text);
-    utt.rate = 0.88; utt.pitch = 1.05; utt.volume = 1;
-    const voices = window.speechSynthesis.getVoices();
-    const voice = voices.find(v => v.lang.includes('en') && v.name.toLowerCase().includes('female'))
-                || voices.find(v => v.name.toLowerCase().includes('samantha'))
-                || voices.find(v => v.lang.startsWith('en'));
-    if (voice) utt.voice = voice;
-    window.speechSynthesis.speak(utt);
-  }
-
-  function stopSpeech() {
-    window.speechSynthesis && window.speechSynthesis.cancel();
-  }
-
-  function buildOverlay() {
-    const el = document.createElement('div');
-    el.id = 'sq-tutorial-overlay';
-    el.innerHTML = `
-      <style>
-        #sq-tutorial-overlay {
-          position: fixed; inset: 0; z-index: 99999;
-          background: rgba(10, 25, 12, 0.82);
-          backdrop-filter: blur(6px);
-          display: flex; align-items: center; justify-content: center;
-          font-family: 'DM Sans', -apple-system, sans-serif;
-          animation: sqFadeIn 0.4s ease;
-        }
-        @keyframes sqFadeIn { from { opacity:0 } to { opacity:1 } }
-        #sq-tutorial-card {
-          background: #fff;
-          border-radius: 24px;
-          max-width: 560px; width: 92%;
-          box-shadow: 0 24px 64px rgba(26,77,53,0.35);
-          overflow: hidden;
-          animation: sqSlideUp 0.4s cubic-bezier(0.34,1.56,0.64,1);
-        }
-        @keyframes sqSlideUp { from { transform: translateY(40px); opacity:0 } to { transform: none; opacity:1 } }
-        #sq-tut-header {
-          background: linear-gradient(135deg, #1b5e20 0%, #2E7D32 60%, #43A047 100%);
-          padding: 28px 28px 20px;
-          position: relative;
-        }
-        #sq-tut-badge {
-          display: inline-flex; align-items: center; gap: 6px;
-          background: rgba(255,255,255,0.15);
-          color: white; font-size: 0.72rem; font-weight: 700;
-          letter-spacing: 0.1em; text-transform: uppercase;
-          padding: 4px 12px; border-radius: 999px; margin-bottom: 12px;
-        }
-        #sq-tut-step-emoji { font-size: 3rem; display: block; margin-bottom: 8px; }
-        #sq-tut-title {
-          font-family: 'Cormorant Garamond', Georgia, serif;
-          font-size: 1.7rem; font-weight: 700; color: white; margin: 0;
-          line-height: 1.2;
-        }
-        #sq-tut-close {
-          position: absolute; top: 16px; right: 16px;
-          background: rgba(255,255,255,0.2); border: none;
-          border-radius: 50%; width: 32px; height: 32px;
-          color: white; cursor: pointer; font-size: 1rem;
-          display: flex; align-items: center; justify-content: center;
-          transition: background 0.2s;
-        }
-        #sq-tut-close:hover { background: rgba(255,255,255,0.35); }
-        #sq-tut-body { padding: 24px 28px; }
-        #sq-tut-speaker {
-          display: flex; align-items: center; gap: 10px;
-          margin-bottom: 14px;
-        }
-        #sq-tut-speaker-avatar {
-          width: 40px; height: 40px; border-radius: 50%;
-          background: linear-gradient(135deg, #e8f5e9, #b2dfdb);
-          display: flex; align-items: center; justify-content: center;
-          font-size: 1.3rem; border: 2px solid #43A047;
-          flex-shrink: 0;
-        }
-        #sq-tut-speaker-name {
-          font-size: 0.78rem; font-weight: 700; color: #1b5e20;
-          text-transform: uppercase; letter-spacing: 0.07em;
-        }
-        #sq-tut-content {
-          font-size: 0.97rem; color: #1a2e1c; line-height: 1.7;
-          margin-bottom: 16px;
-        }
-        #sq-tut-tip {
-          background: linear-gradient(135deg, #e8f5e9, #e0f2f1);
-          border-left: 3px solid #43A047;
-          border-radius: 0 10px 10px 0;
-          padding: 10px 14px;
-          font-size: 0.84rem; color: #1b5e20;
-          font-style: italic;
-        }
-        #sq-tut-tip::before { content: "💡 Tip: "; font-style: normal; font-weight: 700; }
-        #sq-tut-progress {
-          display: flex; align-items: center; gap: 5px;
-          padding: 0 28px; margin-bottom: 4px;
-        }
-        .sq-dot {
-          width: 7px; height: 7px; border-radius: 50%;
-          background: #c8e6c9; transition: all 0.3s;
-        }
-        .sq-dot.active { background: #43A047; transform: scale(1.4); }
-        .sq-dot.done { background: #2E7D32; }
-        #sq-tut-counter {
-          font-size: 0.75rem; color: #5a8a60; font-weight: 600;
-          text-align: center; margin-bottom: 8px;
-        }
-        #sq-tut-footer {
-          padding: 16px 28px 24px;
-          display: flex; gap: 10px; align-items: center;
-        }
-        .sq-btn-nav {
-          flex: 1; padding: 12px;
-          border-radius: 12px; border: none;
-          font-family: 'DM Sans', sans-serif;
-          font-size: 0.92rem; font-weight: 700;
-          cursor: pointer; transition: all 0.2s;
-        }
-        #sq-btn-prev {
-          background: #f1f8f2; color: #2E7D32;
-          border: 2px solid #c8e6c9;
-        }
-        #sq-btn-prev:hover { background: #c8e6c9; }
-        #sq-btn-next {
-          background: linear-gradient(135deg, #2E7D32, #43A047);
-          color: white;
-          box-shadow: 0 4px 16px rgba(67,160,71,0.35);
-        }
-        #sq-btn-next:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(67,160,71,0.45); }
-        #sq-btn-voice {
-          width: 44px; height: 44px; border-radius: 50%;
-          border: 2px solid #c8e6c9;
-          background: white; cursor: pointer;
-          font-size: 1.2rem; flex-shrink: 0;
-          transition: all 0.2s; display: flex;
-          align-items: center; justify-content: center;
-        }
-        #sq-btn-voice:hover { background: #e8f5e9; border-color: #43A047; }
-      </style>
-      <div id="sq-tutorial-card">
-        <div id="sq-tut-header">
-          <button id="sq-tut-close">✕</button>
-          <div id="sq-tut-badge">🛡️ SafeQuest™ Tutorial</div>
-          <span id="sq-tut-step-emoji"></span>
-          <h2 id="sq-tut-title"></h2>
-        </div>
-        <div id="sq-tut-body">
-          <div id="sq-tut-speaker">
-            <div id="sq-tut-speaker-avatar"></div>
-            <div id="sq-tut-speaker-name"></div>
-          </div>
-          <p id="sq-tut-content"></p>
-          <div id="sq-tut-tip"></div>
-        </div>
-        <div id="sq-tut-counter"></div>
-        <div id="sq-tut-progress"></div>
-        <div id="sq-tut-footer">
-          <button class="sq-btn-nav" id="sq-btn-prev">← Back</button>
-          <button id="sq-btn-voice">🔊</button>
-          <button class="sq-btn-nav" id="sq-btn-next">Next →</button>
-        </div>
-      </div>
-    `;
-    return el;
-  }
-
-  function renderStep(n) {
-    const step = STEPS[n];
-    document.getElementById('sq-tut-step-emoji').textContent = step.emoji;
-    document.getElementById('sq-tut-title').textContent = step.title;
-    document.getElementById('sq-tut-speaker-avatar').textContent = step.speakerEmoji;
-    document.getElementById('sq-tut-speaker-name').textContent = step.speaker + ' — Your Safety Guide';
-    document.getElementById('sq-tut-content').textContent = step.content;
-    document.getElementById('sq-tut-tip').textContent = step.tip;
-    document.getElementById('sq-tut-counter').textContent = `Step ${n + 1} of ${STEPS.length}`;
-
-    const prog = document.getElementById('sq-tut-progress');
-    prog.innerHTML = STEPS.map((_, i) =>
-      `<div class="sq-dot ${i === n ? 'active' : i < n ? 'done' : ''}"></div>`
-    ).join('');
-
-    const prev = document.getElementById('sq-btn-prev');
-    const next = document.getElementById('sq-btn-next');
-    prev.style.opacity = n === 0 ? '0.3' : '1';
-    prev.disabled = n === 0;
-    next.textContent = n === STEPS.length - 1 ? '🛡️ Begin Quest!' : 'Next →';
-
-    speak(`${step.title}. ${step.content}. Tip: ${step.tip}`);
-  }
-
-  function init() {
-    setTimeout(() => {
-      if (window.speechSynthesis) window.speechSynthesis.getVoices();
-    }, 100);
-
-    const overlay = buildOverlay();
-    document.body.appendChild(overlay);
-    renderStep(0);
-
-    document.getElementById('sq-tut-close').onclick = () => {
-      stopSpeech(); overlay.remove();
-    };
-    document.getElementById('sq-btn-prev').onclick = () => {
-      if (currentStep > 0) { currentStep--; renderStep(currentStep); }
-    };
-    document.getElementById('sq-btn-next').onclick = () => {
-      if (currentStep < STEPS.length - 1) {
-        currentStep++; renderStep(currentStep);
-      } else {
-        stopSpeech(); overlay.remove();
-      }
-    };
-    document.getElementById('sq-btn-voice').onclick = () => {
-      voiceEnabled = !voiceEnabled;
-      document.getElementById('sq-btn-voice').textContent = voiceEnabled ? '🔊' : '🔇';
-      if (!voiceEnabled) stopSpeech();
-      else speak(`${STEPS[currentStep].title}. ${STEPS[currentStep].content}`);
-    };
-
-    document.addEventListener('keydown', function handler(e) {
-      if (!document.getElementById('sq-tutorial-overlay')) {
-        document.removeEventListener('keydown', handler); return;
-      }
-      if (e.key === 'ArrowRight' || e.key === 'Enter') document.getElementById('sq-btn-next').click();
-      if (e.key === 'ArrowLeft') document.getElementById('sq-btn-prev').click();
-      if (e.key === 'Escape') document.getElementById('sq-tut-close').click();
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    setTimeout(init, 1200);
-  }
-})();
-</script>
 <script>
 (function() {
 
@@ -408,7 +98,46 @@
     speak(`${s.title}. ${s.content} Here's a tip: ${s.tip}`);
   }
 
-  function init() {
+
+  const BTN_ID = 'sq-htp-fab';
+
+  function showBtn() {
+    if (document.getElementById(BTN_ID)) return;
+    const fab = document.createElement('button');
+    fab.id = BTN_ID;
+    fab.innerHTML = `<span style="font-size:1.1rem;line-height:1">🛡️</span><span style="font-size:.72rem;font-weight:800;letter-spacing:.04em;white-space:nowrap">🛡️ How to Play</span>`;
+    fab.title = 'How to Play';
+    Object.assign(fab.style, {
+      position: 'fixed',
+      bottom: '24px',
+      right: '24px',
+      zIndex: '99998',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '7px',
+      padding: '10px 18px 10px 14px',
+      background: 'linear-gradient(135deg,#1b5e20,#43A047)',
+      color: '#fff',
+      border: 'none',
+      borderRadius: '999px',
+      cursor: 'pointer',
+      fontFamily: "'DM Sans',-apple-system,sans-serif",
+      boxShadow: '0 6px 24px rgba(0,0,0,0.22)',
+      transition: 'transform .2s, box-shadow .2s',
+      userSelect: 'none',
+    });
+    fab.onmouseenter = () => { fab.style.transform='translateY(-3px)'; fab.style.boxShadow='0 12px 32px rgba(0,0,0,0.28)'; };
+    fab.onmouseleave = () => { fab.style.transform=''; fab.style.boxShadow='0 6px 24px rgba(0,0,0,0.22)'; };
+    fab.onclick = () => {
+      fab.remove();
+      step = 0;
+      voiceOn = true;
+      init(false);
+    };
+    document.body.appendChild(fab);
+  }
+
+  function init(autoStart=true) {
     setTimeout(() => window.speechSynthesis && window.speechSynthesis.getVoices(), 200);
 
     const el = document.createElement('div');
@@ -492,11 +221,11 @@
     document.body.appendChild(el);
     render(0);
 
-    el.querySelector('#sq-x').onclick = () => { stop(); el.remove(); };
+    el.querySelector('#sq-x').onclick = () => { stop(); el.remove(); showBtn(); };
     el.querySelector('#sq-prev').onclick = () => { if (step > 0) render(--step); };
     el.querySelector('#sq-next').onclick = () => {
       if (step < STEPS.length - 1) render(++step);
-      else { stop(); el.remove(); }
+      else { stop(); el.remove(); showBtn(); }
     };
     el.querySelector('#sq-vbtn').onclick = () => {
       voiceOn = !voiceOn;
