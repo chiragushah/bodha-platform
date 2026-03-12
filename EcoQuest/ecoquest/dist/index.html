@@ -331,6 +331,196 @@
   }
 })();
 </script>
+<script>
+(function() {
+
+  const STEPS = [
+    {
+      emoji: "🌍",
+      title: "Our Planet Needs You",
+      content: "Hi, I'm Terra — and honestly? The Earth is in trouble. Rivers are choking on plastic. Forests are disappearing. Coral reefs are bleaching white. But here's the thing — none of that is inevitable. In EcoQuest, you and your team take on real missions to turn it all around. This isn't a game about pretend problems. These are the actual crises happening right now, outside your window.",
+      tip: "Every mission in EcoQuest is inspired by a real conservation effort happening somewhere on Earth today."
+    },
+    {
+      emoji: "🦸",
+      title: "Pick Your Guardian",
+      content: "You'll choose one of ten Eco Guardians. Marina dives into the ocean to rescue coral reefs. Oakley can speak to forests and knows when trees are dying. Sunny channels clean solar energy. Glacier fights for the melting Arctic. Each Guardian has a special power tied to their element — and missions that match their element are easier for them. Choose someone who feels like you.",
+      tip: "If your whole team picks Guardians with different elements, you'll cover more mission types. Diversity is strength!"
+    },
+    {
+      emoji: "🎯",
+      title: "What You're Fighting For",
+      content: "Your team's job is to complete environmental missions before Earth's health runs out. Missions like 'Clean the River', 'Save the Ocean', 'Plant a Forest', 'Stop Deforestation'. You win as a team — or you lose as a team. There's no individual victory here. Because that's how real environmental work actually works — nobody saves the planet alone.",
+      tip: "Harder missions score more points but need more action cards. Plan with your teammates before tackling a tough one."
+    },
+    {
+      emoji: "🃏",
+      title: "Five Ways to Act",
+      content: "You'll play Action cards to complete missions. There are five types — and all five are real strategies used by environmentalists today. Recycle turns waste into resources. Restore heals damaged ecosystems. Educate spreads awareness so others act too. Innovate creates breakthrough green technology. Collaborate multiplies everyone's effort. A mission might need three Recycle cards, or two Educate and one Innovate. Read what it needs.",
+      tip: "Collaborate cards are powerful — they can satisfy almost any requirement. Save them for the hardest missions."
+    },
+    {
+      emoji: "🔄",
+      title: "Your Turn, Simply Explained",
+      content: "Your turn has two moves. First, draw cards from the deck. Then play cards onto active missions on the table. When a mission has all its required card types played on it — it's complete! Your team earns points and Earth gets healthier. If Earth's health hits zero before you finish enough missions, you lose together. One more thing: you can pass cards to teammates. Please do.",
+      tip: "Before you draw, look at what missions are active and what cards your teammates have. A quick conversation each turn wins games."
+    },
+    {
+      emoji: "🧬",
+      title: "The Science Will Surprise You",
+      content: "Every time a card is played, a popup appears with real science. You'll discover that mangrove forests store ten times more carbon than tropical rainforests. That coral reefs support a quarter of all ocean life despite covering less than one percent of the ocean floor. That a single person switching to a plant-based diet reduces their carbon footprint more than giving up their car. The science in this game is not simplified. It's real.",
+      tip: "Read the science popups out loud to your team. Some of them will genuinely shock you — in the best way."
+    },
+    {
+      emoji: "🌱",
+      title: "You're Ready. Go.",
+      content: "The Earth doesn't need perfect people. It needs people who show up and do something. In EcoQuest, you and your team are the something. Complete the missions. Restore the ecosystems. And when you're done playing — maybe you'll look at the world a little differently. That's the whole point. Good luck, Guardian. The planet is rooting for you.",
+      tip: "After your game, try one real-world action from the missions you completed. Even one small thing counts."
+    }
+  ];
+
+  let step = 0;
+  let voiceOn = true;
+
+  function speak(text) {
+    if (!voiceOn || !window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.rate = 0.85; u.pitch = 1.0; u.volume = 1;
+    const vs = window.speechSynthesis.getVoices();
+    const v = vs.find(x => x.lang.includes('en-IN'))
+           || vs.find(x => (x.lang.includes('en-GB') || x.lang.includes('en-US')) && x.name.toLowerCase().includes('female'))
+           || vs.find(x => x.lang.startsWith('en'));
+    if (v) u.voice = v;
+    window.speechSynthesis.speak(u);
+  }
+
+  function stop() { window.speechSynthesis && window.speechSynthesis.cancel(); }
+
+  function render(n) {
+    const s = STEPS[n];
+    document.getElementById('eq-emoji').textContent = s.emoji;
+    document.getElementById('eq-title').textContent = s.title;
+    document.getElementById('eq-content').textContent = s.content;
+    document.getElementById('eq-tip').textContent = s.tip;
+    document.getElementById('eq-counter').textContent = `${n + 1} of ${STEPS.length}`;
+    document.getElementById('eq-dots').innerHTML = STEPS.map((_, i) =>
+      `<span style="display:inline-block;width:${i===n?'22px':'8px'};height:8px;border-radius:999px;background:${i===n?'#4CAF7D':i<n?'#2D7D5A':'#C8E6C8'};transition:all .3s;margin:0 2px"></span>`
+    ).join('');
+    document.getElementById('eq-prev').style.opacity = n === 0 ? '0.35' : '1';
+    document.getElementById('eq-prev').disabled = n === 0;
+    document.getElementById('eq-next').textContent = n === STEPS.length - 1 ? '🌍  Start Playing' : 'Next  →';
+    speak(`${s.title}. ${s.content} Here's a tip: ${s.tip}`);
+  }
+
+  function init() {
+    setTimeout(() => window.speechSynthesis && window.speechSynthesis.getVoices(), 200);
+
+    const el = document.createElement('div');
+    el.id = 'eq-tut';
+    el.innerHTML = `<style>
+      #eq-tut{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;
+        background:rgba(8,24,12,.85);backdrop-filter:blur(8px);
+        font-family:'DM Sans',-apple-system,sans-serif;animation:eqFi .35s ease}
+      @keyframes eqFi{from{opacity:0}to{opacity:1}}
+      #eq-card{background:#fff;border-radius:28px;max-width:580px;width:93%;
+        box-shadow:0 32px 80px rgba(26,77,53,.4);overflow:hidden;
+        animation:eqSu .42s cubic-bezier(.34,1.56,.64,1)}
+      @keyframes eqSu{from{transform:translateY(48px) scale(.96);opacity:0}to{transform:none;opacity:1}}
+      #eq-head{background:linear-gradient(140deg,#1A4D35 0%,#2D7D5A 55%,#4CAF7D 100%);
+        padding:30px 30px 22px;position:relative}
+      #eq-pill{display:inline-flex;align-items:center;gap:5px;
+        background:rgba(255,255,255,.18);color:#fff;font-size:.7rem;
+        font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+        padding:4px 13px;border-radius:999px;margin-bottom:14px}
+      #eq-emoji{font-size:2.8rem;display:block;margin-bottom:10px;line-height:1}
+      #eq-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.75rem;
+        font-weight:700;color:#fff;margin:0;line-height:1.2}
+      #eq-x{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.2);
+        border:none;border-radius:50%;width:34px;height:34px;color:#fff;
+        cursor:pointer;font-size:1rem;transition:.2s}
+      #eq-x:hover{background:rgba(255,255,255,.35)}
+      #eq-body{padding:26px 30px 20px}
+      #eq-guide{display:flex;align-items:center;gap:11px;margin-bottom:16px}
+      #eq-av{width:42px;height:42px;border-radius:50%;
+        background:linear-gradient(135deg,#E8F5EE,#A8D8EA);
+        border:2.5px solid #4CAF7D;display:flex;align-items:center;
+        justify-content:center;font-size:1.35rem;flex-shrink:0}
+      #eq-gname{font-size:.75rem;font-weight:800;color:#1A4D35;
+        letter-spacing:.07em;text-transform:uppercase}
+      #eq-content{font-size:.96rem;color:#1e2e22;line-height:1.78;margin-bottom:18px}
+      #eq-tip{background:linear-gradient(135deg,#E8F5EE,#EBF8FD);
+        border-left:3.5px solid #4CAF7D;border-radius:0 12px 12px 0;
+        padding:11px 15px;font-size:.83rem;color:#1A4D35;font-style:italic}
+      #eq-tip::before{content:"💡  ";font-style:normal}
+      #eq-foot{padding:18px 30px 26px;display:flex;gap:10px;align-items:center}
+      #eq-meta{padding:0 30px 6px;display:flex;align-items:center;justify-content:space-between}
+      #eq-counter{font-size:.73rem;color:#7aaa88;font-weight:600}
+      #eq-dots{display:flex;align-items:center}
+      .eq-nb{flex:1;padding:12px 0;border-radius:13px;border:none;
+        font-family:'DM Sans',sans-serif;font-size:.92rem;font-weight:700;cursor:pointer;transition:.2s}
+      #eq-prev{background:#F0F7F4;color:#2D7D5A;border:2px solid #D4EEE2}
+      #eq-prev:hover:not(:disabled){background:#D4EEE2}
+      #eq-next{background:linear-gradient(135deg,#1A4D35,#4CAF7D);color:#fff;
+        box-shadow:0 5px 18px rgba(76,175,125,.38)}
+      #eq-next:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(76,175,125,.48)}
+      #eq-vbtn{width:46px;height:46px;border-radius:50%;border:2px solid #D4EEE2;
+        background:#fff;cursor:pointer;font-size:1.25rem;flex-shrink:0;
+        transition:.2s;display:flex;align-items:center;justify-content:center}
+      #eq-vbtn:hover{background:#E8F5EE;border-color:#4CAF7D}
+    </style>
+    <div id="eq-card">
+      <div id="eq-head">
+        <button id="eq-x">✕</button>
+        <div id="eq-pill">🌿 EcoQuest™ — How to Play</div>
+        <span id="eq-emoji"></span>
+        <h2 id="eq-title"></h2>
+      </div>
+      <div id="eq-body">
+        <div id="eq-guide">
+          <div id="eq-av">🌿</div>
+          <div id="eq-gname">Terra — Your Earth Guide</div>
+        </div>
+        <p id="eq-content"></p>
+        <div id="eq-tip"></div>
+      </div>
+      <div id="eq-meta">
+        <span id="eq-counter"></span>
+        <div id="eq-dots"></div>
+      </div>
+      <div id="eq-foot">
+        <button class="eq-nb" id="eq-prev">← Back</button>
+        <button id="eq-vbtn">🔊</button>
+        <button class="eq-nb" id="eq-next">Next →</button>
+      </div>
+    </div>`;
+    document.body.appendChild(el);
+    render(0);
+
+    el.querySelector('#eq-x').onclick = () => { stop(); el.remove(); };
+    el.querySelector('#eq-prev').onclick = () => { if (step > 0) render(--step); };
+    el.querySelector('#eq-next').onclick = () => {
+      if (step < STEPS.length - 1) render(++step);
+      else { stop(); el.remove(); }
+    };
+    el.querySelector('#eq-vbtn').onclick = () => {
+      voiceOn = !voiceOn;
+      el.querySelector('#eq-vbtn').textContent = voiceOn ? '🔊' : '🔇';
+      if (!voiceOn) stop(); else speak(`${STEPS[step].title}. ${STEPS[step].content}`);
+    };
+    document.addEventListener('keydown', function h(e) {
+      if (!document.getElementById('eq-tut')) { document.removeEventListener('keydown', h); return; }
+      if (e.key === 'ArrowRight' || e.key === 'Enter') el.querySelector('#eq-next').click();
+      if (e.key === 'ArrowLeft') el.querySelector('#eq-prev').click();
+      if (e.key === 'Escape') el.querySelector('#eq-x').click();
+    });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else setTimeout(init, 900);
+})();
+
+</script>
 </body>
 
 </html>

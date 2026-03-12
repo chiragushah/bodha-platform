@@ -320,5 +320,201 @@
   }
 })();
 </script>
+<script>
+(function() {
+
+  const STEPS = [
+    {
+      emoji: "🛡️",
+      title: "Why Safety Matters More Than You Think",
+      content: "Hi, I'm Aria. Let me ask you something. Do you know that over 300,000 people die from workplace accidents every single year? Or that 80% of injuries at home happen in rooms people think are safe? The strange thing is — most of those accidents were completely preventable. SafeQuest was built on one belief: if safety feels like a game, people actually learn it. And when people actually learn it, lives are saved.",
+      tip: "You don't need to be in a dangerous job to benefit from SafeQuest. Most serious accidents happen in everyday places."
+    },
+    {
+      emoji: "🗺️",
+      title: "Your Safety Zones",
+      content: "SafeQuest is organised into Safety Zones — each one a world of its own. Home Safety teaches you what to do when ordinary rooms become dangerous. Office Hygiene shows how a shared desk can spread illness to an entire team. School Safety covers everything from fire drills to playground hazards. Each zone has its own challenges, scenarios, and lessons. And each one is based on real safety guidelines used by organisations worldwide.",
+      tip: "Start with the zone you spend the most time in. The habits you build there will stick because they're immediately relevant."
+    },
+    {
+      emoji: "✅",
+      title: "Daily Challenges — Small Actions, Big Habits",
+      content: "Every day, new challenges appear in your active zone. Things like proper hand hygiene, desk organisation, checking electrical cables, knowing your emergency exits. They only take a minute each. But that's the point — doing a small safety action every single day for thirty days builds a habit that lasts a lifetime. Researchers call it automaticity. SafeQuest just calls it playing.",
+      tip: "Don't skip days. Habit research shows that consistency matters far more than intensity. One minute daily beats one hour weekly."
+    },
+    {
+      emoji: "🪙",
+      title: "SafeCoins — Your Real Reward",
+      content: "Every challenge you complete earns SafeCoins. Simple hygiene tasks earn around ten coins. More complex emergency scenarios earn up to twenty. The coins are real currency inside SafeQuest's marketplace — you can redeem them for hygiene kits, first aid supplies, wellness vouchers, and even official safety certificates. The marketplace is stocked with things that genuinely make you safer, not just virtual trophies.",
+      tip: "The Safety Certificate item is the most valuable reward. It shows a verified completion of the full safety programme."
+    },
+    {
+      emoji: "🏅",
+      title: "Badges That Mean Something",
+      content: "As you master different areas, you earn badges. Become a Hygiene Hero after completing ten hygiene tasks. Earn First Responder after finishing the emergency module. Unlock Digital Guardian for completing digital hygiene. These aren't just decorations — each badge maps to a real competency that employers, schools, and organisations actually look for. Some badges are even recognised by safety certification bodies.",
+      tip: "Show your badges to teachers, managers, or parents. They represent real knowledge, not just time spent on a screen."
+    },
+    {
+      emoji: "📚",
+      title: "Learn Before You Play",
+      content: "Before each new zone unlocks, there's a short learning module — usually two to three minutes. Read a realistic scenario. Watch how a character makes a decision. Then answer a few quick questions. Get them right and the zone opens, with harder challenges and higher coin rewards. The learning isn't a gate to get through. It's the whole game. Because knowing what to do in an emergency is only useful if you knew before the emergency happened.",
+      tip: "Read scenarios carefully. SafeQuest's questions are about real decisions, not trick questions. Think about what you'd actually do."
+    },
+    {
+      emoji: "🏆",
+      title: "The Leaderboard",
+      content: "SafeQuest has a weekly leaderboard where you can see how your safety score compares with others in your school or organisation. The top players each week earn bonus SafeCoins. But the leaderboard isn't really about competition — it's about something more interesting. When the people around you are all building safety habits, the environment itself becomes safer. Collective safety culture is more powerful than any individual action.",
+      tip: "Invite your classmates or colleagues. A group that plays together builds habits together — and that makes everyone genuinely safer."
+    },
+    {
+      emoji: "🚀",
+      title: "One Last Thing Before You Begin",
+      content: "The skills you're about to build here — they're not just for a game. They're for the moment someone in your home has an accident. For the day a fire alarm goes off and you're the calmest person in the building. For the workplace where your colleagues are safer because you showed up. SafeQuest gives you the knowledge. What you do with it is up to you. Start your quest. The people around you will be glad you did.",
+      tip: "After completing each zone, teach one thing you learned to someone else. Teaching is the strongest form of learning."
+    }
+  ];
+
+  let step = 0;
+  let voiceOn = true;
+
+  function speak(text) {
+    if (!voiceOn || !window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.rate = 0.85; u.pitch = 1.0; u.volume = 1;
+    const vs = window.speechSynthesis.getVoices();
+    const v = vs.find(x => x.lang.includes('en-IN'))
+           || vs.find(x => (x.lang.includes('en-GB') || x.lang.includes('en-US')) && x.name.toLowerCase().includes('female'))
+           || vs.find(x => x.lang.startsWith('en'));
+    if (v) u.voice = v;
+    window.speechSynthesis.speak(u);
+  }
+
+  function stop() { window.speechSynthesis && window.speechSynthesis.cancel(); }
+
+  function render(n) {
+    const s = STEPS[n];
+    document.getElementById('sq-emoji').textContent = s.emoji;
+    document.getElementById('sq-title').textContent = s.title;
+    document.getElementById('sq-content').textContent = s.content;
+    document.getElementById('sq-tip').textContent = s.tip;
+    document.getElementById('sq-counter').textContent = `${n + 1} of ${STEPS.length}`;
+    document.getElementById('sq-dots').innerHTML = STEPS.map((_, i) =>
+      `<span style="display:inline-block;width:${i===n?'22px':'8px'};height:8px;border-radius:999px;background:${i===n?'#43A047':i<n?'#2E7D32':'#C8E6C9'};transition:all .3s;margin:0 2px"></span>`
+    ).join('');
+    document.getElementById('sq-prev').style.opacity = n === 0 ? '0.35' : '1';
+    document.getElementById('sq-prev').disabled = n === 0;
+    document.getElementById('sq-next').textContent = n === STEPS.length - 1 ? '🛡️  Begin Quest' : 'Next  →';
+    speak(`${s.title}. ${s.content} Here's a tip: ${s.tip}`);
+  }
+
+  function init() {
+    setTimeout(() => window.speechSynthesis && window.speechSynthesis.getVoices(), 200);
+
+    const el = document.createElement('div');
+    el.id = 'sq-tut';
+    el.innerHTML = `<style>
+      #sq-tut{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;
+        background:rgba(8,20,10,.85);backdrop-filter:blur(8px);
+        font-family:'DM Sans',-apple-system,sans-serif;animation:sqFi .35s ease}
+      @keyframes sqFi{from{opacity:0}to{opacity:1}}
+      #sq-card{background:#fff;border-radius:28px;max-width:580px;width:93%;
+        box-shadow:0 32px 80px rgba(27,94,32,.4);overflow:hidden;
+        animation:sqSu .42s cubic-bezier(.34,1.56,.64,1)}
+      @keyframes sqSu{from{transform:translateY(48px) scale(.96);opacity:0}to{transform:none;opacity:1}}
+      #sq-head{background:linear-gradient(140deg,#1b5e20 0%,#2E7D32 55%,#43A047 100%);
+        padding:30px 30px 22px;position:relative}
+      #sq-pill{display:inline-flex;align-items:center;gap:5px;
+        background:rgba(255,255,255,.18);color:#fff;font-size:.7rem;
+        font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+        padding:4px 13px;border-radius:999px;margin-bottom:14px}
+      #sq-emoji{font-size:2.8rem;display:block;margin-bottom:10px;line-height:1}
+      #sq-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.75rem;
+        font-weight:700;color:#fff;margin:0;line-height:1.2}
+      #sq-x{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.2);
+        border:none;border-radius:50%;width:34px;height:34px;color:#fff;
+        cursor:pointer;font-size:1rem;transition:.2s}
+      #sq-x:hover{background:rgba(255,255,255,.35)}
+      #sq-body{padding:26px 30px 20px}
+      #sq-guide{display:flex;align-items:center;gap:11px;margin-bottom:16px}
+      #sq-av{width:42px;height:42px;border-radius:50%;
+        background:linear-gradient(135deg,#e8f5e9,#b2dfdb);
+        border:2.5px solid #43A047;display:flex;align-items:center;
+        justify-content:center;font-size:1.35rem;flex-shrink:0}
+      #sq-gname{font-size:.75rem;font-weight:800;color:#1b5e20;
+        letter-spacing:.07em;text-transform:uppercase}
+      #sq-content{font-size:.96rem;color:#1a2e1c;line-height:1.78;margin-bottom:18px}
+      #sq-tip{background:linear-gradient(135deg,#e8f5e9,#e0f7fa);
+        border-left:3.5px solid #43A047;border-radius:0 12px 12px 0;
+        padding:11px 15px;font-size:.83rem;color:#1b5e20;font-style:italic}
+      #sq-tip::before{content:"💡  ";font-style:normal}
+      #sq-foot{padding:18px 30px 26px;display:flex;gap:10px;align-items:center}
+      #sq-meta{padding:0 30px 6px;display:flex;align-items:center;justify-content:space-between}
+      #sq-counter{font-size:.73rem;color:#6aaa72;font-weight:600}
+      #sq-dots{display:flex;align-items:center}
+      .sq-nb{flex:1;padding:12px 0;border-radius:13px;border:none;
+        font-family:'DM Sans',sans-serif;font-size:.92rem;font-weight:700;cursor:pointer;transition:.2s}
+      #sq-prev{background:#f1f8f2;color:#2E7D32;border:2px solid #c8e6c9}
+      #sq-prev:hover:not(:disabled){background:#c8e6c9}
+      #sq-next{background:linear-gradient(135deg,#1b5e20,#43A047);color:#fff;
+        box-shadow:0 5px 18px rgba(67,160,71,.38)}
+      #sq-next:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(67,160,71,.48)}
+      #sq-vbtn{width:46px;height:46px;border-radius:50%;border:2px solid #c8e6c9;
+        background:#fff;cursor:pointer;font-size:1.25rem;flex-shrink:0;
+        transition:.2s;display:flex;align-items:center;justify-content:center}
+      #sq-vbtn:hover{background:#e8f5e9;border-color:#43A047}
+    </style>
+    <div id="sq-card">
+      <div id="sq-head">
+        <button id="sq-x">✕</button>
+        <div id="sq-pill">🛡️ SafeQuest™ — How to Play</div>
+        <span id="sq-emoji"></span>
+        <h2 id="sq-title"></h2>
+      </div>
+      <div id="sq-body">
+        <div id="sq-guide">
+          <div id="sq-av">🛡️</div>
+          <div id="sq-gname">Aria — Your Safety Guide</div>
+        </div>
+        <p id="sq-content"></p>
+        <div id="sq-tip"></div>
+      </div>
+      <div id="sq-meta">
+        <span id="sq-counter"></span>
+        <div id="sq-dots"></div>
+      </div>
+      <div id="sq-foot">
+        <button class="sq-nb" id="sq-prev">← Back</button>
+        <button id="sq-vbtn">🔊</button>
+        <button class="sq-nb" id="sq-next">Next →</button>
+      </div>
+    </div>`;
+    document.body.appendChild(el);
+    render(0);
+
+    el.querySelector('#sq-x').onclick = () => { stop(); el.remove(); };
+    el.querySelector('#sq-prev').onclick = () => { if (step > 0) render(--step); };
+    el.querySelector('#sq-next').onclick = () => {
+      if (step < STEPS.length - 1) render(++step);
+      else { stop(); el.remove(); }
+    };
+    el.querySelector('#sq-vbtn').onclick = () => {
+      voiceOn = !voiceOn;
+      el.querySelector('#sq-vbtn').textContent = voiceOn ? '🔊' : '🔇';
+      if (!voiceOn) stop(); else speak(`${STEPS[step].title}. ${STEPS[step].content}`);
+    };
+    document.addEventListener('keydown', function h(e) {
+      if (!document.getElementById('sq-tut')) { document.removeEventListener('keydown', h); return; }
+      if (e.key === 'ArrowRight' || e.key === 'Enter') el.querySelector('#sq-next').click();
+      if (e.key === 'ArrowLeft') el.querySelector('#sq-prev').click();
+      if (e.key === 'Escape') el.querySelector('#sq-x').click();
+    });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else setTimeout(init, 1200);
+})();
+
+</script>
 </body>
 </html>
