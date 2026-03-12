@@ -6,13 +6,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script>
-    // SafeQuest BrowserRouter has basename="/SafeQuest/safety_game/safequest/dist"
-    // When accessed via /index.html, React Router sees "/index.html" relative to basename → no route match → blank.
-    // Fix: strip trailing /index.html so the URL sits exactly at the basename root.
+    // SafeQuest uses BrowserRouter with basename="/SafeQuest/safety_game/safequest/dist"
+    // If URL ends with /index.html, do a hard redirect to the clean directory URL.
+    // Vercel will serve this same index.html for that directory URL via rewrites,
+    // and React Router will correctly resolve path "/" → LandingPage.
     (function() {
-      if (window.location.pathname.endsWith('/index.html')) {
-        var clean = window.location.pathname.slice(0, -'/index.html'.length) || '/';
-        window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+      var p = window.location.pathname;
+      if (p.endsWith('/index.html')) {
+        var clean = p.slice(0, -11); // remove '/index.html'
+        window.location.replace(clean + window.location.search + window.location.hash);
       }
     })();
   </script>
