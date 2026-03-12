@@ -235,6 +235,7 @@ h1 em { color:var(--green-mid); font-style:normal; }
 .g-mind .game-icon-area{background:#EEF2FF;border-color:#818CF840;} .g-mind .game-tag{background:#EEF2FF;color:#3730A3;} .g-mind .game-sub{color:#6366F1;} .g-mind .game-btn{color:#6366F1;} .g-mind .feat-dot{background:#818CF8;}
 .g-money .game-icon-area{background:#FEF9E7;border-color:#F7C94840;} .g-money .game-tag{background:#FEF9E7;color:#92400E;} .g-money .game-sub{color:#D97706;} .g-money .game-btn{color:#D97706;} .g-money .feat-dot{background:#F59E0B;}
 .g-safe .game-icon-area{background:#E0F2FE;border-color:#38BDF840;} .g-safe .game-tag{background:#E0F2FE;color:#075985;} .g-safe .game-sub{color:#0284C7;} .g-safe .game-btn{color:#0284C7;} .g-safe .feat-dot{background:#38BDF8;}
+.g-sc .game-icon-area{background:#E8F5EE;border-color:#4CAF7D40;} .g-sc .game-tag{background:#E8F5EE;color:#1A4D35;} .g-sc .game-sub{color:#2D7D5A;} .g-sc .game-btn{color:#2D7D5A;} .g-sc .feat-dot{background:#4CAF7D;}
 .g-coming{border-style:dashed;opacity:0.65;cursor:default;} .g-coming:hover{transform:none;box-shadow:none;border-color:var(--border);}
 
 /* ─── MISSION STRIP ─── */
@@ -263,10 +264,7 @@ h1 em { color:var(--green-mid); font-style:normal; }
 
 @media(max-width:900px){.mission-strip{grid-template-columns:1fr;gap:40px;padding:60px 24px;} #home{padding:110px 24px 60px;} #games{padding:72px 24px;}}
 
-  
-.g-sc .game-card-header { background: linear-gradient(135deg, #1A4D35, #2D7D5A, #4CAF7D); }
-.g-sc .game-icon-area { background: rgba(255,255,255,0.15); }
-</style>
+  </style>
 </head>
 <body>
 <nav>
@@ -416,16 +414,15 @@ h1 em { color:var(--green-mid); font-style:normal; }
         <div class="game-title">SmartCity™</div>
         <div class="game-sub">Design the City of Tomorrow</div>
       </div>
-      <p class="game-desc">Design a complete smart city from the ground up — zone districts, place 50+ smart buildings with drag-and-drop, activate IoT sensors, track CO₂ budgets, and design interiors. For students and professionals.</p>
+      <p class="game-desc">Design a complete smart city from the ground up — zone districts, place 50+ smart buildings, activate IoT sensors, track CO₂ budgets in real time, and plan every interior. For students and professionals.</p>
       <div class="game-feats">
-        <div class="game-feat">🗺️ 8 Zone Types</div>
-        <div class="game-feat">⚡ IoT Dashboard</div>
-        <div class="game-feat">🌡️ CO₂ Tracking</div>
-        <div class="game-feat">🏠 Interior Design</div>
+        <div class="game-feat"><div class="feat-dot"></div><span>8 zone types — from green parks to energy farms</span></div>
+        <div class="game-feat"><div class="feat-dot"></div><span>Real-time CO₂ tracking and IoT sensor dashboard</span></div>
+        <div class="game-feat"><div class="feat-dot"></div><span>Interior design for every building, 1–4 players</span></div>
       </div>
       <div class="game-footer">
-        <div class="game-meta">Ages 14+ · SDG 11</div>
-        <a href="./SmartCity/smartcity/dist/index.html" class="game-play-btn" onclick="event.stopPropagation()">Play →</a>
+        <div class="game-age">Ages 14+ / Professional</div>
+        <button class="game-btn" style="color:var(--green-mid);">View Game <span class="arr">→</span></button>
       </div>
     </div>
 </div>
@@ -535,6 +532,7 @@ const modalData = {
   mind: { icon:'🧠', title:'MindQuest™', subtitle:'Emotional Intelligence · Ages 8–14 · SDG 3', desc:'Navigate five Emotion Kingdoms — Emberland, Tidepools, Sunspire, Shadowmere, and Stillwood — using science-backed coping tools. Luna, the AI narrator, explains the neuroscience behind every strategy.', skills:['Emotional Regulation','Resilience','Empathy','Neuroscience','Coping Strategies','Self-Awareness'], link:'./MindQuest/mindquest/dist/index.html', color:'#6366F1' },
   money: { icon:'💹', title:'GreenMoney™', subtitle:'Sustainable Finance · Ages 12–18 · SDG 8, 12', desc:'A turn-based market simulation where players manage green portfolios — trading carbon credits, making ESG investments, and responding to climate disasters, policy shifts, and tech breakthroughs.', skills:['ESG Investing','Carbon Markets','Portfolio Management','Economic Thinking','Risk Assessment','Sustainable Business'], link:'./GreenMoney/green_game/greenverse/dist/index.html', color:'#D97706' },
   safe: { icon:'🛡️', title:'SafeQuest™', subtitle:'Safety & Habits · All Ages · SDG 3, 8', desc:'A habit-building platform that transforms safety practices into an engaging journey. Navigate Safety Zones, complete challenges, earn SafeCoins, and climb the leaderboard — at school, home, or work.', skills:['Safety Protocols','Habit Formation','Hazard Awareness','Hygiene','Emergency Response','Compliance'], link:'./SafeQuest/safety_game/safequest/dist/index.html', color:'#0284C7' },
+  smartcity: { icon:'🏙️', title:'SmartCity™', subtitle:'Urban Planning · Ages 14+ · SDG 11', desc:'Design a complete smart city from scratch — zone districts, drag-and-drop 50+ smart buildings, activate IoT sensors, track CO₂ in real time, and plan every interior space. Used by architecture and planning students worldwide.', skills:['Urban Planning','IoT & Smart Tech','CO₂ Management','Infrastructure Design','Sustainability & SDGs','Interior Planning'], link:'./SmartCity/smartcity/dist/index.html', color:'#2D7D5A' },
   smartcity: { icon:'🏙️', title:'SmartCity™', subtitle:'Urban Planning · Ages 14+ · SDG 11', desc:'Design a complete smart city from scratch. Zone districts, drag-and-drop 50+ smart buildings, activate IoT sensors, track CO₂ budgets, design interiors, and learn urban planning principles used by real city designers.', skills:['Urban Planning','IoT & Smart Tech','CO₂ Management','Infrastructure Design','Sustainability'], link:'./SmartCity/smartcity/dist/index.html', color:'#1A4D35' }
 };
 function openModal(id) {
