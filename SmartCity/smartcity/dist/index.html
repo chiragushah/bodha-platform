@@ -1174,18 +1174,23 @@ function renderTutStep(n){
   speak(`${s.title}. ${s.content} Tip: ${s.tip}`);
 }
 function showTut(){
+  console.log('[TUT] showTut called');
   try{
     tutStep=0;voiceOn=true;
     const tut=document.getElementById('sc-tut');
     const fab=document.getElementById('sc-fab');
-    if(!tut){console.error('sc-tut not found');return;}
+    console.log('[TUT] tut element:', tut, '| current display:', tut?getComputedStyle(tut).display:'N/A');
+    if(!tut){console.error('[TUT] sc-tut element NOT FOUND in DOM');return;}
+    // Force visible via every possible method
+    tut.removeAttribute('hidden');
+    tut.style.cssText='position:fixed!important;inset:0!important;z-index:9999!important;display:flex!important;align-items:center;justify-content:center;padding:20px;background:rgba(26,77,53,.92);backdrop-filter:blur(16px)';
     tut.classList.add('open');
-    tut.style.display='flex'; // force show even if classList fails
     if(fab){fab.classList.remove('vis');fab.style.display='none';}
     document.getElementById('sc-vbtn').textContent='🔊';
     setTimeout(()=>window.speechSynthesis&&window.speechSynthesis.getVoices(),200);
     renderTutStep(0);
-  }catch(e){console.error('showTut error:',e);}
+    console.log('[TUT] after show — computed display:', getComputedStyle(tut).display, '| visibility:', getComputedStyle(tut).visibility, '| opacity:', getComputedStyle(tut).opacity);
+  }catch(e){console.error('[TUT] showTut error:',e);}
 }
 window.showTut=showTut;
 function hideTut(){
@@ -1251,8 +1256,10 @@ function startGame(city,players){
   buildGrid();buildPalette();
   updateTopBar();updateRightPanel();
   renderChallenge();buildScoreRows();buildIoTFeed();
-  // Show tutorial after grid renders — two-stage delay for reliability
-  requestAnimationFrame(()=>setTimeout(showTut, 400));
+  // Show tutorial — direct call after sync render + multiple backup calls
+  console.log('[GAME] startGame complete, calling showTut');
+  setTimeout(showTut, 200);
+  setTimeout(showTut, 800); // backup in case 200ms was too early
 }
 
 // ── GRID ─────────────────────────────────────────────────────────
