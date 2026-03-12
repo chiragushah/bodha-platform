@@ -519,8 +519,8 @@ html,body{height:100%;width:100%;overflow:hidden;font-family:'DM Sans',sans-seri
 
 /* ══════════════════════════ TUTORIAL ══════════════════════════ */
 #sc-tut{
-  position:fixed;inset:0;z-index:400;
-  background:rgba(6,14,24,.85);backdrop-filter:blur(16px);
+  position:fixed;inset:0;z-index:600;
+  background:rgba(6,14,24,.88);backdrop-filter:blur(20px);
   display:none;align-items:center;justify-content:center;padding:20px;
 }
 #sc-tut.open{display:flex}
@@ -1358,17 +1358,51 @@ const TUTORIAL_STEPS = [
    tip:'Share your finished city report with teachers or colleagues. Every city you design teaches you something new about sustainable urban planning.'},
 ];
 
-let tutStep=0, voiceOn=true;
-function speak(t){
+let _bestVoice=null;
+function pickBestVoice(){
+  if(_bestVoice)return _bestVoice;
+  const vs=window.speechSynthesis.getVoices();
+  if(!vs.length)return null;
+  // Priority list: premium neural / high-quality voices by name
+  const preferred=[
+    'Google UK English Female','Google US English',
+    'Microsoft Aria Online (Natural) - English (United States)',
+    'Microsoft Jenny Online (Natural) - English (United States)',
+    'Microsoft Zira - English (United States)',
+    'Microsoft Hazel - English (Great Britain)',
+    'Samantha','Karen','Tessa','Moira',
+    'Google UK English Male',
+  ];
+  for(const name of preferred){
+    const v=vs.find(x=>x.name===name);
+    if(v){_bestVoice=v;return v;}
+  }
+  // Fallback: any en-GB female, then en-US female, then any English
+  const enGB=vs.find(x=>x.lang==='en-GB'&&/female|woman|fiona|kate|serena/i.test(x.name));
+  if(enGB){_bestVoice=enGB;return enGB;}
+  const enUS=vs.find(x=>x.lang==='en-US'&&/female|woman|zira|aria|jenny/i.test(x.name));
+  if(enUS){_bestVoice=enUS;return enUS;}
+  const anyEn=vs.find(x=>x.lang.startsWith('en'));
+  _bestVoice=anyEn||vs[0];
+  return _bestVoice;
+}
+function speak(text){
   if(!voiceOn||!window.speechSynthesis)return;
   window.speechSynthesis.cancel();
-  const u=new SpeechSynthesisUtterance(t);
-  u.rate=.85;u.pitch=1;u.volume=1;
-  const vs=window.speechSynthesis.getVoices();
-  const v=vs.find(x=>x.lang.includes('en-IN'))||vs.find(x=>(x.lang.includes('en-GB')||x.lang.includes('en-US'))&&x.name.toLowerCase().includes('female'))||vs.find(x=>x.lang.startsWith('en'));
-  if(v)u.voice=v;
-  window.speechSynthesis.speak(u);
+  const say=(t)=>{
+    const u=new SpeechSynthesisUtterance(t);
+    u.rate=0.88;u.pitch=1.05;u.volume=1;
+    const v=pickBestVoice();if(v)u.voice=v;
+    window.speechSynthesis.speak(u);
+  };
+  // Voices may not be loaded yet — retry once
+  if(window.speechSynthesis.getVoices().length===0){
+    window.speechSynthesis.addEventListener('voiceschanged',()=>say(text),{once:true});
+  } else {
+    say(text);
+  }
 }
+let tutStep=0, voiceOn=true;
 function stopSpeech(){window.speechSynthesis&&window.speechSynthesis.cancel();}
 function renderTutStep(n){
   const s=TUTORIAL_STEPS[n];
@@ -1999,12 +2033,16 @@ function toast(msg){
 function shuffleArr(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}}
 
 // ── AUTO-LAUNCH TUTORIAL ────────────────────────────────────────
+// Pre-warm voice engine as early as possible
+if(window.speechSynthesis){
+  window.speechSynthesis.getVoices();
+  window.speechSynthesis.addEventListener('voiceschanged',()=>{_bestVoice=null;});
+}
 if(document.readyState==='loading'){
   document.addEventListener('DOMContentLoaded',()=>setTimeout(showTut,900));
 }else{
   setTimeout(showTut,900);
 }
-setTimeout(()=>window.speechSynthesis&&window.speechSynthesis.getVoices(),200);
 </script>
 </body>
 </html>
