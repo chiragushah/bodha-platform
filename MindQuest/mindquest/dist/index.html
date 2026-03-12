@@ -13,6 +13,202 @@
 
 <body>
   <div id="root"></div>
+<script>
+(function() {
+
+  const STEPS = [
+    {
+      emoji: "🌟",
+      title: "Your Feelings Are Not the Problem",
+      content: "Hi. I'm Luna. Before we start, I want to tell you something that might surprise you. Anger isn't bad. Sadness isn't weakness. Fear isn't failure. For years, people were told to push those feelings away — and it made everything worse. MindQuest is built on a different idea: every emotion exists for a reason, and when you understand it, it becomes a superpower. That's not just a nice thought. That's neuroscience.",
+      tip: "Research from Harvard shows that naming an emotion — just putting a word to it — reduces its intensity by up to 50%. This game teaches you how."
+    },
+    {
+      emoji: "🗺️",
+      title: "Five Kingdoms, Five Feelings",
+      content: "The Inner World has five kingdoms, each one a living, breathing emotion. Emberland burns with Anger — fierce, powerful, protective when balanced. Tidepools holds Sadness — deep, reflective, the source of all compassion. Sunspire glows with Joy — expansive, generous, creative. Shadowmere guards Fear — cautious, alert, the emotion that keeps you safe. And Stillwood breathes with Calm — the quiet place where all other emotions find peace. When the Storm hits, these kingdoms fall out of balance. Your team's job is to restore them.",
+      tip: "Each kingdom feels different to play in. Emberland is urgent and fast. Tidepools is slow and careful. Pay attention to how you feel while you're in each one."
+    },
+    {
+      emoji: "🦸",
+      title: "Choose the Explorer Who Feels Like You",
+      content: "You'll pick one of six Emotion Explorers. Zara Heartbloom radiates Joy — she can share any card with a teammate, because happiness literally multiplies when given away. Ravi Stonefist holds Courage — he can face any Challenge without losing health, because bravery isn't the absence of fear, it's moving anyway. Luna Dewdrop feels Empathy — she can trade cards freely because she always knows what others need. Kai Stormwalker carries Resilience — he recovers health when things go wrong. Pip grows through Creativity. Noor sees forward with Awareness. Pick the one that speaks to you.",
+      tip: "Don't overthink it. The Explorer you're drawn to is probably the one whose strength you most want to develop in real life."
+    },
+    {
+      emoji: "🃏",
+      title: "Four Cards, All Real",
+      content: "Your hand holds four types of cards, and every single one is grounded in actual psychology. Mission cards are the goals — complete three to win. Challenge cards are the hard moments the Storm throws at you — face them together or lose Mind Health. Coping cards are where the real magic happens: breathing exercises, movement breaks, talking it out, resting, creating — these are the tools therapists actually use. Wild cards can be anything. When you play a Coping card, Luna explains the neuroscience behind it. Read it out loud. That part matters.",
+      tip: "Coping cards aren't just game mechanics. Box breathing, the '5-4-3-2-1' grounding technique, progressive muscle relaxation — these work outside the game too. Try one tonight."
+    },
+    {
+      emoji: "🔄",
+      title: "How a Turn Works",
+      content: "Your turn has five steps — and they mirror real emotional processing. First, draw two cards. You can't choose what feelings arise. Second, talk with your team about what you're holding. No secrets — open communication is mandatory and beautiful. Third, play up to two cards. Fourth, read Luna's science popup together. Fifth, pass to the next Explorer. The whole thing takes two or three minutes. The conversations it starts can last a lifetime.",
+      tip: "The rule that players can see each other's hands isn't just a game mechanic. It's a lesson: sharing what you're feeling with the people you trust makes the whole team stronger."
+    },
+    {
+      emoji: "🧠",
+      title: "The Science That Will Change How You See Yourself",
+      content: "After every card, I'll appear with real neuroscience. You'll learn that deep breathing activates the vagus nerve, which physically calms your heart rate within ninety seconds. That movement releases BDNF — a protein that literally grows new connections in your brain. That talking about a feeling to someone safe reduces activity in the amygdala, the brain's alarm system. That creativity activates the same neural pathways as problem-solving. None of this is simplified for kids. It's just science, explained clearly.",
+      tip: "When a science popup resonates with someone at your table, pause the game and talk about it. The game can wait. Those conversations are the point."
+    },
+    {
+      emoji: "🤝",
+      title: "You Win Together or You Don't Win",
+      content: "There is no individual winner in MindQuest. You complete three Mission cards as a team, or Mind Health hits zero and you lose as a team. This is intentional. Because emotional health isn't a solo sport. The research is clear: the single strongest predictor of emotional resilience in children — and adults — is the quality of their relationships. This game is practice for building those relationships. Every time you share a card, ask a teammate what they need, or talk through a challenge together, you're rehearsing something real.",
+      tip: "After the game, ask everyone at the table: which kingdom felt hardest to restore? The answer usually tells you something true about where each person is right now."
+    },
+    {
+      emoji: "🚀",
+      title: "One Thing Before You Begin",
+      content: "I want you to know something. Whether you're eight or forty-eight, whether you're playing this for fun or because someone thought you needed it — the feelings you're going to explore in this game are real ones. Anger that feels too big. Sadness that comes from nowhere. Fear that won't leave. Joy that surprises you. Those are your feelings, and they're worth understanding. MindQuest is a safe place to start. I'll be with you the whole way. Let's go explore the Inner World.",
+      tip: "If a kingdom or a challenge card touches something real for someone playing — that's the game doing exactly what it was designed to do. Be gentle with each other."
+    }
+  ];
+
+  let step = 0, voiceOn = true;
+
+  function speak(text) {
+    if (!voiceOn || !window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.rate = 0.85; u.pitch = 1.05; u.volume = 1;
+    const vs = window.speechSynthesis.getVoices();
+    const v = vs.find(x => x.lang.includes('en-IN'))
+           || vs.find(x => (x.lang.includes('en-GB') || x.lang.includes('en-US')) && x.name.toLowerCase().includes('female'))
+           || vs.find(x => x.name.toLowerCase().includes('samantha'))
+           || vs.find(x => x.lang.startsWith('en'));
+    if (v) u.voice = v;
+    window.speechSynthesis.speak(u);
+  }
+
+  function stop() { window.speechSynthesis && window.speechSynthesis.cancel(); }
+
+  function render(n) {
+    const s = STEPS[n];
+    document.getElementById('mq-emoji').textContent = s.emoji;
+    document.getElementById('mq-title').textContent = s.title;
+    document.getElementById('mq-content').textContent = s.content;
+    document.getElementById('mq-tip').textContent = s.tip;
+    document.getElementById('mq-counter').textContent = `${n + 1} of ${STEPS.length}`;
+    document.getElementById('mq-dots').innerHTML = STEPS.map((_, i) =>
+      `<span style="display:inline-block;width:${i===n?'22px':'8px'};height:8px;border-radius:999px;background:${i===n?'#818CF8':i<n?'#4F46E5':'#E0E7FF'};transition:all .3s;margin:0 2px"></span>`
+    ).join('');
+    document.getElementById('mq-prev').style.opacity = n === 0 ? '0.35' : '1';
+    document.getElementById('mq-prev').disabled = n === 0;
+    document.getElementById('mq-next').textContent = n === STEPS.length - 1 ? '🌟  Enter the Inner World' : 'Next  →';
+    speak(`${s.title}. ${s.content} Here's something to remember: ${s.tip}`);
+  }
+
+  function init() {
+    setTimeout(() => window.speechSynthesis && window.speechSynthesis.getVoices(), 200);
+
+    const el = document.createElement('div');
+    el.id = 'mq-tut';
+    el.innerHTML = `<style>
+      #mq-tut{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;
+        background:rgba(15,10,40,.87);backdrop-filter:blur(8px);
+        font-family:'DM Sans',-apple-system,sans-serif;animation:mqFi .35s ease}
+      @keyframes mqFi{from{opacity:0}to{opacity:1}}
+      #mq-card{background:#fff;border-radius:28px;max-width:580px;width:93%;
+        box-shadow:0 32px 80px rgba(79,70,229,.35);overflow:hidden;
+        animation:mqSu .42s cubic-bezier(.34,1.56,.64,1)}
+      @keyframes mqSu{from{transform:translateY(48px) scale(.96);opacity:0}to{transform:none;opacity:1}}
+      #mq-head{background:linear-gradient(140deg,#312E81 0%,#4F46E5 55%,#818CF8 100%);
+        padding:30px 30px 22px;position:relative}
+      #mq-pill{display:inline-flex;align-items:center;gap:5px;
+        background:rgba(255,255,255,.18);color:#fff;font-size:.7rem;
+        font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+        padding:4px 13px;border-radius:999px;margin-bottom:14px}
+      #mq-emoji{font-size:2.8rem;display:block;margin-bottom:10px;line-height:1}
+      #mq-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.75rem;
+        font-weight:700;color:#fff;margin:0;line-height:1.2}
+      #mq-x{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.2);
+        border:none;border-radius:50%;width:34px;height:34px;color:#fff;
+        cursor:pointer;font-size:1rem;transition:.2s}
+      #mq-x:hover{background:rgba(255,255,255,.35)}
+      #mq-body{padding:26px 30px 20px}
+      #mq-guide{display:flex;align-items:center;gap:11px;margin-bottom:16px}
+      #mq-av{width:42px;height:42px;border-radius:50%;
+        background:linear-gradient(135deg,#EDE9FE,#DBEAFE);
+        border:2.5px solid #818CF8;display:flex;align-items:center;
+        justify-content:center;font-size:1.35rem;flex-shrink:0}
+      #mq-gname{font-size:.75rem;font-weight:800;color:#312E81;
+        letter-spacing:.07em;text-transform:uppercase}
+      #mq-content{font-size:.96rem;color:#1e1b4b;line-height:1.78;margin-bottom:18px}
+      #mq-tip{background:linear-gradient(135deg,#EDE9FE,#EFF6FF);
+        border-left:3.5px solid #818CF8;border-radius:0 12px 12px 0;
+        padding:11px 15px;font-size:.83rem;color:#312E81;font-style:italic}
+      #mq-tip::before{content:"💡  ";font-style:normal}
+      #mq-foot{padding:18px 30px 26px;display:flex;gap:10px;align-items:center}
+      #mq-meta{padding:0 30px 6px;display:flex;align-items:center;justify-content:space-between}
+      #mq-counter{font-size:.73rem;color:#a5b4fc;font-weight:600}
+      #mq-dots{display:flex;align-items:center}
+      .mq-nb{flex:1;padding:12px 0;border-radius:13px;border:none;
+        font-family:'DM Sans',sans-serif;font-size:.92rem;font-weight:700;cursor:pointer;transition:.2s}
+      #mq-prev{background:#F5F3FF;color:#4F46E5;border:2px solid #DDD6FE}
+      #mq-prev:hover:not(:disabled){background:#DDD6FE}
+      #mq-next{background:linear-gradient(135deg,#312E81,#818CF8);color:#fff;
+        box-shadow:0 5px 18px rgba(129,140,248,.4)}
+      #mq-next:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(129,140,248,.5)}
+      #mq-vbtn{width:46px;height:46px;border-radius:50%;border:2px solid #DDD6FE;
+        background:#fff;cursor:pointer;font-size:1.25rem;flex-shrink:0;
+        transition:.2s;display:flex;align-items:center;justify-content:center}
+      #mq-vbtn:hover{background:#F5F3FF;border-color:#818CF8}
+    </style>
+    <div id="mq-card">
+      <div id="mq-head">
+        <button id="mq-x">✕</button>
+        <div id="mq-pill">🌟 MindQuest™ — How to Play</div>
+        <span id="mq-emoji"></span>
+        <h2 id="mq-title"></h2>
+      </div>
+      <div id="mq-body">
+        <div id="mq-guide">
+          <div id="mq-av">🌙</div>
+          <div id="mq-gname">Luna — Your Inner World Guide</div>
+        </div>
+        <p id="mq-content"></p>
+        <div id="mq-tip"></div>
+      </div>
+      <div id="mq-meta">
+        <span id="mq-counter"></span>
+        <div id="mq-dots"></div>
+      </div>
+      <div id="mq-foot">
+        <button class="mq-nb" id="mq-prev">← Back</button>
+        <button id="mq-vbtn">🔊</button>
+        <button class="mq-nb" id="mq-next">Next →</button>
+      </div>
+    </div>`;
+    document.body.appendChild(el);
+    render(0);
+
+    el.querySelector('#mq-x').onclick = () => { stop(); el.remove(); };
+    el.querySelector('#mq-prev').onclick = () => { if (step > 0) render(--step); };
+    el.querySelector('#mq-next').onclick = () => {
+      if (step < STEPS.length - 1) render(++step);
+      else { stop(); el.remove(); }
+    };
+    el.querySelector('#mq-vbtn').onclick = () => {
+      voiceOn = !voiceOn;
+      el.querySelector('#mq-vbtn').textContent = voiceOn ? '🔊' : '🔇';
+      if (!voiceOn) stop(); else speak(`${STEPS[step].title}. ${STEPS[step].content}`);
+    };
+    document.addEventListener('keydown', function h(e) {
+      if (!document.getElementById('mq-tut')) { document.removeEventListener('keydown', h); return; }
+      if (e.key === 'ArrowRight' || e.key === 'Enter') el.querySelector('#mq-next').click();
+      if (e.key === 'ArrowLeft') el.querySelector('#mq-prev').click();
+      if (e.key === 'Escape') el.querySelector('#mq-x').click();
+    });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else setTimeout(init, 900);
+})();
+
+</script>
 </body>
 
 </html>

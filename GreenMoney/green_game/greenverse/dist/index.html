@@ -11,6 +11,202 @@
 
 <body>
   <div id="root"></div>
+<script>
+(function() {
+
+  const STEPS = [
+    {
+      emoji: "💹",
+      title: "Money and the Planet Are the Same Problem",
+      content: "Hello. I'm Prakriti. Here's a fact most finance textbooks skip: the global economy and the planet's climate system are the same system. When a coal plant gets funded, it's because someone's spreadsheet said yes. When a solar farm gets built, it's because someone's spreadsheet said yes too. GreenMoney puts you in the room where those decisions happen. You'll manage real financial instruments — carbon credits, ESG scores, green bonds — and discover that saving the world and making money are not opposites. They're the same move, made at the right moment.",
+      tip: "As of 2024, the global ESG investment market is worth over $30 trillion. Green finance isn't a niche — it's the future of all finance."
+    },
+    {
+      emoji: "⚖️",
+      title: "Three Numbers You Must Balance",
+      content: "Your entire strategy in GreenMoney lives across three numbers. Financial Wealth — the money you accumulate through smart trades and investments. ESG Score — your Environmental, Social, and Governance rating, which determines who will invest in you and at what terms. And Planet Health — the shared resource that belongs to every player at the table. Here's the rule that changes everything: if Planet Health drops to zero, everyone loses. Every single player, regardless of their personal wealth. You can be the richest player on a dead planet and you still lose.",
+      tip: "The scoring formula is 40% Financial Wealth, 40% Impact, 20% ESG, plus a Planet Health bonus. Ignoring any one of these is a losing strategy."
+    },
+    {
+      emoji: "🎭",
+      title: "Your Role in the Green Economy",
+      content: "You'll take on one of six real-world roles. As a Climate Entrepreneur, you build green startups from nothing — high risk, enormous upside, and you move fast. As a Traditional Corporation, you're sitting on ₹2 million and 200 carbon credits, but your ESG score is under pressure and the regulations are tightening around you. As a Government, you set carbon tax rates that reshape everyone's strategy each turn. As the Carbon Market Authority, you control the supply of credits and keep the market from crashing. As a VC Fund, you bet on the startups. As an Impact Fund, you prove that returns and purpose aren't a trade-off.",
+      tip: "Play the role that scares you a little. If you're cautious by nature, try the Entrepreneur. If you're a risk-taker, try the Government — policy is slower but more powerful."
+    },
+    {
+      emoji: "📈",
+      title: "The Carbon Market — Where It All Moves",
+      content: "Carbon credits are the heartbeat of GreenMoney. Each credit represents one tonne of CO₂ that was either not emitted or was captured. In the real world, the EU carbon price has swung from €5 to over €100 per tonne in a decade. In GreenMoney, the market moves with global emissions, policy changes, and climate events. Buy when the price is low and supply is high. Sell when a heatwave or policy shock drives demand up. But be careful — holding too many credits when the market drops will wipe out your cash position in a single turn.",
+      tip: "Watch the price chart every turn, not just your own balance. The best carbon market moves come from reading what other players are planning."
+    },
+    {
+      emoji: "🌀",
+      title: "Climate Events Will Humble You",
+      content: "Every few turns, a random climate event strikes the game. A heatwave crashes energy stocks. A technology breakthrough makes solar 40% cheaper overnight. A government policy shift doubles carbon taxes. A biodiversity collapse wipes points from high-polluting portfolios. These events aren't there to be unfair — they're there to be realistic. Climate risk is the defining financial risk of the next fifty years. The players who survive in GreenMoney are the ones who build portfolios resilient enough to absorb a shock and opportunistic enough to profit from one.",
+      tip: "After a major climate event, pause and ask: who benefited and who got hurt? The answer reveals which strategies are genuinely sustainable."
+    },
+    {
+      emoji: "🔄",
+      title: "One Quarter at a Time",
+      content: "Each turn represents a business quarter. You'll check the carbon market price, review your asset portfolio, make one to three decisions — invest, trade, upgrade, divest — and end your turn. Then AI players move, and the global emissions and Planet Health update. Twelve turns. Three years of economic simulation. The game moves faster than you expect. By turn four you'll start to see the real shape of your strategy. By turn eight you'll know if it's going to work. By turn twelve you'll know exactly how the real world feels.",
+      tip: "Don't hold cash too long. Idle capital in GreenMoney — like in real finance — is a slow loss. Put it to work, even imperfectly."
+    },
+    {
+      emoji: "🏆",
+      title: "How to Actually Win",
+      content: "After twelve turns, scores are calculated. Financial Wealth counts for 40%. Your total Impact — the measurable environmental and social good your portfolio created — counts for another 40%. ESG score is 20%. And if Planet Health is above 50% when the game ends, every player receives a bonus. This means the optimal strategy is never purely selfish. Helping a struggling player protect Planet Health can swing the bonus for everyone, including you. The game is designed to make cooperation the rational choice. Just like the real green economy.",
+      tip: "The player who wins most consistently isn't the one who accumulates the most — it's the one who understands that in a healthy system, everyone does better."
+    },
+    {
+      emoji: "🌱",
+      title: "You're About to Make Real Decisions",
+      content: "Carbon credits, ESG ratings, green bonds, climate risk — these are not abstract concepts. They are the instruments that will decide whether the next generation inherits a livable planet. GreenMoney puts these tools in your hands at the scale of a game, so that someday you'll recognise them at the scale of the real world. Whether you become a banker, a policy maker, an entrepreneur, or simply a citizen who votes — the decisions you practice here matter. Play thoughtfully. The planet's market is open.",
+      tip: "After the game, look up one real carbon credit market or ESG fund. You'll be surprised how much of what you just played maps directly onto the real world."
+    }
+  ];
+
+  let step = 0, voiceOn = true;
+
+  function speak(text) {
+    if (!voiceOn || !window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.rate = 0.85; u.pitch = 1.0; u.volume = 1;
+    const vs = window.speechSynthesis.getVoices();
+    const v = vs.find(x => x.lang.includes('en-IN'))
+           || vs.find(x => (x.lang.includes('en-GB') || x.lang.includes('en-US')) && x.name.toLowerCase().includes('female'))
+           || vs.find(x => x.name.toLowerCase().includes('samantha'))
+           || vs.find(x => x.lang.startsWith('en'));
+    if (v) u.voice = v;
+    window.speechSynthesis.speak(u);
+  }
+
+  function stop() { window.speechSynthesis && window.speechSynthesis.cancel(); }
+
+  function render(n) {
+    const s = STEPS[n];
+    document.getElementById('gm-emoji').textContent = s.emoji;
+    document.getElementById('gm-title').textContent = s.title;
+    document.getElementById('gm-content').textContent = s.content;
+    document.getElementById('gm-tip').textContent = s.tip;
+    document.getElementById('gm-counter').textContent = `${n + 1} of ${STEPS.length}`;
+    document.getElementById('gm-dots').innerHTML = STEPS.map((_, i) =>
+      `<span style="display:inline-block;width:${i===n?'22px':'8px'};height:8px;border-radius:999px;background:${i===n?'#2D7D5A':i<n?'#1A4D35':'#C6E8D8'};transition:all .3s;margin:0 2px"></span>`
+    ).join('');
+    document.getElementById('gm-prev').style.opacity = n === 0 ? '0.35' : '1';
+    document.getElementById('gm-prev').disabled = n === 0;
+    document.getElementById('gm-next').textContent = n === STEPS.length - 1 ? '💹  Enter the Market' : 'Next  →';
+    speak(`${s.title}. ${s.content} Here's something to remember: ${s.tip}`);
+  }
+
+  function init() {
+    setTimeout(() => window.speechSynthesis && window.speechSynthesis.getVoices(), 200);
+
+    const el = document.createElement('div');
+    el.id = 'gm-tut';
+    el.innerHTML = `<style>
+      #gm-tut{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;
+        background:rgba(5,20,12,.88);backdrop-filter:blur(8px);
+        font-family:'DM Sans',-apple-system,sans-serif;animation:gmFi .35s ease}
+      @keyframes gmFi{from{opacity:0}to{opacity:1}}
+      #gm-card{background:#fff;border-radius:28px;max-width:580px;width:93%;
+        box-shadow:0 32px 80px rgba(26,77,53,.42);overflow:hidden;
+        animation:gmSu .42s cubic-bezier(.34,1.56,.64,1)}
+      @keyframes gmSu{from{transform:translateY(48px) scale(.96);opacity:0}to{transform:none;opacity:1}}
+      #gm-head{background:linear-gradient(140deg,#1A4D35 0%,#2D7D5A 40%,#00897B 75%,#26C6DA 100%);
+        padding:30px 30px 22px;position:relative}
+      #gm-pill{display:inline-flex;align-items:center;gap:5px;
+        background:rgba(255,255,255,.18);color:#fff;font-size:.7rem;
+        font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+        padding:4px 13px;border-radius:999px;margin-bottom:14px}
+      #gm-emoji{font-size:2.8rem;display:block;margin-bottom:10px;line-height:1}
+      #gm-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.75rem;
+        font-weight:700;color:#fff;margin:0;line-height:1.2}
+      #gm-x{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.2);
+        border:none;border-radius:50%;width:34px;height:34px;color:#fff;
+        cursor:pointer;font-size:1rem;transition:.2s}
+      #gm-x:hover{background:rgba(255,255,255,.35)}
+      #gm-body{padding:26px 30px 20px}
+      #gm-guide{display:flex;align-items:center;gap:11px;margin-bottom:16px}
+      #gm-av{width:42px;height:42px;border-radius:50%;
+        background:linear-gradient(135deg,#E8F5EE,#B2EBF2);
+        border:2.5px solid #2D7D5A;display:flex;align-items:center;
+        justify-content:center;font-size:1.35rem;flex-shrink:0}
+      #gm-gname{font-size:.75rem;font-weight:800;color:#1A4D35;
+        letter-spacing:.07em;text-transform:uppercase}
+      #gm-content{font-size:.96rem;color:#1a2e1c;line-height:1.78;margin-bottom:18px}
+      #gm-tip{background:linear-gradient(135deg,#E8F5EE,#E0F7FA);
+        border-left:3.5px solid #2D7D5A;border-radius:0 12px 12px 0;
+        padding:11px 15px;font-size:.83rem;color:#1A4D35;font-style:italic}
+      #gm-tip::before{content:"💡  ";font-style:normal}
+      #gm-foot{padding:18px 30px 26px;display:flex;gap:10px;align-items:center}
+      #gm-meta{padding:0 30px 6px;display:flex;align-items:center;justify-content:space-between}
+      #gm-counter{font-size:.73rem;color:#7aaa88;font-weight:600}
+      #gm-dots{display:flex;align-items:center}
+      .gm-nb{flex:1;padding:12px 0;border-radius:13px;border:none;
+        font-family:'DM Sans',sans-serif;font-size:.92rem;font-weight:700;cursor:pointer;transition:.2s}
+      #gm-prev{background:#F0F7F4;color:#2D7D5A;border:2px solid #C6E8D8}
+      #gm-prev:hover:not(:disabled){background:#C6E8D8}
+      #gm-next{background:linear-gradient(135deg,#1A4D35,#00897B);color:#fff;
+        box-shadow:0 5px 18px rgba(45,125,90,.4)}
+      #gm-next:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(45,125,90,.5)}
+      #gm-vbtn{width:46px;height:46px;border-radius:50%;border:2px solid #C6E8D8;
+        background:#fff;cursor:pointer;font-size:1.25rem;flex-shrink:0;
+        transition:.2s;display:flex;align-items:center;justify-content:center}
+      #gm-vbtn:hover{background:#E8F5EE;border-color:#2D7D5A}
+    </style>
+    <div id="gm-card">
+      <div id="gm-head">
+        <button id="gm-x">✕</button>
+        <div id="gm-pill">💹 GreenMoney™ — How to Play</div>
+        <span id="gm-emoji"></span>
+        <h2 id="gm-title"></h2>
+      </div>
+      <div id="gm-body">
+        <div id="gm-guide">
+          <div id="gm-av">🌿</div>
+          <div id="gm-gname">Prakriti — Your Finance Guide</div>
+        </div>
+        <p id="gm-content"></p>
+        <div id="gm-tip"></div>
+      </div>
+      <div id="gm-meta">
+        <span id="gm-counter"></span>
+        <div id="gm-dots"></div>
+      </div>
+      <div id="gm-foot">
+        <button class="gm-nb" id="gm-prev">← Back</button>
+        <button id="gm-vbtn">🔊</button>
+        <button class="gm-nb" id="gm-next">Next →</button>
+      </div>
+    </div>`;
+    document.body.appendChild(el);
+    render(0);
+
+    el.querySelector('#gm-x').onclick = () => { stop(); el.remove(); };
+    el.querySelector('#gm-prev').onclick = () => { if (step > 0) render(--step); };
+    el.querySelector('#gm-next').onclick = () => {
+      if (step < STEPS.length - 1) render(++step);
+      else { stop(); el.remove(); }
+    };
+    el.querySelector('#gm-vbtn').onclick = () => {
+      voiceOn = !voiceOn;
+      el.querySelector('#gm-vbtn').textContent = voiceOn ? '🔊' : '🔇';
+      if (!voiceOn) stop(); else speak(`${STEPS[step].title}. ${STEPS[step].content}`);
+    };
+    document.addEventListener('keydown', function h(e) {
+      if (!document.getElementById('gm-tut')) { document.removeEventListener('keydown', h); return; }
+      if (e.key === 'ArrowRight' || e.key === 'Enter') el.querySelector('#gm-next').click();
+      if (e.key === 'ArrowLeft') el.querySelector('#gm-prev').click();
+      if (e.key === 'Escape') el.querySelector('#gm-x').click();
+    });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else setTimeout(init, 900);
+})();
+
+</script>
 </body>
 
 </html>
