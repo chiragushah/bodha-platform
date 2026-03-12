@@ -287,15 +287,14 @@ h1 em { color:var(--green-mid); font-style:normal; }
 
   
 .demo-badge{
-  display:inline-flex;align-items:center;gap:5px;
-  padding:4px 11px;border-radius:999px;
-  background:#FFF8E1;border:1.5px solid #FFD54F;
+  display:inline-block;
+  padding:3px 10px;border-radius:999px;
+  background:#fff;border:1.5px solid #E65100;
   font-size:.62rem;font-weight:800;letter-spacing:.07em;
   text-transform:uppercase;color:#E65100;
   position:absolute;top:14px;right:14px;
-  box-shadow:0 2px 8px rgba(230,81,0,.15);
 }
-.demo-badge::before{content:'⚗️';font-size:.75rem;}
+.demo-badge::before{content:'';display:none;}
 </style>
 </head>
 <body>
@@ -347,7 +346,6 @@ h1 em { color:var(--green-mid); font-style:normal; }
     <div class="game-card g-eco fade-up" onclick="openModal('eco')">
       <div class="game-card-header" style="position:relative;">
         <div class="demo-badge">Demo</div>
-        <div class="game-num">01 / 05</div>
         <div class="game-icon-area">🌱</div>
         <div class="game-tag">Environmental</div>
         <div class="game-title">EcoQuest</div>
@@ -368,7 +366,6 @@ h1 em { color:var(--green-mid); font-style:normal; }
     <div class="game-card g-mind fade-up" onclick="openModal('mind')">
       <div class="game-card-header" style="position:relative;">
         <div class="demo-badge">Demo</div>
-        <div class="game-num">02 / 05</div>
         <div class="game-icon-area">🧠</div>
         <div class="game-tag">Mental Wellness</div>
         <div class="game-title">MindQuest</div>
@@ -389,7 +386,6 @@ h1 em { color:var(--green-mid); font-style:normal; }
     <div class="game-card g-money fade-up" onclick="openModal('money')">
       <div class="game-card-header" style="position:relative;">
         <div class="demo-badge">Demo</div>
-        <div class="game-num">03 / 05</div>
         <div class="game-icon-area">💹</div>
         <div class="game-tag">Green Finance</div>
         <div class="game-title">GreenMoney</div>
@@ -410,7 +406,6 @@ h1 em { color:var(--green-mid); font-style:normal; }
     <div class="game-card g-safe fade-up" onclick="openModal('safe')">
       <div class="game-card-header" style="position:relative;">
         <div class="demo-badge">Demo</div>
-        <div class="game-num">04 / 05</div>
         <div class="game-icon-area">🛡️</div>
         <div class="game-tag">Safety & Habits</div>
         <div class="game-title">SafeQuest</div>
@@ -431,7 +426,6 @@ h1 em { color:var(--green-mid); font-style:normal; }
     <div class="game-card g-sc fade-up" onclick="openModal('smartcity')">
       <div class="game-card-header" style="position:relative;">
         <div class="demo-badge">Demo</div>
-        <div class="game-num">05 / 05</div>
         <div class="game-icon-area">🏙️</div>
         <div class="game-tag">Urban Planning</div>
         <div class="game-title">SmartCity</div>
