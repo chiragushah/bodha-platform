@@ -1868,14 +1868,14 @@ function speakRoomDetail(){
 }
 
 function speakAllIoT(){
-  const {b}=_rdCtx;
-  if(!b)return;
+  const b=currentIntBuilding;
+  if(!b){speak('Open a building first to hear its IoT explanations.');return;}
   const parts=b.iot.map((s,i)=>IOT_VOICE[b.id]?.[i]||(s.name+': '+s.desc));
-  speak('Smart IoT systems for '+b.name+'. '+parts.join(' ... Next sensor: '));
+  speak('Smart IoT systems for '+b.name+'. '+parts.join(' ... Next: '));
 }
 
 function speakBuildingImpact(){
-  const {b}=_rdCtx;
+  const b=currentIntBuilding;
   if(!b)return;
   const co2=document.getElementById('imp-co2').textContent;
   const live=document.getElementById('imp-live').textContent;
