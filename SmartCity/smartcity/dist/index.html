@@ -1011,8 +1011,8 @@ function startGame(city,players){
   renderChallenge();
   buildScoreRows();
   buildIoTFeed();
-  setTimeout(showTut,1200);
-  window.addEventListener('load',()=>setTimeout(()=>document.getElementById('sc-fab').classList.add('vis'),6000));
+  // Tutorial already shown on page load
+  setTimeout(()=>document.getElementById('sc-fab').classList.add('vis'),3000);
 }
 
 // ── GRID ───────────────────────────────────────────────
@@ -1477,6 +1477,15 @@ function toast(msg){
 
 // ── UTILS ─────────────────────────────────────────────
 function shuffleArr(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}}
+
+// ── AUTO-LAUNCH TUTORIAL ON PAGE LOAD (like all Bodha games) ──────
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => setTimeout(showTut, 900));
+} else {
+  setTimeout(showTut, 900);
+}
+// Also load voices early
+setTimeout(() => window.speechSynthesis && window.speechSynthesis.getVoices(), 200);
 </script>
 </body>
 </html>
