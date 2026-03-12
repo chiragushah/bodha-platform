@@ -553,3 +553,150 @@ body{font-family:Nunito,sans-serif;background:var(--bg-dark);color:var(--text-ma
 ::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:#C4B5FD;border-radius:999px}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   BODHA™ UNIFIED THEME OVERRIDE
+   Forest Green · Sky Blue · Clean White
+   Cormorant Garamond (headings) · DM Sans (body)
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* -- Fonts & Base -------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bodha-green-dark:   #1A4D35;
+  --bodha-green-mid:    #2D7D5A;
+  --bodha-green-bright: #4CAF7D;
+  --bodha-green-pale:   #D4EEE2;
+  --bodha-blue-mid:     #7EC8E3;
+  --bodha-blue-pale:    #A8D8EA;
+  --bodha-blue-xpale:   #E8F6FC;
+  --bodha-white:        #FAFCFA;
+  --bodha-bg2:          #F0F7F4;
+  --bodha-text:         #1A2E24;
+  --bodha-text2:        #3D6B55;
+  --bodha-shadow:       rgba(26,77,53,0.14);
+}
+
+html, body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  background: var(--bodha-white) !important;
+  color: var(--bodha-text) !important;
+}
+
+h1, h2, h3, .title, .game-title, [class*="title"], [class*="heading"] {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  color: var(--bodha-green-dark) !important;
+}
+
+/* -- Scrollbar ----------------------------------------------------- */
+::-webkit-scrollbar-track { background: var(--bodha-bg2) !important; }
+::-webkit-scrollbar-thumb { background: var(--bodha-green-bright) !important; border-radius: 10px !important; }
+::-webkit-scrollbar-thumb:hover { background: var(--bodha-green-mid) !important; }
+
+/* -- Tailwind green utility overrides ------------------------------ */
+.bg-green-50   { background-color: var(--bodha-white) !important; }
+.bg-green-100  { background-color: #E8F5EE !important; }
+.bg-green-200  { background-color: var(--bodha-green-pale) !important; }
+.bg-green-300  { background-color: #8FD4B0 !important; }
+.bg-green-400  { background-color: var(--bodha-green-bright) !important; }
+.bg-green-500  { background-color: var(--bodha-green-mid) !important; }
+.bg-green-600  { background-color: var(--bodha-green-dark) !important; }
+.bg-emerald-50  { background-color: #E8F5EE !important; }
+.bg-emerald-100 { background-color: var(--bodha-green-pale) !important; }
+.bg-emerald-500 { background-color: var(--bodha-green-mid) !important; }
+
+.text-green-500  { color: var(--bodha-green-mid) !important; }
+.text-green-600  { color: var(--bodha-green-mid) !important; }
+.text-green-700  { color: var(--bodha-green-dark) !important; }
+.text-green-800  { color: var(--bodha-green-dark) !important; }
+.text-emerald-700 { color: var(--bodha-green-mid) !important; }
+
+.border-green-200 { border-color: var(--bodha-green-pale) !important; }
+.border-green-300 { border-color: #8FD4B0 !important; }
+.border-green-400 { border-color: var(--bodha-green-bright) !important; }
+.border-green-500 { border-color: var(--bodha-green-mid) !important; }
+.border-emerald-300 { border-color: #8FD4B0 !important; }
+
+.ring-green-500 { --tw-ring-color: var(--bodha-green-mid) !important; }
+.ring-green-600 { --tw-ring-color: var(--bodha-green-dark) !important; }
+.hover\:ring-green-400:hover { --tw-ring-color: var(--bodha-green-bright) !important; }
+
+.hover\:bg-green-50:hover  { background-color: #E8F5EE !important; }
+.hover\:bg-green-100:hover { background-color: var(--bodha-green-pale) !important; }
+.hover\:bg-green-200:hover { background-color: #C0E5D1 !important; }
+.hover\:bg-green-600:hover { background-color: var(--bodha-green-dark) !important; }
+.hover\:from-green-600:hover { --tw-gradient-from: var(--bodha-green-dark) !important; }
+
+.from-green-50  { --tw-gradient-from: #E8F5EE !important; }
+.from-green-100 { --tw-gradient-from: var(--bodha-green-pale) !important; }
+.from-green-200 { --tw-gradient-from: #C0E5D1 !important; }
+.from-green-300 { --tw-gradient-from: #8FD4B0 !important; }
+.from-green-400 { --tw-gradient-from: var(--bodha-green-bright) !important; }
+.from-green-500 { --tw-gradient-from: var(--bodha-green-mid) !important; }
+.to-green-100   { --tw-gradient-to: var(--bodha-green-pale) !important; }
+.to-green-200   { --tw-gradient-to: #C0E5D1 !important; }
+.to-green-600   { --tw-gradient-to: var(--bodha-green-dark) !important; }
+.to-teal-500    { --tw-gradient-to: var(--bodha-blue-mid) !important; }
+.hover\:to-teal-600:hover { --tw-gradient-to: #5bb5d0 !important; }
+
+/* -- SafeQuest brand colour overrides ------------------------------ */
+.bg-safequest-green, [class*="safequest-green"] { background-color: var(--bodha-green-mid) !important; }
+.text-safequest-green, .hover\:text-safequest-green:hover { color: var(--bodha-green-mid) !important; }
+.border-safequest-green, .border-safequest-green\/10, .border-safequest-green\/20, .border-safequest-green\/30 { border-color: var(--bodha-green-bright) !important; }
+.bg-safequest-green\/10 { background-color: rgba(76,175,125,0.1) !important; }
+.bg-safequest-green\/20 { background-color: rgba(76,175,125,0.2) !important; }
+.bg-safequest-green\/5  { background-color: rgba(76,175,125,0.05) !important; }
+.ring-safequest-gold, .hover\:ring-safequest-gold:hover { --tw-ring-color: var(--bodha-blue-mid) !important; }
+.bg-safequest-gold { background-color: var(--bodha-blue-mid) !important; }
+.border-safequest-gold\/20 { border-color: rgba(126,200,227,0.2) !important; }
+.border-safequest-gold\/30 { border-color: rgba(126,200,227,0.3) !important; }
+.text-safequest-gold { color: var(--bodha-blue-mid) !important; }
+
+/* -- GreenMoney CSS variable remapping ----------------------------- */
+:root {
+  --bg-primary:     var(--bodha-white) !important;
+  --bg-secondary:   var(--bodha-bg2) !important;
+  --bg-tertiary:    var(--bodha-green-pale) !important;
+  --text-primary:   var(--bodha-text) !important;
+  --text-secondary: var(--bodha-text2) !important;
+  --text-muted:     #7DA898 !important;
+  --accent-green:   var(--bodha-green-mid) !important;
+  --accent-blue:    var(--bodha-blue-mid) !important;
+  --accent-teal:    var(--bodha-blue-pale) !important;
+  --border-color:   var(--bodha-green-pale) !important;
+  --glass-bg:       rgba(250,252,250,0.95) !important;
+  --shadow-color:   var(--bodha-shadow) !important;
+}
+
+/* -- Sky/Blue palette (secondary accents) -------------------------- */
+.bg-sky-400  { background-color: var(--bodha-blue-mid) !important; }
+.from-sky-200 { --tw-gradient-from: var(--bodha-blue-xpale) !important; }
+.to-sky-200   { --tw-gradient-to: var(--bodha-blue-xpale) !important; }
+.bg-blue-50   { background-color: var(--bodha-blue-xpale) !important; }
+.bg-blue-100  { background-color: var(--bodha-blue-pale) !important; }
+.via-blue-50  { --tw-gradient-stops: var(--tw-gradient-from), var(--bodha-blue-xpale) var(--tw-gradient-via-position), var(--tw-gradient-to) !important; }
+.via-blue-100 { --tw-gradient-stops: var(--tw-gradient-from), var(--bodha-blue-pale) var(--tw-gradient-via-position), var(--tw-gradient-to) !important; }
+.hover\:bg-blue-200:hover { background-color: var(--bodha-blue-pale) !important; }
+
+/* -- Card & panel base look ---------------------------------------- */
+.card-hover:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 32px var(--bodha-shadow) !important;
+}
+
+/* -- Min-height screens get Bodha BG ------------------------------ */
+.min-h-screen, [class*="min-h-screen"] {
+  background-color: var(--bodha-white) !important;
+}
+
+
+/* MindQuest: re-root to Bodha green base, keep lavender game feel */
+:root {
+  --bg-main:  var(--bodha-white);
+  --text-main: var(--bodha-text);
+}
+.screen, .landing-screen {
+  background: linear-gradient(145deg, #F0F7F4 0%, var(--bodha-blue-xpale) 100%) !important;
+}
