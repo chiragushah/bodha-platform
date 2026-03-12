@@ -1233,12 +1233,16 @@ function renderPlayerInputs(){
     <input class="pn-i" placeholder="Player ${i+1} name" id="pn${i}" maxlength="18"/></div>`).join('');
 }
 document.getElementById('startBtn').addEventListener('click',()=>{
+  console.log('[START] Button clicked');
   const city=document.getElementById('cityName').value.trim()||'NeoVerde';
   const leader=document.getElementById('leaderName').value.trim()||'Planner';
   const players=numPlayers===1?[{name:leader,color:PLAYER_COLORS[0]}]:
     Array.from({length:numPlayers},(_,i)=>({name:document.getElementById(`pn${i}`)?.value.trim()||`Player ${i+1}`,color:PLAYER_COLORS[i]}));
+  console.log('[START] city='+city+' players='+JSON.stringify(players));
   startGame(city,players);
 });
+// Log on page load so we know JS is running
+console.log('[BODHA] SmartCity JS loaded OK — version bb7909d+1');
 
 // ── GAME START ───────────────────────────────────────────────────
 function startGame(city,players){
