@@ -1174,29 +1174,24 @@ function renderTutStep(n){
   speak(`${s.title}. ${s.content} Tip: ${s.tip}`);
 }
 function showTut(){
-  console.log('[TUT] showTut called');
-  try{
-    tutStep=0;voiceOn=true;
-    const tut=document.getElementById('sc-tut');
-    const fab=document.getElementById('sc-fab');
-    console.log('[TUT] tut element:', tut, '| current display:', tut?getComputedStyle(tut).display:'N/A');
-    if(!tut){console.error('[TUT] sc-tut element NOT FOUND in DOM');return;}
-    // Force visible via every possible method
-    tut.removeAttribute('hidden');
-    tut.style.cssText='position:fixed!important;inset:0!important;z-index:9999!important;display:flex!important;align-items:center;justify-content:center;padding:20px;background:rgba(26,77,53,.92);backdrop-filter:blur(16px)';
-    tut.classList.add('open');
-    if(fab){fab.classList.remove('vis');fab.style.display='none';}
-    document.getElementById('sc-vbtn').textContent='🔊';
-    setTimeout(()=>window.speechSynthesis&&window.speechSynthesis.getVoices(),200);
-    renderTutStep(0);
-    console.log('[TUT] after show — computed display:', getComputedStyle(tut).display, '| visibility:', getComputedStyle(tut).visibility, '| opacity:', getComputedStyle(tut).opacity);
-  }catch(e){console.error('[TUT] showTut error:',e);}
+  tutStep=0;voiceOn=true;
+  const tut=document.getElementById('sc-tut');
+  const fab=document.getElementById('sc-fab');
+  tut.style.cssText='position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(26,77,53,.92);backdrop-filter:blur(16px)';
+  tut.classList.add('open');
+  if(fab){fab.classList.remove('vis');fab.style.display='none';}
+  document.getElementById('sc-vbtn').textContent='🔊';
+  setTimeout(()=>window.speechSynthesis&&window.speechSynthesis.getVoices(),200);
+  renderTutStep(0);
 }
-window.showTut=showTut;
 function hideTut(){
   stopSpeech();
-  document.getElementById('sc-tut').classList.remove('open');
-  document.getElementById('sc-fab').classList.add('vis');
+  const tut=document.getElementById('sc-tut');
+  tut.classList.remove('open');
+  tut.style.cssText=''; // clear forced inline style set by showTut
+  const fab=document.getElementById('sc-fab');
+  fab.classList.add('vis');
+  fab.style.display='';
 }
 document.getElementById('sc-xbtn').onclick=hideTut;
 document.getElementById('sc-prev').onclick=()=>{if(tutStep>0)renderTutStep(--tutStep);};
@@ -1233,16 +1228,12 @@ function renderPlayerInputs(){
     <input class="pn-i" placeholder="Player ${i+1} name" id="pn${i}" maxlength="18"/></div>`).join('');
 }
 document.getElementById('startBtn').addEventListener('click',()=>{
-  console.log('[START] Button clicked');
   const city=document.getElementById('cityName').value.trim()||'NeoVerde';
   const leader=document.getElementById('leaderName').value.trim()||'Planner';
   const players=numPlayers===1?[{name:leader,color:PLAYER_COLORS[0]}]:
     Array.from({length:numPlayers},(_,i)=>({name:document.getElementById(`pn${i}`)?.value.trim()||`Player ${i+1}`,color:PLAYER_COLORS[i]}));
-  console.log('[START] city='+city+' players='+JSON.stringify(players));
   startGame(city,players);
 });
-// Log on page load so we know JS is running
-console.log('[BODHA] SmartCity JS loaded OK — version bb7909d+1');
 
 // ── GAME START ───────────────────────────────────────────────────
 function startGame(city,players){
@@ -1261,9 +1252,7 @@ function startGame(city,players){
   updateTopBar();updateRightPanel();
   renderChallenge();buildScoreRows();buildIoTFeed();
   // Show tutorial — direct call after sync render + multiple backup calls
-  console.log('[GAME] startGame complete, calling showTut');
-  setTimeout(showTut, 200);
-  setTimeout(showTut, 800); // backup in case 200ms was too early
+  setTimeout(showTut, 400);
 }
 
 // ── GRID ─────────────────────────────────────────────────────────
